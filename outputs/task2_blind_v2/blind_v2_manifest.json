@@ -1,0 +1,441 @@
+{
+  "schema_version": 2,
+  "label_set": "blind_v2",
+  "built_at_utc": "2026-09-01T18:02:22.966775+00:00",
+  "pages_regenerated_at_utc": "2026-09-02T02:25:36.310020+00:00",
+  "query_set_sha256": "b40f23d5d12bf7ec48ae37b1c5d117c81372bf847888b8257e8887c3dd9e7675",
+  "random_seed": 20260901,
+  "queries_per_camera": 40,
+  "sampling_rules": {
+    "stratified": "one query per equal-width route stratum",
+    "excluded_idle": "Run A frames outside [180, 2616) are parked and carry no travelling correspondence",
+    "minimum_distance_from_original_anchor": 10,
+    "minimum_distance_between_queries": 18
+  },
+  "prior_policy": "linear route-progress arithmetic only; contains no model output, no baseline path, and no previous prediction",
+  "blindness": {
+    "model_columns_present": false,
+    "predictions_present": false,
+    "previous_labels_present": false
+  },
+  "cameras": {
+    "cam0": {
+      "queries": [
+        {
+          "queryId": "cam0_v2_00",
+          "runAFrame": 229,
+          "linearPriorRunBFrame": 164
+        },
+        {
+          "queryId": "cam0_v2_01",
+          "runAFrame": 285,
+          "linearPriorRunBFrame": 222
+        },
+        {
+          "queryId": "cam0_v2_02",
+          "runAFrame": 355,
+          "linearPriorRunBFrame": 294
+        },
+        {
+          "queryId": "cam0_v2_03",
+          "runAFrame": 410,
+          "linearPriorRunBFrame": 351
+        },
+        {
+          "queryId": "cam0_v2_04",
+          "runAFrame": 476,
+          "linearPriorRunBFrame": 419
+        },
+        {
+          "queryId": "cam0_v2_05",
+          "runAFrame": 505,
+          "linearPriorRunBFrame": 448
+        },
+        {
+          "queryId": "cam0_v2_06",
+          "runAFrame": 598,
+          "linearPriorRunBFrame": 544
+        },
+        {
+          "queryId": "cam0_v2_07",
+          "runAFrame": 634,
+          "linearPriorRunBFrame": 581
+        },
+        {
+          "queryId": "cam0_v2_08",
+          "runAFrame": 687,
+          "linearPriorRunBFrame": 636
+        },
+        {
+          "queryId": "cam0_v2_09",
+          "runAFrame": 733,
+          "linearPriorRunBFrame": 683
+        },
+        {
+          "queryId": "cam0_v2_10",
+          "runAFrame": 803,
+          "linearPriorRunBFrame": 755
+        },
+        {
+          "queryId": "cam0_v2_11",
+          "runAFrame": 849,
+          "linearPriorRunBFrame": 802
+        },
+        {
+          "queryId": "cam0_v2_12",
+          "runAFrame": 934,
+          "linearPriorRunBFrame": 890
+        },
+        {
+          "queryId": "cam0_v2_13",
+          "runAFrame": 984,
+          "linearPriorRunBFrame": 941
+        },
+        {
+          "queryId": "cam0_v2_14",
+          "runAFrame": 1083,
+          "linearPriorRunBFrame": 1043
+        },
+        {
+          "queryId": "cam0_v2_15",
+          "runAFrame": 1129,
+          "linearPriorRunBFrame": 1091
+        },
+        {
+          "queryId": "cam0_v2_16",
+          "runAFrame": 1197,
+          "linearPriorRunBFrame": 1161
+        },
+        {
+          "queryId": "cam0_v2_17",
+          "runAFrame": 1217,
+          "linearPriorRunBFrame": 1181
+        },
+        {
+          "queryId": "cam0_v2_18",
+          "runAFrame": 1306,
+          "linearPriorRunBFrame": 1273
+        },
+        {
+          "queryId": "cam0_v2_19",
+          "runAFrame": 1377,
+          "linearPriorRunBFrame": 1346
+        },
+        {
+          "queryId": "cam0_v2_20",
+          "runAFrame": 1443,
+          "linearPriorRunBFrame": 1414
+        },
+        {
+          "queryId": "cam0_v2_21",
+          "runAFrame": 1503,
+          "linearPriorRunBFrame": 1476
+        },
+        {
+          "queryId": "cam0_v2_22",
+          "runAFrame": 1578,
+          "linearPriorRunBFrame": 1553
+        },
+        {
+          "queryId": "cam0_v2_23",
+          "runAFrame": 1638,
+          "linearPriorRunBFrame": 1614
+        },
+        {
+          "queryId": "cam0_v2_24",
+          "runAFrame": 1687,
+          "linearPriorRunBFrame": 1665
+        },
+        {
+          "queryId": "cam0_v2_25",
+          "runAFrame": 1714,
+          "linearPriorRunBFrame": 1693
+        },
+        {
+          "queryId": "cam0_v2_26",
+          "runAFrame": 1766,
+          "linearPriorRunBFrame": 1746
+        },
+        {
+          "queryId": "cam0_v2_27",
+          "runAFrame": 1855,
+          "linearPriorRunBFrame": 1838
+        },
+        {
+          "queryId": "cam0_v2_28",
+          "runAFrame": 1913,
+          "linearPriorRunBFrame": 1898
+        },
+        {
+          "queryId": "cam0_v2_29",
+          "runAFrame": 1986,
+          "linearPriorRunBFrame": 1973
+        },
+        {
+          "queryId": "cam0_v2_30",
+          "runAFrame": 2066,
+          "linearPriorRunBFrame": 2055
+        },
+        {
+          "queryId": "cam0_v2_31",
+          "runAFrame": 2115,
+          "linearPriorRunBFrame": 2105
+        },
+        {
+          "queryId": "cam0_v2_32",
+          "runAFrame": 2140,
+          "linearPriorRunBFrame": 2131
+        },
+        {
+          "queryId": "cam0_v2_33",
+          "runAFrame": 2223,
+          "linearPriorRunBFrame": 2217
+        },
+        {
+          "queryId": "cam0_v2_34",
+          "runAFrame": 2277,
+          "linearPriorRunBFrame": 2272
+        },
+        {
+          "queryId": "cam0_v2_35",
+          "runAFrame": 2350,
+          "linearPriorRunBFrame": 2347
+        },
+        {
+          "queryId": "cam0_v2_36",
+          "runAFrame": 2416,
+          "linearPriorRunBFrame": 2415
+        },
+        {
+          "queryId": "cam0_v2_37",
+          "runAFrame": 2435,
+          "linearPriorRunBFrame": 2435
+        },
+        {
+          "queryId": "cam0_v2_38",
+          "runAFrame": 2504,
+          "linearPriorRunBFrame": 2506
+        },
+        {
+          "queryId": "cam0_v2_39",
+          "runAFrame": 2555,
+          "linearPriorRunBFrame": 2558
+        }
+      ],
+      "runA_route_start": 180,
+      "runA_route_end_exclusive": 2616,
+      "runB_route_start": 114,
+      "runB_route_end": 2621,
+      "runB_filmstrip_frames": 2508
+    },
+    "cam5": {
+      "queries": [
+        {
+          "queryId": "cam5_v2_00",
+          "runAFrame": 196,
+          "linearPriorRunBFrame": 130
+        },
+        {
+          "queryId": "cam5_v2_01",
+          "runAFrame": 297,
+          "linearPriorRunBFrame": 234
+        },
+        {
+          "queryId": "cam5_v2_02",
+          "runAFrame": 345,
+          "linearPriorRunBFrame": 283
+        },
+        {
+          "queryId": "cam5_v2_03",
+          "runAFrame": 407,
+          "linearPriorRunBFrame": 347
+        },
+        {
+          "queryId": "cam5_v2_04",
+          "runAFrame": 440,
+          "linearPriorRunBFrame": 381
+        },
+        {
+          "queryId": "cam5_v2_05",
+          "runAFrame": 491,
+          "linearPriorRunBFrame": 433
+        },
+        {
+          "queryId": "cam5_v2_06",
+          "runAFrame": 554,
+          "linearPriorRunBFrame": 498
+        },
+        {
+          "queryId": "cam5_v2_07",
+          "runAFrame": 664,
+          "linearPriorRunBFrame": 611
+        },
+        {
+          "queryId": "cam5_v2_08",
+          "runAFrame": 706,
+          "linearPriorRunBFrame": 654
+        },
+        {
+          "queryId": "cam5_v2_09",
+          "runAFrame": 781,
+          "linearPriorRunBFrame": 731
+        },
+        {
+          "queryId": "cam5_v2_10",
+          "runAFrame": 834,
+          "linearPriorRunBFrame": 785
+        },
+        {
+          "queryId": "cam5_v2_11",
+          "runAFrame": 872,
+          "linearPriorRunBFrame": 824
+        },
+        {
+          "queryId": "cam5_v2_12",
+          "runAFrame": 915,
+          "linearPriorRunBFrame": 868
+        },
+        {
+          "queryId": "cam5_v2_13",
+          "runAFrame": 1003,
+          "linearPriorRunBFrame": 959
+        },
+        {
+          "queryId": "cam5_v2_14",
+          "runAFrame": 1063,
+          "linearPriorRunBFrame": 1020
+        },
+        {
+          "queryId": "cam5_v2_15",
+          "runAFrame": 1149,
+          "linearPriorRunBFrame": 1108
+        },
+        {
+          "queryId": "cam5_v2_16",
+          "runAFrame": 1185,
+          "linearPriorRunBFrame": 1145
+        },
+        {
+          "queryId": "cam5_v2_17",
+          "runAFrame": 1223,
+          "linearPriorRunBFrame": 1184
+        },
+        {
+          "queryId": "cam5_v2_18",
+          "runAFrame": 1291,
+          "linearPriorRunBFrame": 1254
+        },
+        {
+          "queryId": "cam5_v2_19",
+          "runAFrame": 1371,
+          "linearPriorRunBFrame": 1336
+        },
+        {
+          "queryId": "cam5_v2_20",
+          "runAFrame": 1428,
+          "linearPriorRunBFrame": 1395
+        },
+        {
+          "queryId": "cam5_v2_21",
+          "runAFrame": 1501,
+          "linearPriorRunBFrame": 1470
+        },
+        {
+          "queryId": "cam5_v2_22",
+          "runAFrame": 1571,
+          "linearPriorRunBFrame": 1542
+        },
+        {
+          "queryId": "cam5_v2_23",
+          "runAFrame": 1596,
+          "linearPriorRunBFrame": 1567
+        },
+        {
+          "queryId": "cam5_v2_24",
+          "runAFrame": 1656,
+          "linearPriorRunBFrame": 1629
+        },
+        {
+          "queryId": "cam5_v2_25",
+          "runAFrame": 1733,
+          "linearPriorRunBFrame": 1708
+        },
+        {
+          "queryId": "cam5_v2_26",
+          "runAFrame": 1802,
+          "linearPriorRunBFrame": 1779
+        },
+        {
+          "queryId": "cam5_v2_27",
+          "runAFrame": 1832,
+          "linearPriorRunBFrame": 1809
+        },
+        {
+          "queryId": "cam5_v2_28",
+          "runAFrame": 1935,
+          "linearPriorRunBFrame": 1915
+        },
+        {
+          "queryId": "cam5_v2_29",
+          "runAFrame": 1989,
+          "linearPriorRunBFrame": 1971
+        },
+        {
+          "queryId": "cam5_v2_30",
+          "runAFrame": 2059,
+          "linearPriorRunBFrame": 2042
+        },
+        {
+          "queryId": "cam5_v2_31",
+          "runAFrame": 2094,
+          "linearPriorRunBFrame": 2078
+        },
+        {
+          "queryId": "cam5_v2_32",
+          "runAFrame": 2156,
+          "linearPriorRunBFrame": 2142
+        },
+        {
+          "queryId": "cam5_v2_33",
+          "runAFrame": 2212,
+          "linearPriorRunBFrame": 2199
+        },
+        {
+          "queryId": "cam5_v2_34",
+          "runAFrame": 2299,
+          "linearPriorRunBFrame": 2289
+        },
+        {
+          "queryId": "cam5_v2_35",
+          "runAFrame": 2330,
+          "linearPriorRunBFrame": 2320
+        },
+        {
+          "queryId": "cam5_v2_36",
+          "runAFrame": 2429,
+          "linearPriorRunBFrame": 2422
+        },
+        {
+          "queryId": "cam5_v2_37",
+          "runAFrame": 2493,
+          "linearPriorRunBFrame": 2488
+        },
+        {
+          "queryId": "cam5_v2_38",
+          "runAFrame": 2551,
+          "linearPriorRunBFrame": 2547
+        },
+        {
+          "queryId": "cam5_v2_39",
+          "runAFrame": 2577,
+          "linearPriorRunBFrame": 2574
+        }
+      ],
+      "runA_route_start": 180,
+      "runA_route_end_exclusive": 2616,
+      "runB_route_start": 114,
+      "runB_route_end": 2614,
+      "runB_filmstrip_frames": 2501
+    }
+  }
+}

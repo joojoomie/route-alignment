@@ -1,0 +1,471 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "route-alignment-task3-frame-manifest-schema-v2",
+  "title": "Downstream frame manifest row",
+  "description": "One row per surviving canonical decoded image. Nullable fields must remain explicit; absence must not be reinterpreted as a negative label.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_schema_version",
+    "policy_version",
+    "frame_id",
+    "run_id",
+    "camera_id",
+    "source_video_filename",
+    "decoded_frame_index",
+    "frame_identity",
+    "decoder_version",
+    "width",
+    "height",
+    "derived_asset",
+    "run_start_utc",
+    "run_end_utc",
+    "capture_timestamp_ns",
+    "timestamp_linkage_status",
+    "nominal_fps_tool_reported",
+    "timestamp_mean_event_cadence_hz",
+    "route_phase",
+    "route_phase_method",
+    "route_location_group_id",
+    "route_occurrence",
+    "decode_status",
+    "resolution_status",
+    "quality_flags",
+    "quality_metric_version",
+    "semantic_mask_model",
+    "dynamic_mask_fraction",
+    "temporal_cluster_id",
+    "temporal_cluster_size",
+    "is_temporal_representative",
+    "sample_weight",
+    "split",
+    "split_group_id",
+    "split_assignment_version",
+    "leakage_buffer_status",
+    "paired_camera_group_id",
+    "partner_run_id",
+    "partner_camera_id",
+    "partner_frame_index",
+    "acceptable_partner_min",
+    "acceptable_partner_max",
+    "mapping_status",
+    "label_source",
+    "review_status",
+    "confidence_category",
+    "confidence_is_calibrated_probability",
+    "support_score",
+    "method_freeze_id",
+    "known_failure_flags",
+    "disposition",
+    "allowed_uses",
+    "prohibited_uses",
+    "disposition_reason"
+  ],
+  "properties": {
+    "manifest_schema_version": {
+      "const": 2
+    },
+    "policy_version": {
+      "const": "task3_v2"
+    },
+    "frame_id": {
+      "type": "string",
+      "pattern": "^run[AB]_cam[05]_[0-9]{6}$"
+    },
+    "run_id": {
+      "enum": [
+        "runA",
+        "runB"
+      ]
+    },
+    "camera_id": {
+      "enum": [
+        "cam0",
+        "cam5"
+      ]
+    },
+    "source_video_filename": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decoded_frame_index": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "frame_identity": {
+      "const": "zero_based_canonical_display_order_decoded_image_ordinal"
+    },
+    "decoder_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "width": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "height": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "derived_asset": {
+      "type": "boolean"
+    },
+    "run_start_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "run_end_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "capture_timestamp_ns": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "timestamp_linkage_status": {
+      "enum": [
+        "exact_per_image",
+        "unresolved_count_mismatch",
+        "not_available"
+      ]
+    },
+    "nominal_fps_tool_reported": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "timestamp_mean_event_cadence_hz": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "route_phase": {
+      "enum": [
+        "pre_route_stationary",
+        "departure_transition",
+        "route"
+      ]
+    },
+    "route_phase_method": {
+      "type": "string",
+      "minLength": 1
+    },
+    "route_location_group_id": {
+      "description": "Nullable physical-location grouping used for split governance. Loop-equivalent departure and arrival occurrences share one group without becoming the same temporal occurrence.",
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "route_occurrence": {
+      "description": "Unwrapped temporal occurrence along the recorded traversal; never use this field as a circular index.",
+      "enum": [
+        "pre_route_or_transition",
+        "departure_occurrence",
+        "interior_occurrence",
+        "arrival_occurrence",
+        "post_terminal_occurrence"
+      ]
+    },
+    "decode_status": {
+      "enum": [
+        "decoded_ok",
+        "decode_failed"
+      ]
+    },
+    "resolution_status": {
+      "enum": [
+        "expected_stable",
+        "unexpected",
+        "changed_midstream"
+      ]
+    },
+    "quality_flags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "quality_metric_version": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "semantic_mask_model": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "dynamic_mask_fraction": {
+      "oneOf": [
+        {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "temporal_cluster_id": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "temporal_cluster_size": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "is_temporal_representative": {
+      "type": "boolean"
+    },
+    "sample_weight": {
+      "oneOf": [
+        {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "split": {
+      "enum": [
+        "training",
+        "calibration",
+        "validation",
+        "test",
+        "held_out",
+        "unassigned"
+      ]
+    },
+    "split_group_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "split_assignment_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "leakage_buffer_status": {
+      "enum": [
+        "not_applicable",
+        "inside_split",
+        "excluded_boundary_buffer"
+      ]
+    },
+    "paired_camera_group_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "partner_run_id": {
+      "oneOf": [
+        {
+          "enum": [
+            "runA",
+            "runB"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "partner_camera_id": {
+      "oneOf": [
+        {
+          "enum": [
+            "cam0",
+            "cam5"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "partner_frame_index": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "acceptable_partner_min": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "acceptable_partner_max": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "mapping_status": {
+      "enum": [
+        "pre_route_no_correspondence",
+        "unsupported_before_first_supported_segment",
+        "unsupported_anchor_abstention",
+        "geometry_supported_anchor",
+        "bounded_interpolation",
+        "unsupported_between_supported_segments",
+        "unsupported_isolated_acceptance",
+        "unsupported_after_last_supported_segment",
+        "human_reviewed_match",
+        "human_reviewed_no_match",
+        "not_query_axis"
+      ]
+    },
+    "label_source": {
+      "enum": [
+        "none",
+        "frozen_automatic_geometry",
+        "frozen_bounded_interpolation",
+        "human_reviewed",
+        "proxy_annotation"
+      ]
+    },
+    "review_status": {
+      "enum": [
+        "not_reviewed",
+        "provisional",
+        "source_confirmed",
+        "prediction_blind_frozen"
+      ]
+    },
+    "confidence_category": {
+      "enum": [
+        "abstain",
+        "uncalibrated_geometry_anchor",
+        "uncalibrated_bounded_interpolation",
+        "human_confirmed",
+        "not_applicable"
+      ]
+    },
+    "confidence_is_calibrated_probability": {
+      "type": "boolean"
+    },
+    "support_score": {
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "method_freeze_id": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "known_failure_flags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "disposition": {
+      "enum": [
+        "keep",
+        "quarantine",
+        "exclude_from_route_alignment"
+      ]
+    },
+    "allowed_uses": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "raw_audit",
+          "annotation",
+          "weak_supervision",
+          "training",
+          "calibration",
+          "within_route_evaluation",
+          "robustness_challenge"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "prohibited_uses": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "benchmark_ground_truth",
+          "hard_negative",
+          "probability_calibration",
+          "production_safety_claim",
+          "cross_camera_sync_claim"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "disposition_reason": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

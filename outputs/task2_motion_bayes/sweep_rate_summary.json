@@ -1,0 +1,38 @@
+{
+  "streams": {
+    "runA_cam0": {
+      "frames": 2674,
+      "interpolated": 0,
+      "median_px_per_frame": 23.0,
+      "p10": 1.0,
+      "p90": 46.0,
+      "fraction_below_2px": 0.1017
+    },
+    "runA_cam5": {
+      "frames": 2674,
+      "interpolated": 0,
+      "median_px_per_frame": 18.0,
+      "p10": 0.0,
+      "p90": 35.0,
+      "fraction_below_2px": 0.1559
+    },
+    "runB_cam0": {
+      "frames": 2622,
+      "interpolated": 0,
+      "median_px_per_frame": 8.0,
+      "p10": 1.0,
+      "p90": 25.0,
+      "fraction_below_2px": 0.1037
+    },
+    "runB_cam5": {
+      "frames": 2615,
+      "interpolated": 0,
+      "median_px_per_frame": 10.0,
+      "p10": 1.0,
+      "p90": 23.0,
+      "fraction_below_2px": 0.1476
+    }
+  },
+  "built_at_utc": "2026-09-02T06:06:46.434119+00:00",
+  "method": "RootSIFT median |dx| between consecutive frames, geometry raster, reliability mask"
+}

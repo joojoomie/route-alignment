@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "label_set": "blind_v2",
+  "sealed_at_utc": "2026-09-01T15:52:15.839982+00:00",
+  "label_file": "outputs/task2_evaluation/blind_v2/blind_v2_labels.csv",
+  "label_file_sha256": "5a058323518b869e9e6d6af74ffacf2ea0657a4b23e3d109908ebcad70d6f9fa",
+  "rows": 80,
+  "per_camera": {
+    "cam0": {
+      "labels": 40,
+      "matches": 32,
+      "no_matches": 8
+    },
+    "cam5": {
+      "labels": 40,
+      "matches": 37,
+      "no_matches": 3
+    }
+  },
+  "blindness_checks_performed": [
+    "no model-derived columns present",
+    "every query answered, none left unlabelled",
+    "Run A frames match the exported query set exactly",
+    "no_match rows name no Run B frame",
+    "preferred frame lies inside its acceptable interval"
+  ],
+  "trust_model": "The seal proves these labels existed unchanged before the method freeze that cites this hash. It does not prove the labels were never inspected; that would require third-party custody.",
+  "amended_at_utc": "2026-09-02T02:26:54.670372+00:00",
+  "amendment": "Cross-references added after the fact. sealed_at_utc and label_file_sha256 are unchanged; nothing sealed was rewritten. The query-set export time below is recovered from the extracted query frames, which page-only rebuilds do not touch, because the manifest's own timestamp had been overwritten by such a rebuild.",
+  "query_set_sha256": "b40f23d5d12bf7ec48ae37b1c5d117c81372bf847888b8257e8887c3dd9e7675",
+  "query_set_exported_at_utc_recovered_from_frame_mtimes": "2026-09-01T13:03:06.622952+00:00",
+  "method_freeze_sha256": "e3b115533f5d9414eb947337b85e1f568420fbd5756a496ef7abc36a7db3d962",
+  "method_frozen_at_utc": "2026-09-01T15:41:34.222655+00:00",
+  "chain": {
+    "1_queries_exported": "2026-09-01T13:03:06.622952+00:00",
+    "2_method_frozen": "2026-09-01T15:41:34.222655+00:00",
+    "3_labels_sealed": "2026-09-01T15:52:15.839982+00:00",
+    "ordering_holds": true,
+    "what_this_proves": "ordering of the three events, from timestamps and hashes",
+    "what_it_does_not": "that the queries were never inspected before the freeze; that needs third-party custody"
+  }
+}

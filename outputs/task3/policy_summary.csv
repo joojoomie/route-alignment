@@ -1,0 +1,5 @@
+run,camera_id,canonical_decoded_images,pre_route_or_transition_excluded,route_region_images,development_representatives,weak_alignment_rows,sparse_anchor_alternative_rows,raw_archive_disposition,default_route_alignment_disposition
+runA,cam0,2674,180,2494,295,2401,1071,retain,eligible_after_qc
+runA,cam5,2674,180,2494,304,2183,287,retain,eligible_after_qc
+runB,cam0,2622,114,2508,297,,,retain,eligible_after_qc
+runB,cam5,2615,114,2501,301,,,retain,eligible_after_qc

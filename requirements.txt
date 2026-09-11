@@ -1,0 +1,42 @@
+# Route alignment — Python dependencies
+#
+# The project needs TWO environments, and the split is not cosmetic: the
+# backbone stack and OpenCV were never installed together on this machine, and
+# the reproduction commands say which interpreter each stage wants.
+#
+#   $RA_PY  the backbone interpreter: torch, transformers, scikit-image
+#                -> DINOv2, RootSIFT (SegFormer only in archived v1 experiments); runs everything that is
+#                   submitted
+#
+# Both are set in env.sh; point them at whatever your machine calls those two
+# environments and nothing else in the repository names an interpreter path.
+#
+# Everything added during the audit-driven rebuild — the bitstream scanner, the
+# canonical frame service, the reliability mask, the loop-consistency checks —
+# needs neither torch nor OpenCV. numpy, Pillow and ffmpeg are enough. That is
+# deliberate: the parts that establish frame identity and data integrity should
+# not depend on a model stack.
+
+# --- base environment -------------------------------------------------------
+numpy==1.24.3
+scipy==1.14.1
+pandas==2.2.2
+Pillow==10.0.1
+matplotlib==3.8.4
+scikit-image==0.20.0
+scikit-learn==1.5.0
+pytest==8.2.0            # scripts/test_*.py; two of them are pytest-style
+torch==2.3.0
+transformers==4.41.2
+
+# --- CS6476 environment (legacy branch only) --------------------------------
+# opencv-python==4.6.0
+
+# --- external tools, not pip ------------------------------------------------
+# ffmpeg / ffprobe 8.1.2   (Homebrew)  — decoding and the bitstream cross-check
+# latexmk + pdflatex       (TeX Live 2023) — the report
+
+# only to rebuild assessment.ipynb (scripts/build_assessment_notebook.py --execute)
+nbformat>=5.9
+nbclient>=0.9
+ipykernel>=6

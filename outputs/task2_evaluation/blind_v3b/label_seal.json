@@ -1,0 +1,82 @@
+{
+  "schema_version": 3,
+  "label_set": "blind_v3b",
+  "cameras": [
+    "cam5"
+  ],
+  "method_freeze_file": "outputs/task2_evaluation/method_freeze_v3b.json",
+  "query_set_sha256": "b7df8d342d4664f9ccb367bb73d37f6c7aee873bb2679e56e0eda5168ad715e8",
+  "query_set_exported_at_utc": "2026-09-02T09:57:53.124514+00:00",
+  "method_freeze_sha256_at_seal_time": "b98045635d7a5167fb3dd11896ed62a229136d6dd00c9644a7b23f3b58c48879",
+  "sealed_at_utc": "2026-09-02T10:53:30.879079+00:00",
+  "label_file": "outputs/task2_evaluation/blind_v3b/blind_v3b_labels.csv",
+  "label_file_sha256": "d82913b90c9238c8a46b584eae8dc45bdd54664f2d7e57af019913474822606b",
+  "rows": 24,
+  "per_camera": {
+    "cam5": {
+      "labels": 24,
+      "by_label": {
+        "match": 23,
+        "undetermined": 0,
+        "no_correspondence": 1
+      },
+      "by_stratum": {
+        "corridor": {
+          "match": 17,
+          "undetermined": 0,
+          "no_correspondence": 1
+        },
+        "dark": {
+          "match": 1,
+          "undetermined": 0,
+          "no_correspondence": 0
+        },
+        "kink": {
+          "match": 5,
+          "undetermined": 0,
+          "no_correspondence": 0
+        }
+      }
+    }
+  },
+  "label_semantics": {
+    "match": "a Run B frame shows the same world position, within the recorded interval",
+    "undetermined": "a counterpart may exist; the annotator could not identify which frame. Not evidence for or against abstention - exclude from the denominator and report how many were excluded.",
+    "no_correspondence": "no Run B frame shows this place, because the view was blocked or the route was not driven there. This is the correct abstention target."
+  },
+  "blindness_checks_performed": [
+    "no model-derived or stratum columns present",
+    "every query answered, none left unlabelled",
+    "Run A frames match the exported query set exactly",
+    "undetermined and no_correspondence rows name no Run B frame",
+    "preferred frame lies inside its acceptable interval",
+    "every Run B frame lies inside the exported Run B route range"
+  ],
+  "trust_model": "The seal proves these labels existed unchanged before the method freeze that cites this hash. It does not prove the labels were never inspected; that would require third-party custody.",
+  "stratum_dependency_disclosure": "Strata were located using the structure of the submitted unified mapping: its kink positions and, for the dark stratum, its Run A -> Run B partner for each frame. This affects WHICH frames are asked about. It does not affect WHAT the annotator sees: the page carries the Run A frame, a linear route-progress start position computed from the route boundaries alone, and the Run B filmstrip. No stratum tag, no mapping partner, no confidence and no prediction is present in the exported HTML, and a test greps the pages for the submitted partner of every query and fails if one appears. The consequence to state when reporting: per-stratum rates are conditional on the submitted mapping having put its kinks where it did, so they measure 'is this method right where it says something surprising', not an unbiased route-wide rate. The corridor stratum is the unbiased comparison.",
+  "chain": {
+    "query_set_exported_at_utc": "2026-09-02T09:57:53.124514+00:00",
+    "method_frozen_at_utc": "2026-09-02T10:03:08.989372+00:00",
+    "labels_sealed_at_utc": "2026-09-02T10:53:30.879079+00:00",
+    "ordering_holds": true,
+    "note": "Amended in place after sealing to attach the chain and remarks; sealed_at_utc and label_file_sha256 untouched."
+  },
+  "annotator_remarks_recorded_before_seal": [
+    {
+      "camera_id": "cam5",
+      "runA_frame": 1618,
+      "labelled_runB_frame": 1538,
+      "recorded_at_utc": "2026-09-02T10:43:17.598205+00:00",
+      "kind": "lane_difference_observed",
+      "remark": "Annotator observed that Run B drives at a different lateral distance from the roadside here (lane difference). Far+near rule replaced by the centre-line rule (fixed object nearest the compensated centre column); labelled as match with +-2. Both frames lie in the A1600-1710 tree-tunnel stretch where the RootSIFT lateral-offset measurement has no usable pairs."
+    },
+    {
+      "camera_id": "cam5",
+      "runA_frame": 1704,
+      "labelled_runB_frame": 1639,
+      "recorded_at_utc": "2026-09-02T10:43:17.598205+00:00",
+      "kind": "lane_difference_observed",
+      "remark": "Annotator observed that Run B drives at a different lateral distance from the roadside here (lane difference). Far+near rule replaced by the centre-line rule (fixed object nearest the compensated centre column); labelled as match with +-2. Both frames lie in the A1600-1710 tree-tunnel stretch where the RootSIFT lateral-offset measurement has no usable pairs."
+    }
+  ]
+}

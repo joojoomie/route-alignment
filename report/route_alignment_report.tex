@@ -1,0 +1,537 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage[margin=1.15cm,top=1.0cm,bottom=0.9cm,headheight=11pt,headsep=5pt,footskip=14pt]{geometry}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{needspace}
+\usepackage{caption}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{navy}{HTML}{17324D}
+\definecolor{teal}{HTML}{087E8B}
+\definecolor{amber}{HTML}{C17817}
+\definecolor{pale}{HTML}{EEF4F7}
+\definecolor{muted}{HTML}{51606D}
+\definecolor{rulegray}{HTML}{CBD5DD}
+
+\renewcommand{\familydefault}{\sfdefault}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+\setlist[itemize]{leftmargin=1.2em,itemsep=0pt,topsep=1pt}
+\setlist[enumerate]{leftmargin=1.3em,itemsep=1pt,topsep=2pt}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.04}
+\titleformat{\section}{\large\bfseries\color{navy}}{\thesection}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{teal}}{\thesubsection}{0.45em}{}
+\titlespacing*{\section}{0pt}{6pt}{3pt}
+\titlespacing*{\subsection}{0pt}{4pt}{1.5pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\footnotesize\color{muted}Route alignment}
+\rhead{\footnotesize\color{muted}Take-home assessment, 2026}
+\cfoot{\footnotesize\color{muted}\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\setlength{\headheight}{11pt}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\yes}{\textcolor{teal}{\textbf{keep}}}
+\newcommand{\warn}{\textcolor{amber}{\textbf{quarantine}}}
+\newcommand{\no}{\textcolor{navy}{\textbf{exclude}}}
+
+\input{outputs/report_tables/facts.tex}
+% The Task 1 lateral study is optional; the document still builds without it.
+\providecommand{\LateralFlaggedCamZero}{n/a}
+\providecommand{\LateralFlaggedCamFive}{n/a}
+\providecommand{\LateralPairs}{0}
+\providecommand{\LateralOppositeSign}{n/a}
+\providecommand{\LateralSignP}{n/a}
+% The CAM5 redo (blind v3b) is optional; the document still builds without it.
+\providecommand{\VthreebLabels}{n/a}
+\providecommand{\VthreebCamFivePrecision}{n/a}
+\providecommand{\VthreebCamFiveWilson}{n/a}
+\providecommand{\VthreebCamFiveWithinTwo}{n/a}
+\providecommand{\VthreebCorridorCamFive}{n/a}
+\providecommand{\VthreebCorridorCamFiveCount}{n/a}
+\providecommand{\VthreebCorridorCamFiveWilson}{n/a}
+\providecommand{\VthreebKinkMissCamFive}{n/a}
+\providecommand{\VthreebCorridorMissCamFive}{n/a}
+\providecommand{\VthreebDarkCamFiveCount}{n/a}
+\providecommand{\VthreebSlopeGateCamFive}{n/a}
+\providecommand{\VthreebVariantCamFive}{n/a}
+\providecommand{\VthreebPosteriorCamFive}{n/a}
+\providecommand{\VthreebNoCorrespondenceRejectingMethods}{n/a}
+\providecommand{\VthreebSignedMedian}{n/a}
+\providecommand{\VthreebSignedLater}{n/a}
+\providecommand{\VthreebSignedEarlier}{n/a}
+\providecommand{\VthreebPoseDefault}{n/a}
+\providecommand{\VthreeCamFiveSignedMedian}{n/a}
+% The convention-shift sensitivity is optional; the document builds without it.
+\providecommand{\ConventionConstantFrames}{n/a}
+\providecommand{\ConventionShiftFrames}{n/a}
+\providecommand{\ConventionCamZeroShift}{n/a}
+\providecommand{\ConventionShiftedCount}{n/a}
+\providecommand{\ConventionShiftedPrecision}{n/a}
+\providecommand{\ConventionShiftedWilson}{n/a}
+\providecommand{\ConventionUnshiftedPrecision}{n/a}
+\providecommand{\ConventionShiftedAtOne}{n/a}
+\providecommand{\ConventionShiftedAtThree}{n/a}
+\providecommand{\ConventionVariantShifted}{n/a}
+\providecommand{\ConventionPosteriorShifted}{n/a}
+
+\begin{document}
+
+{\color{navy}\LARGE\bfseries Aligning two traversals of the same route}
+
+{\large Measured, then frozen, then tested once --- including the tests that failed}
+
+\vspace{1pt}
+{\color{teal}\rule{\textwidth}{1.2pt}}
+
+\begin{center}
+\fcolorbox{teal}{pale}{%
+\begin{minipage}{0.955\textwidth}
+\textbf{Outcome.} Frame identity is the zero-based display-order image from one
+canonical decoder, verified against the bitstream rather than assumed, and each
+camera is aligned independently. Against \BlindLabelsPerCamera{}
+prediction-blind labels per camera, the submitted mapping places
+\TolVtwoCamZeroTwo{} of accepted CAM0 matches and \TolVtwoCamFiveTwo{} of CAM5
+matches within $\pm$\TolHeadline{} frames of the annotator's interval (0.2\,s,
+about 2\,m) at \SubCamZeroCoverage{} and \SubCamFiveCoverage{} coverage, and
+\TolVtwoCamZeroTen{}/\TolVtwoCamFiveTen{} within $\pm10$ frames, the field's
+usual tolerance; the sparse-anchor method it replaces answered only
+\SparseCamZeroCoverage{} and \SparseCamFiveCoverage{} of the queries. A second,
+targeted blind set reads \TolVthreeCamZeroTwo{} (CAM0) and
+\TolVthreebCamFiveTwo{} (CAM5, re-annotated after a tool defect) at the same
+tolerance and locates most of CAM5's residual in a two-frame difference between
+two definitions of ``same place''. The strict single-frame reading
+(\SubCamZeroPrecision{}/\SubCamFivePrecision{}) is the last table.
+\end{minipage}}
+\end{center}
+
+\section{Characterising the recordings}
+
+\textbf{Provenance.} Picture counts, rasters and picture order are parsed from
+the HEVC Annex-B bitstream by a purpose-written scanner, independently of
+libavcodec; the two agree exactly on all four files. Nominal 10\,FPS is
+stream-declared; timestamp statistics come from the integer-nanosecond sidecars
+and describe capture-log events, not decoded-video cadence.
+
+\vspace{-2pt}
+\input{outputs/report_tables/bitstream_inventory.tex}
+\vspace{-1pt}
+
+{\small Run A: 2025-02-28 06:24:09.580\,UTC, span 269.595\,s, 2{,}695 sidecar
+rows; Run B: 2024-04-13 09:12:41.985\,UTC, 266.492\,s, 2{,}663 rows --- eleven
+months \emph{earlier}, so the run names carry no chronology. Cadence 9.9928 and
+9.9890\,Hz measured, both logs strictly increasing. A road sign (\emph{Kawasan SD
+13}, Bandar Sri Damansara) puts the route in Malaysia: UTC+8, local 14:24 and
+17:12, inferred from signage, not declared.}
+
+\subsection{Four findings that silently corrupt data}
+
+\begin{itemize}
+  \item \textbf{Decode order is not display order for 74.4\% of pictures.} A
+  four-frame B-pyramid: bitstream order runs 0, 4, 2, 1, 3, 8, 6, 5, 7. Any tool
+  calling the $n$-th packet ``frame $n$'' scrambles the sequence locally, by the
+  same magnitude as the error being measured. The pipeline reconstructs picture
+  order and \emph{fails} unless display order is a clean permutation.
+  \item \textbf{The declared frame rate contradicts itself.} FFprobe reports
+  \texttt{r\_frame\_rate 10/1} from the stream and \texttt{avg\_frame\_rate 25/1}
+  as its own fallback. Both are declared; neither is measured.
+  \item \textbf{Colour is undeclared.} Only \texttt{color\_range=tv} is signalled;
+  swscale picks a matrix from frame height (BT.709 for the source, BT.601 for a
+  480-tall proxy). Pinning it changes 3.17\% of decoded bytes; cache keys carry
+  source hash, raster and colour.
+  \item \textbf{Coded raster is $1440\times1088$}, cropped to $1440\times1080$ by
+  an 8-row conformance window; all four file sizes are exact multiples of 4096.
+\end{itemize}
+
+\subsection{What the cameras actually are}
+
+CAM0 faces left and CAM5 right; both are wide fisheye with heavy vignetting and
+neither faces forward: the scene sweeps laterally across CAM5 at a median
+\SweepRateCamFive{}\,px per frame at the \SweepRaster{} geometry raster
+($\approx$\,\SweepRateCamFiveNative{}\,px at native \SweepNativeWidth{}; CAM0
+\SweepRateCamZero{}/\SweepRateCamZeroNative{}). That sets the difficulty:
+appearance depends on lateral lane position far more than on a forward camera,
+and a place is re-observed only when traversed in the same direction. A near/far
+scale test for lane offset flags \LateralFlaggedCamZero{}/\LateralFlaggedCamFive{}
+of sampled pairs without persistence in time ($p{=}\LateralSignP$ on the
+opposite-sign test): no lane offset is established where the test can see.
+
+Run B is 2.2$\times$ darker (mean luma 30.1/38.3 against 65.3/82.6), half as
+sharp, and has \textbf{rain on the lens that is static for the whole recording}:
+the droplets are crisp in both the temporal median and the temporal
+standard-deviation map, which only a fixed feature can be. That makes them
+measurable without a learned model, as
+$|\nabla(\text{temporal median})| / (\text{temporal std} + 1)$:
+
+\vspace{-2pt}
+\input{outputs/report_tables/reliability_mask.tex}
+
+\subsection{Route topology}
+
+Retrieval over the matcher's own descriptors finds a strong tail-to-head revisit
+in all four sequences (Run A \TopologyCamZeroPair{} at cosine
+\TopologyCamZeroCosine{} on CAM0, \TopologyCamFivePair{} at
+\TopologyCamFiveCosine{} on CAM5; Run B \TopologyCamZeroRunBPair{}/%
+\TopologyCamZeroRunBCosine{} and \TopologyCamFiveRunBPair{}/%
+\TopologyCamFiveRunBCosine{}): the route is a loop. It aliases internally too:
+of the \TopologyEligiblePairs{} Run A frame pairs more than \TopologySeparation{}
+frames apart, \TopologyAliasFractionCamFive{} exceed cosine \TopologyCosine{} on
+CAM5 against \TopologyAliasFractionCamZero{} on CAM0, \TopologyRatio$\times$ the
+density of look-alike places (\TopologyRatioRange$\times$ across cosine
+0.80--0.90). And the A\,$\to$\,B offset is not constant: dynamic time warping on
+an illumination-robust descriptor puts it between $-112$ and $+12$ frames, a
+\textbf{12.4-second drift} the annotator's independent labels reproduce ($-89$
+to $+13$). A fixed offset is wrong by over ten seconds.
+
+\Needspace{6\baselineskip}
+\section{Method}
+
+\subsection{Each stage answers an observed failure of the simpler one}
+
+Linear progress drifts 12.4\,s; nearest-neighbour retrieval alone confuses the
+repeated awnings and foliage corridors, so route order and local verification
+are added; forced dense output cannot be right where nothing corresponds, so the
+method abstains.
+
+\vspace{1pt}
+\begin{center}
+\fcolorbox{rulegray}{pale}{%
+\begin{minipage}{0.955\textwidth}
+\centering\small
+\textbf{Canonical decoded image}
+$\rightarrow$ reliability mask
+$\rightarrow$ frozen DINOv2-S descriptor
+$\rightarrow$ full-route coarse similarity
+$\rightarrow$ monotonic path with a slope prior
+$\rightarrow$ full-cadence refinement
+$\rightarrow$ local RootSIFT/RANSAC
+$\rightarrow$ \textbf{accept or abstain}
+\end{minipage}}
+\end{center}
+
+The earlier sparse-anchor method (v1) placed 36 fixed Run A anchors per camera
+and interpolated only between adjacent accepted ones, so an isolated accept never
+propagated. The submitted method (v2) aligns every route frame through a globally
+optimised monotonic path, refines to full cadence, tests corridor uniqueness at
+four time scales, and verifies geometry with RootSIFT/RANSAC requiring 20
+matches, 12 inliers, a 0.25 inlier ratio and support across a $4\times3$ grid.
+Both forbid departure--arrival wrap and interpolation across the seam, because
+the endpoints alias. The rebuild decodes from the HEVC with pinned colour rather
+than from $640\times480$ proxies, uses the measured mask, and runs geometry at a
+raster chosen by measurement on labelled-correct development pairs:
+
+\vspace{-2pt}
+\input{outputs/report_tables/resolution_study.tex}
+\vspace{-1pt}
+
+{\small Passing peaks at $896\times672$ and \emph{falls again} at native, where
+fine foliage texture inflates the raw match count while the inlier ratio falls
+(CAM5 \InlierSelectedCamFive{}$\to$\InlierNativeCamFive{}, CAM0
+\InlierSelectedCamZero{}$\to$\InlierNativeCamZero{}). Keypoint count alone would
+have chosen wrong.}
+
+\subsection{Evaluation design}
+
+Eighty prediction-blind labels, 40 per camera, on Run A ordinals the 36 anchors
+never touched, stratified along the route with parked frames excluded. The page
+showed the query frame and a scrubbable Run B filmstrip and nothing else: no
+prediction, no score, a deliberately weak linear prior. The method was
+\textbf{frozen before the labels were imported} --- every parameter hashed at
+15:41:34\,UTC, the seal written at 15:52:15\,UTC citing it --- and a verifier
+refuses to score if any live constant has drifted. That records
+\emph{ordering}, not custody. v1 was frozen long before these labels existed.
+
+\Needspace{6\baselineskip}
+\section{Results, and two protocol defects}
+
+\vspace{-2pt}
+{\small\input{outputs/report_tables/tolerance_curve.tex}}
+\vspace{-1pt}
+
+{\small Precision at frame tolerances: the share of accepted match labels whose
+prediction lies within $\pm k$ frames of the annotator's acceptable interval
+(distance 0 inside it). One frame is 0.1\,s, about a metre of travel, so
+$\pm2$ is roughly 2\,m --- an order of magnitude tighter than the 25\,m or
+$\pm10$-frames-at-1\,FPS tolerances published place-recognition protocols use,
+which is why the $\pm10$ column is the one comparable in scale to them. Cameras
+are never pooled: they observe the same two traversals. Undetermined labels
+leave the denominator (\S3.1); the strict $\pm0$ column is expanded in the last
+table.}
+
+\subsection{A label-semantics correction, made after the fact}
+
+The page offered a match or ``no usable match'', merging two facts: that Run B
+has no counterpart here, and that the annotator could not tell. All
+\UndeterminedLabels{} such labels meant the second, checkably --- queries were
+drawn inside the stretch both runs traversed (Run A 180--2616 into Run B
+114--2621), so a genuine absence was impossible by construction. Undetermined
+queries therefore leave the denominator. The correction was made \emph{after}
+the results were seen, applied identically to both methods, and raises the
+denser one more; the table's last column keeps the uncorrected reading.
+
+\subsection{A second blind set, drawn to test what the first one suggested}
+
+With the v2 labels spent, \VthreeLabels{} fresh queries were sealed against a
+freeze naming the submitted mapping, the slope variant, the posterior and the
+slope gate, and scored once. Half target kinks and dark stretches, half are a
+uniform \emph{corridor} control; targeting used the submitted mapping's own
+structure, so \textbf{only the corridor stratum is an unbiased route-wide rate}: \VthreeCorridorCamZeroCount{} $=$ \VthreeCorridorCamZero{} on CAM0,
+against \VthreeCamZeroPrecision{} (\VthreeCamZeroWilson{}) over all its match
+labels. \textbf{Its CAM5 half was withdrawn} for a defect found in the sealed
+labels themselves: the viewer displaced Run B by the measured pose offset instead
+of its negation, and the annotator's slider corrections correlate with the
+mapping's errors (\texttt{TOOL\_DEFECT\_cam5.md}). CAM0's offset is zero, so
+CAM0 stands. CAM5 was re-asked on \VthreebLabels{} fresh queries under its own
+freeze, sign fixed, every row at the \VthreebPoseDefault{}\,px default:
+corridor \VthreebCorridorCamFiveCount{} $=$ \VthreebCorridorCamFive{}
+(\VthreebCorridorCamFiveWilson{}), \VthreebCamFivePrecision{}
+(\VthreebCamFiveWilson{}) overall, \VthreebCamFiveWithinTwo{} within two
+frames, and its errors are late-biased (median \VthreebSignedMedian{},
+\VthreebSignedLater{}:\VthreebSignedEarlier{} late:early).
+
+\textbf{Part of that bias is one pre-measured constant.} The matcher's ``same
+place'' is image content; the labels' is a world position. The 18.5\,px gap
+between the two --- \ConventionConstantFrames{} frames at CAM5's sweep rate ---
+was measured on the v2 labels before this set was drawn. Shifting every CAM5
+prediction by the rounded \ConventionShiftFrames{}, the submitted file
+\emph{unchanged}, gives \ConventionShiftedCount{} $=$
+\ConventionShiftedPrecision{} (\ConventionShiftedWilson{}) against
+\ConventionUnshiftedPrecision{} at $0$ and \ConventionShiftedAtThree{} at $-3$:
+overlapping intervals, a peak located rather than resolved. Two controls bound
+it. On the v2 CAM5 labels the same shift is \textbf{neutral}
+(\ConventionVtwoCamFiveAtZeroPrecision{} at $0$ and at $-2$), which is what a
+mixture predicts: those labels used the marker direction for some queries and
+the image layout for others ($dx$ s.d.\ 29.8\,px about a $-56$\,px median). On
+CAM0, whose offset is zero, the sweep peaks at \ConventionVthreeCamZeroPeak{}
+(\ConventionVthreeCamZeroAtZero{} falling to \ConventionVthreeCamZeroAtTwo{}).
+So: a convention constant on a consistently labelled set, neutral on the mixed
+one, and the two blind CAM5 readings (\VthreebVtwoPrecision{},
+\VthreebCorridorCamFive{}) are not distinguishable at $n{=}32/15$. A sensitivity
+reading on spent sets, not a held-out number; \S4 attaches the constant.
+
+The kink claim replicates on CAM0 in direction only (\VthreeKinkMissCamZero{}
+against \VthreeCorridorMissCamZero{}) and \emph{not} on CAM5
+(\VthreebKinkMissCamFive{} against \VthreebCorridorMissCamFive{}). The slope
+gate buys \VthreeSlopeGateCamZero{} on CAM0 for coverage
+\VthreeSlopeGateCamZeroCoverage{} and \emph{costs} precision on CAM5
+(\VthreebSlopeGateCamFive{}); the exposure gate costs CAM0 precision
+(\VthreeDarkGateCamZero{}), all \VthreeDarkCamZeroCount{} CAM0 dark labels being
+right. The unsubmitted slope variant beats the shipped mapping on both cameras
+(\VthreeVariantCamZero{}/\VthreebVariantCamFive{}).
+
+\subsection{Abstention: what the labels cannot say, and what can}
+
+The v2 set held no true no-correspondence case, so it could not evaluate
+abstention, and an earlier reading that abstention had collapsed is withdrawn.
+Each targeted set supplies one such query: all six methods accepted v3's, and
+\VthreebNoCorrespondenceRejectingMethods{} rejected the redo's.
+
+Withholding a stretch of Run B supplies more: frames whose partner lay inside it
+have none by construction. Detection at 60/150/400-frame holes runs
+\AbstentionCamZeroByWidth{} on CAM0, rising with the hole as it should, but
+\emph{falls} on CAM5 (\AbstentionCamFiveByWidth{}) at
+\AbstentionFalseAlarmCamFive{} false alarms against \AbstentionFalseAlarm{};
+\AbstentionTrials{} trials per cell, no interval: read the direction, not the digits. The route also supplies one
+\emph{real} absence, found by looking at frames: an oncoming lorry fills the
+Run B CAM0 image at \OcclusionInterval{}, so those descriptors describe a side
+panel, not a place. Both mappings drive straight through it --- \OcclusionRows{}
+accepted rows at confidence 1.00, at most \OcclusionNullMax{} no-correspondence
+probability from the posterior. Three code-level causes, verified by
+inspection: a monotonic path with pinned endpoints is always complete, so ``no
+correspondence'' is not representable; the sequence gate tests aliasing, not
+existence (its longest window passed 100\% of frames); and geometry is
+propagated between sampled checks --- reserving the top tier for frames actually
+checked collapses it from \StrictGeometryBefore{} to \StrictGeometryAfter{} on
+CAM0, so \textbf{\StrictGeometryUnverified{} of top-tier acceptances were never
+verified}.
+
+\subsection{Reading the two cameras}
+
+CAM0 is the stronger result: every determinable query answered,
+\TolVtwoCamZeroTwo{} within two frames and \SubCamZeroPrecision{} strict, against
+\SparseCamZeroCoverage{} coverage for v1 --- and of the fifteen queries only v2
+answered, eleven are strictly right. CAM5 is weaker (v1 accepts
+\SparseCamFiveAccepted{} of 37), but its failure is a \emph{localisation bias},
+not place confusion: \TolVtwoCamFiveTwo{} within two frames and
+\TolVtwoCamFiveFive{} within five, against \SubCamFivePrecision{} strict. Two
+measurements say why. \textbf{(i) The camera moved between the runs.} At the
+matcher's own pairs the CAM5 scene sits at $dx = \CamFiveMatcherDx$\,px,
+$dy = \CamFiveMatcherDy$\,px, at the annotator's pairs at
+$dx = \CamFiveLabelDx$\,px, constant along the route; CAM0 is $0/0$ on both.
+A depth-profile test over $\sim$190 pairs is \textbf{consistent with rotation}
+rather than travel (CAM5 \ParallaxCamFiveOffset{} frames from the depth-uniform
+position, CAM0 control \ParallaxCamZeroOffset{}) but at SE\,1.5 cannot separate
+$0$ from $-1.8$ frames. \textbf{(ii) CAM5 is aimed low}: roughly 70\% of every
+frame is near-field asphalt, and a label-free gradient-NCC sweep of the far
+field gives a median $z$ against background of \EvidenceZCamFive{} on CAM5
+against \EvidenceZCamZero{} on CAM0 --- half the cross-run evidence everywhere.
+
+\subsection{A label-free signal, dense over the whole route}
+
+CAM0 and CAM5 face opposite sides, so their alignments come from disjoint scenes
+and fail near-independently. Comparing them is dense over \ConsistencyFrames{}
+frames: median disagreement \ConsistencyMedian{} frame, p95
+\ConsistencyPninetyfive{}. Run \emph{before any label existed}, it flagged
+A1068--1110, where five queries later proved undeterminable, inside a difficulty
+region covering 28\% of the route (the A1050--1450 fence corridor, the
+A1500--1750 tree tunnel). It measures consistency, not correctness. It also
+judged the variants built once the labels were spent. Five input-side changes
+(greyscale, sky mask, both, parallax re-selection, a speed channel) move
+\textbf{nothing}: p95 stays at \VariantPninetyfiveRange{} frames. One change to
+the \emph{pooling} does: an unsupervised VLAD over the same masked tokens (32
+words learned from the route, nothing trained) takes p95 from
+\ConsistencyPninetyfive{} to \VladPninetyfive{} frames over \VladFrames{} frames
+mapped by both cameras (\BaselineFrames{} before), lifts CAM5 coverage
+\BaselineCoverageCamFive{}$\to$\VladCoverageCamFive{}, reads \VladSpentCamZero{}
+strict on the spent CAM0 labels against \SubCamZeroPrecision{}, and leaves the
+kinks (\VladKinkCamZero{}/\VladKinkCamFive{}) where they were: the mean pooling
+is a bottleneck, the input side is not, and the kinks belong to stage 3. No
+held-out number; not submitted.
+
+\subsection{Where the submitted mapping is least reliable}
+
+\textbf{CAM5 throughout} (\VthreebVtwoCount{} strictly correct): usable for coarse
+retrieval, not frame-exact supervision. \textbf{Under-exposed frames:} the
+exposure flag fires on \DarkRunBCamZero{} Run B CAM0 frames (one stretch runs
+\DarkLongestStretch{}) and \DarkRunBCamFive{} on CAM5; \DarkAcceptedCamZero{}
+accepted CAM0 and \DarkAcceptedCamFive{} CAM5 rows have a flagged partner
+(\DarkStrongCamFive{} strong plus \DarkSequenceCamFive{} sequence-supported on CAM5). Dark matches dark almost
+regardless of place, so that error is \emph{systematic}:
+\VthreebDarkCamFiveCount{} CAM5 blind dark labels are right against
+\VthreeDarkCamZeroCount{} on CAM0. \textbf{Implausible one-step jumps
+(``kinks''):} the first difference of the mapping is a local speed ratio, and
+the coarse search may not sustain more than $2\times$, so an increment of
+\KinkThreshold{} in 0.1\,s is unreachable --- yet the mapping asserts
+\KinkCamZero{} on CAM0 and \KinkCamFive{} on CAM5, all \texttt{accepted\_strong},
+against \KinkPosteriorCamZero{} per camera for the posterior (all four computed
+thresholds ship; at $K\ge\KinkLowThreshold$ it is \KinkLowCamZero{}/%
+\KinkLowCamFive{} against \KinkLowPosteriorCamZero{}/\KinkLowPosteriorCamFive{}).
+The cause is stage 3: greedy refinement behind a non-decreasing floor \emph{with
+no slope prior}, so a collapsed structure score sends its argmax to the window
+edge and the floor keeps it there (coarse path step \KinkCoarseMaxStep{} against
+\KinkRefinedMaxStep{}; \KinkPinnedFrames{} frames pinned at $+\KinkRefineRadius$,
+\KinkPinnedFramesMinus{} at $-\KinkRefineRadius$). The \texttt{-{}-refinement
+slope} variant (a Viterbi with a slope prior and a bounded step) has no kinks by
+construction; its case is cross-camera p95
+\BaselinePninetyfive{}$\to$\SlopePninetyfive{} at unchanged coverage, better
+structure scores in A880--940 (\SlopeWindowScore{} against
+\SubmittedWindowScore{}) and both blind sets, at the cost of CAM0 closure
+\BaselineClosureCamZero$\to$\SlopeClosureCamZero{}. It stays unsubmitted: the
+submission was frozen before either blind set was opened; \S4 gates the
+neighbourhood instead. \textbf{Anywhere abstention matters:} an empty
+row means none \emph{under this method}, never an automatic negative.
+
+\Needspace{6\baselineskip}
+\section{Downstream policy for training or testing}
+
+\subsection{Leakage-safe split, decided before anything else}
+
+Assign the split before sampling, descriptor extraction or calibration; group by
+route, traversal date, rig and \emph{all} paired cameras, and keep the
+loop-equivalent departure and arrival in one group as distinct occurrences.
+Never randomise adjacent frames or treat CAM0 and CAM5 as independent. The
+present design prevents label tuning but remains transductive: one route, one
+pair of dates.
+
+\vspace{1pt}
+
+\noindent{\footnotesize
+\begin{tabularx}{\textwidth}{@{}p{2.1cm}YY@{}}
+\toprule
+Action & Concrete rule for this data & Consumer protection \\
+\midrule
+\yes & Retain all \DecodedImages{} decoded images in the immutable source archive, addressed by display-order ordinal with decoder, colour matrix and source hash recorded. & Raw evidence and identity stay recoverable. \\
+\no & Exclude each run's parked prefix --- Run A ordinals \ParkedStationaryRunA{} plus transition, \ParkedRunA{} frames per camera; Run B \ParkedRunB{} (\texttt{route\_phase\_boundaries.csv}) --- and exclude blind blocks from any tuning. & Stationary scenes cannot dominate, and labels cannot leak. \\
+\warn & Cluster near-duplicates only \emph{after} split assignment; retain cluster size and weight $1/\mathrm{size}$. & Adjacent frames cannot cross splits or dominate training. \\
+\warn & Automatic correspondences are weak positives: quarantine every segment with a blind false accept, and CAM5 for frame-exact use (it stays usable at $\pm2$ and as corroboration). & Model output cannot silently become ground truth. \\
+\warn & Demote out of the top tier any pair whose Run A or Run B frame carries \texttt{too\_dark} or \texttt{occluded} (\S3.6 counts them). & A dark-against-dark match is near-certain regardless of place. \\
+\warn & \textbf{Slope gate:} demote any top-tier row within 10 Run A frames of a one-step Run B increment $\ge\KinkThreshold$: \SlopeGateDemotedCamZero{} CAM0 and \SlopeGateDemotedCamFive{} CAM5 rows, shipped as \texttt{slope\_gate} in the quality-flag table. Advisory on CAM5, where it cost precision. & A jump the mapping's own motion model forbids marks a neighbourhood it cannot justify. \\
+\no & Never convert an empty mapping to a hard negative. Only a reviewed no-match is a negative label. & Abstention is not confused with scene absence. \\
+\no & Blur plates and faces before any view leaves the archive. The stationary car-park segments, where residents' plates stay legible for $\sim$23\,s, are the highest PII density; the side cameras also record private frontages and pedestrians, including children. & Malaysia's PDPA 2010 applies, plus GDPR/UK~GDPR for EU or UK processing. \\
+\bottomrule
+\end{tabularx}}
+
+\vspace{2pt}
+\subsection{The per-frame manifest: a schema, and what ships against it}
+
+\texttt{frame\_manifest\_schema.json} is a closed schema, not a shipped table;
+what ships against it is \texttt{frame\_quality\_flags.csv} plus the mapping
+CSVs' own columns. Its fields: \textbf{identity} (policy version, run, camera,
+source SHA-256, decoder, colour matrix and range, coded and display raster,
+display-order ordinal); \textbf{time} (run start/end, and per-image capture time
+\emph{explicitly null} with its reason: both cameras of a run share one
+byte-identical sidecar that cannot describe both --- Run B decodes 2{,}622 and
+2{,}615 frames against one 2{,}663-row log); \textbf{quality} (route phase, mask
+version, \texttt{too\_dark} with its two luma measurements, \texttt{occluded},
+\texttt{slope\_gate}, temporal cluster, sample weight); \textbf{governance}
+(route/traversal group, split, boundary buffer, paired camera);
+\textbf{correspondence} (partner or null, acceptable interval, typed status,
+label source, freeze hash, known failures, and the camera-to-world convention
+offset: CAM0 \ConventionCamZeroShift{}, CAM5 \ConventionShiftFrames{} frames for
+world-position use --- measured on v2, validated on v3b, neutral on v2 itself).
+It forbids four silent assumptions: sidecar row $i$ as decoded image $i$,
+cameras synchronised by ordinal, coverage as accuracy, confidence as
+probability. Two facts a consumer must know: \texttt{confidence} is an ordinal
+rank whose \texttt{0.50} tier never occurs, and the mapping is
+\textbf{many-to-one} (\ManyToOneCamZero{} of CAM0's mapped rows share a partner,
+max \ManyToOneMaxCamZero{}; \ManyToOneCamFive{}, max \ManyToOneMaxCamFive{}, on
+CAM5) --- expected where Run B is slower, fatal to a consumer keying on
+\texttt{runB\_frame}.
+
+\subsection{A posterior formulation, built but not claimed}
+
+The three structural gaps in \S3.3 share one cause: the method had no posterior.
+A hidden Markov model over Run B position with an explicit \emph{null} state
+tests that reading (emissions are likelihood ratios against each query's own
+similarity row; the \S3.3 holdout runs against it at a threshold set on synthetic
+sequences, never on labels). Loop closure (one place in Run A must map to one in
+Run B) reaches \PosteriorClosureCamZero{} consistent revisit pairs on CAM0 and
+\PosteriorClosureCamFive{} on CAM5 against \BaselineClosureCamZero{} and
+\BaselineClosureCamFive{} for the submitted method, unchanged by coupling; the
+denominators differ because the submitted mapping abstains on some revisit ends.
+Its suspension-shake channel needed correcting first: both cameras ride one
+chassis, so a jolt must fire in both streams at once, and that label-free test
+\emph{selects among three constructions}: raw frames \MotionCofireOldRunB{} on
+Run B, temporal-mean division \MotionCofireRunB{} ($\MotionCofireRunBRatio\times$
+chance, \MotionCofireRunA{} on Run A), median subtraction
+\MotionCofireMedianRunB{}. The \MotionEventsOld{} event asymmetry was therefore
+an artefact (\MotionEventsNew{} corrected), the ratio \MotionWithdrawnRatio{} is
+withdrawn, and \MotionMappingIdenticalCamZero/\MotionMappingIdenticalCamFive\% of
+the mapping is unchanged either way.
+
+Both freezes named it, so it has a held-out score: \VthreePosteriorCamZero{} on
+CAM0 and \VthreebPosteriorCamFive{} on CAM5 against \VthreeCamZeroPrecision{}
+and \VthreebCamFivePrecision{} submitted; calibration error \EceCamZero{} and
+\EceCamFive{} (the second overconfident); p95 disagreement 11 frames to 4. Not
+submitted: the submission was frozen first, and its null state accepted both
+sets' \texttt{no\_correspondence} query, alone among six on the redo's.
+
+\subsection{The strict single-frame reading (v2 labels, tolerance zero)}
+
+\vspace{-3pt}
+{\footnotesize\input{outputs/report_tables/blind_comparison.tex}}
+
+\vspace{-4pt}
+{\footnotesize A hit only inside the annotator's interval (width 0 to $\pm1$);
+\emph{As-labelled} keeps the uncorrected denominator of \S3.1.
+\textbf{Submitted:} this PDF, the mapping CSVs, \texttt{assessment.ipynb},
+scripts and tests, three sealed blind sets with seals and freezes,
+\texttt{FAILURE\_ANALYSIS.md}, \texttt{README.md}, \texttt{DATA\_POLICY.md}, the
+quality-flag table. Raw video, weights and caches excluded.}
+
+\end{document}

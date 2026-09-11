@@ -1,0 +1,596 @@
+{
+  "schema_version": 3,
+  "label_set": "blind_v3",
+  "built_at_utc": "2026-09-02T07:43:09.034629+00:00",
+  "pages_regenerated_at_utc": null,
+  "query_set_sha256": "f2f7bcb9c866dd887e8b4d22408a7cbd694e3666dfb60eae9eba7e62cf25f847",
+  "random_seed": 20260902,
+  "queries_per_camera": 24,
+  "strata_plan": {
+    "cam0": {
+      "kink": 8,
+      "dark": 4,
+      "occlusion": 3,
+      "corridor": 9
+    },
+    "cam5": {
+      "kink": 10,
+      "dark": 5,
+      "occlusion": 0,
+      "corridor": 9
+    }
+  },
+  "sampling_rules": {
+    "strata": {
+      "kink": "Run A frames within +-12 of a submitted-mapping kink of at least 6 frames; lit kinks preferred; spread by farthest-point ordering; at most one query per kink",
+      "dark": "Run A frames whose submitted partner falls inside a contiguous Run B too_dark stretch of at least 4 frames, longest stretches first",
+      "occlusion": "Run A frames inside the confirmed Run B occlusion. CAM0 only: the occlusion was observed on CAM0's side of the vehicle, so there is no evidence for a matching CAM5 stratum. CAM5's three slots were reallocated to two extra kink queries and one extra dark query.",
+      "corridor": "uniformly spaced bins over the whole route with a seeded jitter inside each bin; the untargeted control stratum"
+    },
+    "excluded_idle": "Run A frames outside [180, 2616) are parked and carry no travelling correspondence",
+    "minimum_distance_from_previously_labelled": 10,
+    "previously_labelled_sources": [
+      "outputs/task2_evaluation/blind_v2/blind_v2_labels.csv",
+      "outputs/task2_keyframes/manual_annotations.csv",
+      "outputs/task2_keyframes/anchor_candidates.csv"
+    ],
+    "minimum_distance_between_queries": 10,
+    "minimum_distance_between_queries_within_occlusion": 5,
+    "occlusion_spacing_note": "The confirmed occlusion spans 30 Run A frames and two nearby ordinals are already labelled, so three queries cannot be 10 apart inside it. Only the query-to-query spacing is relaxed there; the 10-frame distance to every previously labelled ordinal is not."
+  },
+  "stratum_dependency_disclosure": "Strata were located using the structure of the submitted unified mapping: its kink positions and, for the dark stratum, its Run A -> Run B partner for each frame. This affects WHICH frames are asked about. It does not affect WHAT the annotator sees: the page carries the Run A frame, a linear route-progress start position computed from the route boundaries alone, and the Run B filmstrip. No stratum tag, no mapping partner, no confidence and no prediction is present in the exported HTML, and a test greps the pages for the submitted partner of every query and fails if one appears. The consequence to state when reporting: per-stratum rates are conditional on the submitted mapping having put its kinks where it did, so they measure 'is this method right where it says something surprising', not an unbiased route-wide rate. The corridor stratum is the unbiased comparison.",
+  "prior_policy": "linear route-progress arithmetic only; contains no model output, no baseline path, and no previous prediction",
+  "served_root": {
+    "path": "outputs/task2_blind_v3/pages",
+    "why": "The annotator's http.server is pointed one level below this manifest. The manifest names each query's stratum and the dark stratum's Run B window; a directory listing at the served root must not be able to reach it."
+  },
+  "blindness": {
+    "model_columns_present": false,
+    "predictions_present": false,
+    "previous_labels_present": false,
+    "stratum_shown_to_annotator": false,
+    "automatic_best_frame_hint": false
+  },
+  "annotator_aids": {
+    "pose_compensation": "Two-axis translation of the Run B image with sliders. Default is the measured matcher-convention shift scaled to the filmstrip raster: CAM5 (-37.5, -11) px at 896x672 becomes (-40, -12) px at 960x720; CAM0 is (0, 0). ON by default for CAM5, OFF for CAM0. The chosen value is written into every label.",
+    "depth_guides": "A far line and a near line the annotator drags onto Run A. Both lines are drawn in Run A image coordinates in both panes; the compensation moves the Run B raster onto those coordinates rather than duplicating the shift on the lines, which would cancel it. At the correct Run B frame one common shift aligns both depths; parallax breaks the near line first. Line positions are saved per query as a fraction of frame width.",
+    "band_blink": "Blink restricted to the far band (top 45%) or the near band (bottom third), alongside the full-frame blend, difference and blink modes.",
+    "no_suggestion": "No best-frame hint, ghost-direction arrow or ranked candidate is computed anywhere on the page. Any such aid would leak a matching method into labels whose only value is being independent of one."
+  },
+  "protocol_fix_vs_v2": "v2 offered a single 'no usable match' button, so its no-match rows mix 'I cannot tell' with 'there is no such place' and can be scored as neither an abstention target nor an error. v3 splits them: label is one of match, undetermined, or no_correspondence, and the reason is a required choice rather than a free-text afterthought.",
+  "cameras": {
+    "cam0": {
+      "queries": [
+        {
+          "queryId": "cam0_v3_00",
+          "runAFrame": 206,
+          "linearPriorRunBFrame": 141,
+          "stratum": "kink",
+          "kink_runA_frame": 209,
+          "kink_increment": 10,
+          "kink_dark": false
+        },
+        {
+          "queryId": "cam0_v3_01",
+          "runAFrame": 332,
+          "linearPriorRunBFrame": 270,
+          "stratum": "occlusion",
+          "occlusion_runB_interval": [
+            240,
+            270
+          ]
+        },
+        {
+          "queryId": "cam0_v3_02",
+          "runAFrame": 337,
+          "linearPriorRunBFrame": 276,
+          "stratum": "occlusion",
+          "occlusion_runB_interval": [
+            240,
+            270
+          ]
+        },
+        {
+          "queryId": "cam0_v3_03",
+          "runAFrame": 342,
+          "linearPriorRunBFrame": 281,
+          "stratum": "occlusion",
+          "occlusion_runB_interval": [
+            240,
+            270
+          ]
+        },
+        {
+          "queryId": "cam0_v3_04",
+          "runAFrame": 366,
+          "linearPriorRunBFrame": 305,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            180,
+            449
+          ]
+        },
+        {
+          "queryId": "cam0_v3_05",
+          "runAFrame": 380,
+          "linearPriorRunBFrame": 320,
+          "stratum": "kink",
+          "kink_runA_frame": 370,
+          "kink_increment": 15,
+          "kink_dark": false
+        },
+        {
+          "queryId": "cam0_v3_06",
+          "runAFrame": 588,
+          "linearPriorRunBFrame": 534,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            450,
+            720
+          ]
+        },
+        {
+          "queryId": "cam0_v3_07",
+          "runAFrame": 624,
+          "linearPriorRunBFrame": 571,
+          "stratum": "dark",
+          "dark_runB_stretch": [
+            523,
+            532
+          ],
+          "dark_runB_stretch_length": 10
+        },
+        {
+          "queryId": "cam0_v3_08",
+          "runAFrame": 646,
+          "linearPriorRunBFrame": 594,
+          "stratum": "kink",
+          "kink_runA_frame": 642,
+          "kink_increment": 6,
+          "kink_dark": false
+        },
+        {
+          "queryId": "cam0_v3_09",
+          "runAFrame": 862,
+          "linearPriorRunBFrame": 816,
+          "stratum": "kink",
+          "kink_runA_frame": 854,
+          "kink_increment": 7,
+          "kink_dark": false
+        },
+        {
+          "queryId": "cam0_v3_10",
+          "runAFrame": 872,
+          "linearPriorRunBFrame": 826,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            721,
+            991
+          ]
+        },
+        {
+          "queryId": "cam0_v3_11",
+          "runAFrame": 1207,
+          "linearPriorRunBFrame": 1171,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            992,
+            1261
+          ]
+        },
+        {
+          "queryId": "cam0_v3_12",
+          "runAFrame": 1344,
+          "linearPriorRunBFrame": 1312,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            1262,
+            1532
+          ]
+        },
+        {
+          "queryId": "cam0_v3_13",
+          "runAFrame": 1354,
+          "linearPriorRunBFrame": 1322,
+          "stratum": "kink",
+          "kink_runA_frame": 1365,
+          "kink_increment": 7,
+          "kink_dark": false
+        },
+        {
+          "queryId": "cam0_v3_14",
+          "runAFrame": 1477,
+          "linearPriorRunBFrame": 1449,
+          "stratum": "dark",
+          "dark_runB_stretch": [
+            1361,
+            1390
+          ],
+          "dark_runB_stretch_length": 30
+        },
+        {
+          "queryId": "cam0_v3_15",
+          "runAFrame": 1522,
+          "linearPriorRunBFrame": 1495,
+          "stratum": "dark",
+          "dark_runB_stretch": [
+            1402,
+            1456
+          ],
+          "dark_runB_stretch_length": 55
+        },
+        {
+          "queryId": "cam0_v3_16",
+          "runAFrame": 1625,
+          "linearPriorRunBFrame": 1601,
+          "stratum": "dark",
+          "dark_runB_stretch": [
+            1460,
+            1636
+          ],
+          "dark_runB_stretch_length": 177
+        },
+        {
+          "queryId": "cam0_v3_17",
+          "runAFrame": 1701,
+          "linearPriorRunBFrame": 1679,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            1533,
+            1803
+          ]
+        },
+        {
+          "queryId": "cam0_v3_18",
+          "runAFrame": 1945,
+          "linearPriorRunBFrame": 1930,
+          "stratum": "kink",
+          "kink_runA_frame": 1946,
+          "kink_increment": 10,
+          "kink_dark": false
+        },
+        {
+          "queryId": "cam0_v3_19",
+          "runAFrame": 1972,
+          "linearPriorRunBFrame": 1958,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            1804,
+            2073
+          ]
+        },
+        {
+          "queryId": "cam0_v3_20",
+          "runAFrame": 2164,
+          "linearPriorRunBFrame": 2156,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            2074,
+            2344
+          ]
+        },
+        {
+          "queryId": "cam0_v3_21",
+          "runAFrame": 2399,
+          "linearPriorRunBFrame": 2398,
+          "stratum": "kink",
+          "kink_runA_frame": 2400,
+          "kink_increment": 6,
+          "kink_dark": false
+        },
+        {
+          "queryId": "cam0_v3_22",
+          "runAFrame": 2521,
+          "linearPriorRunBFrame": 2523,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            2345,
+            2615
+          ]
+        },
+        {
+          "queryId": "cam0_v3_23",
+          "runAFrame": 2590,
+          "linearPriorRunBFrame": 2594,
+          "stratum": "kink",
+          "kink_runA_frame": 2579,
+          "kink_increment": 7,
+          "kink_dark": false
+        }
+      ],
+      "runA_route_start": 180,
+      "runA_route_end_exclusive": 2616,
+      "runB_route_start": 114,
+      "runB_route_end": 2621,
+      "strata_counts": {
+        "occlusion": 3,
+        "dark": 4,
+        "kink": 8,
+        "corridor": 9
+      },
+      "previously_labelled_ordinals_blocked": {
+        "blind_v2_labels": 40,
+        "manual_annotations": 9,
+        "anchor_candidates": 36
+      },
+      "pose_defaults": {
+        "measuredDxPx": 0.0,
+        "measuredDyPx": 0.0,
+        "measuredRaster": [
+          896,
+          672
+        ],
+        "dxPx": 0,
+        "dyPx": 0,
+        "compensated": false
+      },
+      "runB_filmstrip_frames": 2508
+    },
+    "cam5": {
+      "queries": [
+        {
+          "queryId": "cam5_v3_00",
+          "runAFrame": 287,
+          "linearPriorRunBFrame": 224,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            180,
+            449
+          ]
+        },
+        {
+          "queryId": "cam5_v3_01",
+          "runAFrame": 316,
+          "linearPriorRunBFrame": 254,
+          "stratum": "kink",
+          "kink_runA_frame": 328,
+          "kink_increment": 12,
+          "kink_dark": false
+        },
+        {
+          "queryId": "cam5_v3_02",
+          "runAFrame": 450,
+          "linearPriorRunBFrame": 391,
+          "stratum": "dark",
+          "dark_runB_stretch": [
+            350,
+            421
+          ],
+          "dark_runB_stretch_length": 72
+        },
+        {
+          "queryId": "cam5_v3_03",
+          "runAFrame": 479,
+          "linearPriorRunBFrame": 421,
+          "stratum": "dark",
+          "dark_runB_stretch": [
+            350,
+            421
+          ],
+          "dark_runB_stretch_length": 72
+        },
+        {
+          "queryId": "cam5_v3_04",
+          "runAFrame": 510,
+          "linearPriorRunBFrame": 453,
+          "stratum": "dark",
+          "dark_runB_stretch": [
+            350,
+            421
+          ],
+          "dark_runB_stretch_length": 72
+        },
+        {
+          "queryId": "cam5_v3_05",
+          "runAFrame": 526,
+          "linearPriorRunBFrame": 469,
+          "stratum": "dark",
+          "dark_runB_stretch": [
+            424,
+            487
+          ],
+          "dark_runB_stretch_length": 64
+        },
+        {
+          "queryId": "cam5_v3_06",
+          "runAFrame": 566,
+          "linearPriorRunBFrame": 510,
+          "stratum": "dark",
+          "dark_runB_stretch": [
+            424,
+            487
+          ],
+          "dark_runB_stretch_length": 64
+        },
+        {
+          "queryId": "cam5_v3_07",
+          "runAFrame": 619,
+          "linearPriorRunBFrame": 565,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            450,
+            720
+          ]
+        },
+        {
+          "queryId": "cam5_v3_08",
+          "runAFrame": 811,
+          "linearPriorRunBFrame": 762,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            721,
+            991
+          ]
+        },
+        {
+          "queryId": "cam5_v3_09",
+          "runAFrame": 1165,
+          "linearPriorRunBFrame": 1125,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            992,
+            1261
+          ]
+        },
+        {
+          "queryId": "cam5_v3_10",
+          "runAFrame": 1255,
+          "linearPriorRunBFrame": 1217,
+          "stratum": "kink",
+          "kink_runA_frame": 1248,
+          "kink_increment": 9,
+          "kink_dark": false
+        },
+        {
+          "queryId": "cam5_v3_11",
+          "runAFrame": 1382,
+          "linearPriorRunBFrame": 1348,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            1262,
+            1532
+          ]
+        },
+        {
+          "queryId": "cam5_v3_12",
+          "runAFrame": 1514,
+          "linearPriorRunBFrame": 1483,
+          "stratum": "kink",
+          "kink_runA_frame": 1514,
+          "kink_increment": 7,
+          "kink_dark": false
+        },
+        {
+          "queryId": "cam5_v3_13",
+          "runAFrame": 1628,
+          "linearPriorRunBFrame": 1600,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            1533,
+            1803
+          ]
+        },
+        {
+          "queryId": "cam5_v3_14",
+          "runAFrame": 1638,
+          "linearPriorRunBFrame": 1610,
+          "stratum": "kink",
+          "kink_runA_frame": 1631,
+          "kink_increment": 6,
+          "kink_dark": false
+        },
+        {
+          "queryId": "cam5_v3_15",
+          "runAFrame": 1691,
+          "linearPriorRunBFrame": 1665,
+          "stratum": "kink",
+          "kink_runA_frame": 1692,
+          "kink_increment": 7,
+          "kink_dark": false
+        },
+        {
+          "queryId": "cam5_v3_16",
+          "runAFrame": 1925,
+          "linearPriorRunBFrame": 1905,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            1804,
+            2073
+          ]
+        },
+        {
+          "queryId": "cam5_v3_17",
+          "runAFrame": 1948,
+          "linearPriorRunBFrame": 1928,
+          "stratum": "kink",
+          "kink_runA_frame": 1952,
+          "kink_increment": 6,
+          "kink_dark": false
+        },
+        {
+          "queryId": "cam5_v3_18",
+          "runAFrame": 2146,
+          "linearPriorRunBFrame": 2132,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            2074,
+            2344
+          ]
+        },
+        {
+          "queryId": "cam5_v3_19",
+          "runAFrame": 2223,
+          "linearPriorRunBFrame": 2211,
+          "stratum": "kink",
+          "kink_runA_frame": 2218,
+          "kink_increment": 7,
+          "kink_dark": false
+        },
+        {
+          "queryId": "cam5_v3_20",
+          "runAFrame": 2440,
+          "linearPriorRunBFrame": 2433,
+          "stratum": "kink",
+          "kink_runA_frame": 2433,
+          "kink_increment": 19,
+          "kink_dark": false
+        },
+        {
+          "queryId": "cam5_v3_21",
+          "runAFrame": 2511,
+          "linearPriorRunBFrame": 2506,
+          "stratum": "kink",
+          "kink_runA_frame": 2506,
+          "kink_increment": 16,
+          "kink_dark": false
+        },
+        {
+          "queryId": "cam5_v3_22",
+          "runAFrame": 2541,
+          "linearPriorRunBFrame": 2537,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            2345,
+            2615
+          ]
+        },
+        {
+          "queryId": "cam5_v3_23",
+          "runAFrame": 2562,
+          "linearPriorRunBFrame": 2559,
+          "stratum": "kink",
+          "kink_runA_frame": 2563,
+          "kink_increment": 6,
+          "kink_dark": false
+        }
+      ],
+      "runA_route_start": 180,
+      "runA_route_end_exclusive": 2616,
+      "runB_route_start": 114,
+      "runB_route_end": 2614,
+      "strata_counts": {
+        "occlusion": 0,
+        "dark": 5,
+        "kink": 10,
+        "corridor": 9
+      },
+      "previously_labelled_ordinals_blocked": {
+        "blind_v2_labels": 40,
+        "manual_annotations": 24,
+        "anchor_candidates": 36
+      },
+      "pose_defaults": {
+        "measuredDxPx": -37.5,
+        "measuredDyPx": -11.0,
+        "measuredRaster": [
+          896,
+          672
+        ],
+        "dxPx": -40,
+        "dyPx": -12,
+        "compensated": true
+      },
+      "runB_filmstrip_frames": 2501
+    }
+  }
+}

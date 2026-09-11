@@ -1,0 +1,922 @@
+{
+  "schema_version": 1,
+  "evaluated_at_utc": "2026-09-01T15:52:23.451778+00:00",
+  "label_set": "blind_v2",
+  "method_freeze_sha256": "e3b115533f5d9414eb947337b85e1f568420fbd5756a496ef7abc36a7db3d962",
+  "label_seal_sha256": "5a058323518b869e9e6d6af74ffacf2ea0657a4b23e3d109908ebcad70d6f9fa",
+  "label_sealed_at_utc": "2026-09-01T15:52:15.839982+00:00",
+  "method_frozen_at_utc": "2026-09-01T15:41:34.222655+00:00",
+  "ordering_note": "The method freeze timestamp precedes the label seal timestamp. That records ordering, not custody: it shows the method was fixed before the labels were imported, not that the labels were never inspected.",
+  "pooling_policy": "Cameras are reported separately. They observe the same two traversals and are not independent samples.",
+  "claim_boundary": "Two traversals of one route, one weather pair, one season pair. Any resulting number is a within-route estimate and says nothing about a new route, a new city, or a third condition.",
+  "cameras": {
+    "cam0": {
+      "camera_id": "cam0",
+      "evaluable_labels": 40,
+      "ground_truth_matches": 32,
+      "ground_truth_no_matches": 8,
+      "accepted": 40,
+      "abstained": 0,
+      "correct_accepted": 23,
+      "strict_accepted_precision": 0.575,
+      "strict_accepted_precision_wilson_95": [
+        0.422,
+        0.7149
+      ],
+      "selective_risk": 0.425,
+      "coverage_all_labels": 1.0,
+      "coverage_all_labels_wilson_95": [
+        0.9124,
+        1.0
+      ],
+      "match_coverage": 1.0,
+      "false_accept_count": 17,
+      "false_accept_query_ids": [
+        "cam0_v2_00",
+        "cam0_v2_03",
+        "cam0_v2_04",
+        "cam0_v2_12",
+        "cam0_v2_13",
+        "cam0_v2_14",
+        "cam0_v2_15",
+        "cam0_v2_16",
+        "cam0_v2_17",
+        "cam0_v2_18",
+        "cam0_v2_19",
+        "cam0_v2_22",
+        "cam0_v2_23",
+        "cam0_v2_24",
+        "cam0_v2_32",
+        "cam0_v2_36",
+        "cam0_v2_39"
+      ],
+      "no_match_false_accepts": 8,
+      "preferred_frame_error": {
+        "n": 32,
+        "median": 1.0,
+        "p90": 5.800000000000004,
+        "p95": 8.899999999999999,
+        "max": 15,
+        "within_one_frame": 26,
+        "within_two_frames": 26
+      },
+      "interval_distance": {
+        "n": 32,
+        "median": 0.0,
+        "p90": 4.800000000000004,
+        "p95": 8.45,
+        "max": 14,
+        "within_one_frame": 26,
+        "within_two_frames": 27
+      },
+      "abstention_statuses": {},
+      "risk_coverage_curve": [
+        {
+          "threshold": null,
+          "policy": "reject_all",
+          "accepted": 0,
+          "correct": 0,
+          "selective_risk": null,
+          "coverage": 0.0,
+          "no_match_false_accepts": 0,
+          "eligible": false,
+          "note": "undefined risk; never a valid operating point"
+        },
+        {
+          "threshold": 0.16202,
+          "policy": "sequence_margin_gate",
+          "accepted": 1,
+          "correct": 0,
+          "selective_risk": 1.0,
+          "coverage": 0.025,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.15528,
+          "policy": "sequence_margin_gate",
+          "accepted": 2,
+          "correct": 1,
+          "selective_risk": 0.5,
+          "coverage": 0.05,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.1312,
+          "policy": "sequence_margin_gate",
+          "accepted": 3,
+          "correct": 2,
+          "selective_risk": 0.3333,
+          "coverage": 0.075,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.12978,
+          "policy": "sequence_margin_gate",
+          "accepted": 4,
+          "correct": 3,
+          "selective_risk": 0.25,
+          "coverage": 0.1,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.12943,
+          "policy": "sequence_margin_gate",
+          "accepted": 5,
+          "correct": 4,
+          "selective_risk": 0.2,
+          "coverage": 0.125,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.12742,
+          "policy": "sequence_margin_gate",
+          "accepted": 6,
+          "correct": 5,
+          "selective_risk": 0.1667,
+          "coverage": 0.15,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.12328,
+          "policy": "sequence_margin_gate",
+          "accepted": 7,
+          "correct": 6,
+          "selective_risk": 0.1429,
+          "coverage": 0.175,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.12277,
+          "policy": "sequence_margin_gate",
+          "accepted": 8,
+          "correct": 7,
+          "selective_risk": 0.125,
+          "coverage": 0.2,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.11879,
+          "policy": "sequence_margin_gate",
+          "accepted": 9,
+          "correct": 8,
+          "selective_risk": 0.1111,
+          "coverage": 0.225,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.11695,
+          "policy": "sequence_margin_gate",
+          "accepted": 10,
+          "correct": 8,
+          "selective_risk": 0.2,
+          "coverage": 0.25,
+          "no_match_false_accepts": 1,
+          "eligible": true
+        },
+        {
+          "threshold": 0.11661,
+          "policy": "sequence_margin_gate",
+          "accepted": 11,
+          "correct": 9,
+          "selective_risk": 0.1818,
+          "coverage": 0.275,
+          "no_match_false_accepts": 1,
+          "eligible": true
+        },
+        {
+          "threshold": 0.10815,
+          "policy": "sequence_margin_gate",
+          "accepted": 12,
+          "correct": 9,
+          "selective_risk": 0.25,
+          "coverage": 0.3,
+          "no_match_false_accepts": 2,
+          "eligible": true
+        },
+        {
+          "threshold": 0.10811,
+          "policy": "sequence_margin_gate",
+          "accepted": 13,
+          "correct": 9,
+          "selective_risk": 0.3077,
+          "coverage": 0.325,
+          "no_match_false_accepts": 3,
+          "eligible": true
+        },
+        {
+          "threshold": 0.10781,
+          "policy": "sequence_margin_gate",
+          "accepted": 14,
+          "correct": 10,
+          "selective_risk": 0.2857,
+          "coverage": 0.35,
+          "no_match_false_accepts": 3,
+          "eligible": true
+        },
+        {
+          "threshold": 0.10633,
+          "policy": "sequence_margin_gate",
+          "accepted": 15,
+          "correct": 10,
+          "selective_risk": 0.3333,
+          "coverage": 0.375,
+          "no_match_false_accepts": 4,
+          "eligible": true
+        },
+        {
+          "threshold": 0.10627,
+          "policy": "sequence_margin_gate",
+          "accepted": 16,
+          "correct": 11,
+          "selective_risk": 0.3125,
+          "coverage": 0.4,
+          "no_match_false_accepts": 4,
+          "eligible": true
+        },
+        {
+          "threshold": 0.10548,
+          "policy": "sequence_margin_gate",
+          "accepted": 17,
+          "correct": 12,
+          "selective_risk": 0.2941,
+          "coverage": 0.425,
+          "no_match_false_accepts": 4,
+          "eligible": true
+        },
+        {
+          "threshold": 0.10536,
+          "policy": "sequence_margin_gate",
+          "accepted": 18,
+          "correct": 12,
+          "selective_risk": 0.3333,
+          "coverage": 0.45,
+          "no_match_false_accepts": 4,
+          "eligible": true
+        },
+        {
+          "threshold": 0.10501,
+          "policy": "sequence_margin_gate",
+          "accepted": 19,
+          "correct": 13,
+          "selective_risk": 0.3158,
+          "coverage": 0.475,
+          "no_match_false_accepts": 4,
+          "eligible": true
+        },
+        {
+          "threshold": 0.10425,
+          "policy": "sequence_margin_gate",
+          "accepted": 20,
+          "correct": 14,
+          "selective_risk": 0.3,
+          "coverage": 0.5,
+          "no_match_false_accepts": 4,
+          "eligible": true
+        },
+        {
+          "threshold": 0.10418,
+          "policy": "sequence_margin_gate",
+          "accepted": 21,
+          "correct": 15,
+          "selective_risk": 0.2857,
+          "coverage": 0.525,
+          "no_match_false_accepts": 4,
+          "eligible": true
+        },
+        {
+          "threshold": 0.1037,
+          "policy": "sequence_margin_gate",
+          "accepted": 22,
+          "correct": 16,
+          "selective_risk": 0.2727,
+          "coverage": 0.55,
+          "no_match_false_accepts": 4,
+          "eligible": true
+        },
+        {
+          "threshold": 0.1035,
+          "policy": "sequence_margin_gate",
+          "accepted": 23,
+          "correct": 16,
+          "selective_risk": 0.3043,
+          "coverage": 0.575,
+          "no_match_false_accepts": 4,
+          "eligible": true
+        },
+        {
+          "threshold": 0.10245,
+          "policy": "sequence_margin_gate",
+          "accepted": 24,
+          "correct": 17,
+          "selective_risk": 0.2917,
+          "coverage": 0.6,
+          "no_match_false_accepts": 4,
+          "eligible": true
+        },
+        {
+          "threshold": 0.10202,
+          "policy": "sequence_margin_gate",
+          "accepted": 25,
+          "correct": 17,
+          "selective_risk": 0.32,
+          "coverage": 0.625,
+          "no_match_false_accepts": 4,
+          "eligible": true
+        },
+        {
+          "threshold": 0.10094,
+          "policy": "sequence_margin_gate",
+          "accepted": 26,
+          "correct": 18,
+          "selective_risk": 0.3077,
+          "coverage": 0.65,
+          "no_match_false_accepts": 4,
+          "eligible": true
+        },
+        {
+          "threshold": 0.10079,
+          "policy": "sequence_margin_gate",
+          "accepted": 27,
+          "correct": 18,
+          "selective_risk": 0.3333,
+          "coverage": 0.675,
+          "no_match_false_accepts": 5,
+          "eligible": true
+        },
+        {
+          "threshold": 0.09882,
+          "policy": "sequence_margin_gate",
+          "accepted": 28,
+          "correct": 18,
+          "selective_risk": 0.3571,
+          "coverage": 0.7,
+          "no_match_false_accepts": 5,
+          "eligible": true
+        },
+        {
+          "threshold": 0.09853,
+          "policy": "sequence_margin_gate",
+          "accepted": 29,
+          "correct": 19,
+          "selective_risk": 0.3448,
+          "coverage": 0.725,
+          "no_match_false_accepts": 5,
+          "eligible": true
+        },
+        {
+          "threshold": 0.09767,
+          "policy": "sequence_margin_gate",
+          "accepted": 30,
+          "correct": 20,
+          "selective_risk": 0.3333,
+          "coverage": 0.75,
+          "no_match_false_accepts": 5,
+          "eligible": true
+        },
+        {
+          "threshold": 0.09347,
+          "policy": "sequence_margin_gate",
+          "accepted": 31,
+          "correct": 20,
+          "selective_risk": 0.3548,
+          "coverage": 0.775,
+          "no_match_false_accepts": 5,
+          "eligible": true
+        },
+        {
+          "threshold": 0.09155,
+          "policy": "sequence_margin_gate",
+          "accepted": 32,
+          "correct": 21,
+          "selective_risk": 0.3438,
+          "coverage": 0.8,
+          "no_match_false_accepts": 5,
+          "eligible": true
+        },
+        {
+          "threshold": 0.08397,
+          "policy": "sequence_margin_gate",
+          "accepted": 33,
+          "correct": 21,
+          "selective_risk": 0.3636,
+          "coverage": 0.825,
+          "no_match_false_accepts": 6,
+          "eligible": true
+        },
+        {
+          "threshold": 0.08301,
+          "policy": "sequence_margin_gate",
+          "accepted": 34,
+          "correct": 21,
+          "selective_risk": 0.3824,
+          "coverage": 0.85,
+          "no_match_false_accepts": 7,
+          "eligible": true
+        },
+        {
+          "threshold": 0.08162,
+          "policy": "sequence_margin_gate",
+          "accepted": 35,
+          "correct": 21,
+          "selective_risk": 0.4,
+          "coverage": 0.875,
+          "no_match_false_accepts": 7,
+          "eligible": true
+        },
+        {
+          "threshold": 0.08034,
+          "policy": "sequence_margin_gate",
+          "accepted": 36,
+          "correct": 21,
+          "selective_risk": 0.4167,
+          "coverage": 0.9,
+          "no_match_false_accepts": 8,
+          "eligible": true
+        },
+        {
+          "threshold": 0.07946,
+          "policy": "sequence_margin_gate",
+          "accepted": 37,
+          "correct": 21,
+          "selective_risk": 0.4324,
+          "coverage": 0.925,
+          "no_match_false_accepts": 8,
+          "eligible": true
+        },
+        {
+          "threshold": 0.07432,
+          "policy": "sequence_margin_gate",
+          "accepted": 38,
+          "correct": 22,
+          "selective_risk": 0.4211,
+          "coverage": 0.95,
+          "no_match_false_accepts": 8,
+          "eligible": true
+        },
+        {
+          "threshold": 0.07393,
+          "policy": "sequence_margin_gate",
+          "accepted": 39,
+          "correct": 22,
+          "selective_risk": 0.4359,
+          "coverage": 0.975,
+          "no_match_false_accepts": 8,
+          "eligible": true
+        },
+        {
+          "threshold": 0.07212,
+          "policy": "sequence_margin_gate",
+          "accepted": 40,
+          "correct": 23,
+          "selective_risk": 0.425,
+          "coverage": 1.0,
+          "no_match_false_accepts": 8,
+          "eligible": true
+        }
+      ]
+    },
+    "cam5": {
+      "camera_id": "cam5",
+      "evaluable_labels": 40,
+      "ground_truth_matches": 37,
+      "ground_truth_no_matches": 3,
+      "accepted": 35,
+      "abstained": 5,
+      "correct_accepted": 12,
+      "strict_accepted_precision": 0.3429,
+      "strict_accepted_precision_wilson_95": [
+        0.2083,
+        0.5085
+      ],
+      "selective_risk": 0.6571,
+      "coverage_all_labels": 0.875,
+      "coverage_all_labels_wilson_95": [
+        0.7389,
+        0.9454
+      ],
+      "match_coverage": 0.8649,
+      "false_accept_count": 23,
+      "false_accept_query_ids": [
+        "cam5_v2_03",
+        "cam5_v2_04",
+        "cam5_v2_05",
+        "cam5_v2_06",
+        "cam5_v2_08",
+        "cam5_v2_09",
+        "cam5_v2_10",
+        "cam5_v2_11",
+        "cam5_v2_13",
+        "cam5_v2_14",
+        "cam5_v2_15",
+        "cam5_v2_17",
+        "cam5_v2_20",
+        "cam5_v2_25",
+        "cam5_v2_26",
+        "cam5_v2_27",
+        "cam5_v2_28",
+        "cam5_v2_31",
+        "cam5_v2_33",
+        "cam5_v2_34",
+        "cam5_v2_35",
+        "cam5_v2_38",
+        "cam5_v2_39"
+      ],
+      "no_match_false_accepts": 3,
+      "preferred_frame_error": {
+        "n": 32,
+        "median": 2.0,
+        "p90": 4.0,
+        "p95": 8.0,
+        "max": 16,
+        "within_one_frame": 15,
+        "within_two_frames": 21
+      },
+      "interval_distance": {
+        "n": 32,
+        "median": 1.0,
+        "p90": 4.0,
+        "p95": 7.449999999999999,
+        "max": 16,
+        "within_one_frame": 18,
+        "within_two_frames": 22
+      },
+      "abstention_statuses": {
+        "sequence_failed": 3,
+        "geometry_failed": 1,
+        "loop_ambiguous": 1
+      },
+      "risk_coverage_curve": [
+        {
+          "threshold": null,
+          "policy": "reject_all",
+          "accepted": 0,
+          "correct": 0,
+          "selective_risk": null,
+          "coverage": 0.0,
+          "no_match_false_accepts": 0,
+          "eligible": false,
+          "note": "undefined risk; never a valid operating point"
+        },
+        {
+          "threshold": 0.13893,
+          "policy": "sequence_margin_gate",
+          "accepted": 1,
+          "correct": 0,
+          "selective_risk": 1.0,
+          "coverage": 0.025,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.13492,
+          "policy": "sequence_margin_gate",
+          "accepted": 2,
+          "correct": 0,
+          "selective_risk": 1.0,
+          "coverage": 0.05,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.12366,
+          "policy": "sequence_margin_gate",
+          "accepted": 3,
+          "correct": 0,
+          "selective_risk": 1.0,
+          "coverage": 0.075,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.10517,
+          "policy": "sequence_margin_gate",
+          "accepted": 4,
+          "correct": 1,
+          "selective_risk": 0.75,
+          "coverage": 0.1,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.10394,
+          "policy": "sequence_margin_gate",
+          "accepted": 5,
+          "correct": 1,
+          "selective_risk": 0.8,
+          "coverage": 0.125,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.10316,
+          "policy": "sequence_margin_gate",
+          "accepted": 6,
+          "correct": 1,
+          "selective_risk": 0.8333,
+          "coverage": 0.15,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.09564,
+          "policy": "sequence_margin_gate",
+          "accepted": 7,
+          "correct": 2,
+          "selective_risk": 0.7143,
+          "coverage": 0.175,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.09444,
+          "policy": "sequence_margin_gate",
+          "accepted": 8,
+          "correct": 2,
+          "selective_risk": 0.75,
+          "coverage": 0.2,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.09249,
+          "policy": "sequence_margin_gate",
+          "accepted": 9,
+          "correct": 3,
+          "selective_risk": 0.6667,
+          "coverage": 0.225,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.09025,
+          "policy": "sequence_margin_gate",
+          "accepted": 10,
+          "correct": 3,
+          "selective_risk": 0.7,
+          "coverage": 0.25,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.08743,
+          "policy": "sequence_margin_gate",
+          "accepted": 11,
+          "correct": 3,
+          "selective_risk": 0.7273,
+          "coverage": 0.275,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.08722,
+          "policy": "sequence_margin_gate",
+          "accepted": 12,
+          "correct": 4,
+          "selective_risk": 0.6667,
+          "coverage": 0.3,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.08636,
+          "policy": "sequence_margin_gate",
+          "accepted": 13,
+          "correct": 4,
+          "selective_risk": 0.6923,
+          "coverage": 0.325,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.08346,
+          "policy": "sequence_margin_gate",
+          "accepted": 14,
+          "correct": 4,
+          "selective_risk": 0.7143,
+          "coverage": 0.35,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.07776,
+          "policy": "sequence_margin_gate",
+          "accepted": 15,
+          "correct": 4,
+          "selective_risk": 0.7333,
+          "coverage": 0.375,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.07556,
+          "policy": "sequence_margin_gate",
+          "accepted": 16,
+          "correct": 4,
+          "selective_risk": 0.75,
+          "coverage": 0.4,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.07119,
+          "policy": "sequence_margin_gate",
+          "accepted": 17,
+          "correct": 4,
+          "selective_risk": 0.7647,
+          "coverage": 0.425,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.07065,
+          "policy": "sequence_margin_gate",
+          "accepted": 18,
+          "correct": 4,
+          "selective_risk": 0.7778,
+          "coverage": 0.45,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.06806,
+          "policy": "sequence_margin_gate",
+          "accepted": 19,
+          "correct": 4,
+          "selective_risk": 0.7895,
+          "coverage": 0.475,
+          "no_match_false_accepts": 0,
+          "eligible": true
+        },
+        {
+          "threshold": 0.06731,
+          "policy": "sequence_margin_gate",
+          "accepted": 20,
+          "correct": 4,
+          "selective_risk": 0.8,
+          "coverage": 0.5,
+          "no_match_false_accepts": 1,
+          "eligible": true
+        },
+        {
+          "threshold": 0.06163,
+          "policy": "sequence_margin_gate",
+          "accepted": 21,
+          "correct": 4,
+          "selective_risk": 0.8095,
+          "coverage": 0.525,
+          "no_match_false_accepts": 2,
+          "eligible": true
+        },
+        {
+          "threshold": 0.05874,
+          "policy": "sequence_margin_gate",
+          "accepted": 22,
+          "correct": 4,
+          "selective_risk": 0.8182,
+          "coverage": 0.55,
+          "no_match_false_accepts": 2,
+          "eligible": true
+        },
+        {
+          "threshold": 0.05824,
+          "policy": "sequence_margin_gate",
+          "accepted": 23,
+          "correct": 5,
+          "selective_risk": 0.7826,
+          "coverage": 0.575,
+          "no_match_false_accepts": 2,
+          "eligible": true
+        },
+        {
+          "threshold": 0.05765,
+          "policy": "sequence_margin_gate",
+          "accepted": 24,
+          "correct": 6,
+          "selective_risk": 0.75,
+          "coverage": 0.6,
+          "no_match_false_accepts": 2,
+          "eligible": true
+        },
+        {
+          "threshold": 0.05615,
+          "policy": "sequence_margin_gate",
+          "accepted": 25,
+          "correct": 7,
+          "selective_risk": 0.72,
+          "coverage": 0.625,
+          "no_match_false_accepts": 2,
+          "eligible": true
+        },
+        {
+          "threshold": 0.05532,
+          "policy": "sequence_margin_gate",
+          "accepted": 26,
+          "correct": 7,
+          "selective_risk": 0.7308,
+          "coverage": 0.65,
+          "no_match_false_accepts": 2,
+          "eligible": true
+        },
+        {
+          "threshold": 0.05188,
+          "policy": "sequence_margin_gate",
+          "accepted": 27,
+          "correct": 7,
+          "selective_risk": 0.7407,
+          "coverage": 0.675,
+          "no_match_false_accepts": 2,
+          "eligible": true
+        },
+        {
+          "threshold": 0.05121,
+          "policy": "sequence_margin_gate",
+          "accepted": 28,
+          "correct": 8,
+          "selective_risk": 0.7143,
+          "coverage": 0.7,
+          "no_match_false_accepts": 2,
+          "eligible": true
+        },
+        {
+          "threshold": 0.04559,
+          "policy": "sequence_margin_gate",
+          "accepted": 29,
+          "correct": 9,
+          "selective_risk": 0.6897,
+          "coverage": 0.725,
+          "no_match_false_accepts": 2,
+          "eligible": true
+        },
+        {
+          "threshold": 0.04509,
+          "policy": "sequence_margin_gate",
+          "accepted": 30,
+          "correct": 9,
+          "selective_risk": 0.7,
+          "coverage": 0.75,
+          "no_match_false_accepts": 3,
+          "eligible": true
+        },
+        {
+          "threshold": 0.03954,
+          "policy": "sequence_margin_gate",
+          "accepted": 31,
+          "correct": 9,
+          "selective_risk": 0.7097,
+          "coverage": 0.775,
+          "no_match_false_accepts": 3,
+          "eligible": true
+        },
+        {
+          "threshold": 0.03864,
+          "policy": "sequence_margin_gate",
+          "accepted": 32,
+          "correct": 10,
+          "selective_risk": 0.6875,
+          "coverage": 0.8,
+          "no_match_false_accepts": 3,
+          "eligible": true
+        },
+        {
+          "threshold": 0.03672,
+          "policy": "sequence_margin_gate",
+          "accepted": 33,
+          "correct": 10,
+          "selective_risk": 0.697,
+          "coverage": 0.825,
+          "no_match_false_accepts": 3,
+          "eligible": true
+        },
+        {
+          "threshold": 0.0297,
+          "policy": "sequence_margin_gate",
+          "accepted": 34,
+          "correct": 11,
+          "selective_risk": 0.6765,
+          "coverage": 0.85,
+          "no_match_false_accepts": 3,
+          "eligible": true
+        },
+        {
+          "threshold": 0.02969,
+          "policy": "sequence_margin_gate",
+          "accepted": 35,
+          "correct": 12,
+          "selective_risk": 0.6571,
+          "coverage": 0.875,
+          "no_match_false_accepts": 3,
+          "eligible": true
+        }
+      ]
+    }
+  }
+}

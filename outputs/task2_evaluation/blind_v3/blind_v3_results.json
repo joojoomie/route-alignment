@@ -1,0 +1,5260 @@
+{
+  "schema_version": 1,
+  "evaluated_at_utc": "2026-09-02T09:22:15.558982+00:00",
+  "label_set": "blind_v3",
+  "method_freeze_v3_sha256": "014782a969c1913f3afe803512450ef4850b19d1f916456209150d3df52b90ce",
+  "method_frozen_at_utc": "2026-09-02T07:53:32.023239+00:00",
+  "query_set_sha256": "f2f7bcb9c866dd887e8b4d22408a7cbd694e3666dfb60eae9eba7e62cf25f847",
+  "query_set_exported_at_utc": "2026-09-02T07:43:09.034629+00:00",
+  "label_seal_sha256": "e747d9775e2b2140cf1b7d8b703439d8b39079726a546f9714925658bcf9f1cd",
+  "label_sealed_at_utc": "2026-09-02T09:14:33.436283+00:00",
+  "labels": 48,
+  "ordering_note": "Query set exported, then the method frozen, then the labels sealed, then this single scoring pass. That records ordering, not custody.",
+  "pooling_policy": "Cameras are reported separately. Pooled rows exist for readability; the two cameras observe the same two traversals and are not independent samples.",
+  "label_semantics": {
+    "match": "a Run B frame shows the same world position, within the recorded interval",
+    "undetermined": "a counterpart may exist; the annotator could not identify which frame. Not evidence for or against abstention - exclude from the denominator and report how many were excluded.",
+    "no_correspondence": "no Run B frame shows this place, because the view was blocked or the route was not driven there. This is the correct abstention target."
+  },
+  "stratum_dependency_disclosure": "Strata were located using the structure of the submitted unified mapping: its kink positions and, for the dark stratum, its Run A -> Run B partner for each frame. This affects WHICH frames are asked about. It does not affect WHAT the annotator sees: the page carries the Run A frame, a linear route-progress start position computed from the route boundaries alone, and the Run B filmstrip. No stratum tag, no mapping partner, no confidence and no prediction is present in the exported HTML, and a test greps the pages for the submitted partner of every query and fails if one appears. The consequence to state when reporting: per-stratum rates are conditional on the submitted mapping having put its kinks where it did, so they measure 'is this method right where it says something surprising', not an unbiased route-wide rate. The corridor stratum is the unbiased comparison.",
+  "what_the_v3_labels_may_judge": [
+    "kinks",
+    "posterior_model",
+    "slope_refinement_variant",
+    "submitted_unified"
+  ],
+  "gate_definitions": {
+    "slope_gate": "frozen rule, read from the slope_gate column of outputs/task3/frame_quality_flags.csv: near_kink on a Run A ordinal within 10 frames of a one-step Run B increment >= 6",
+    "dark_gate": "DATA_POLICY.md's exposure rule read as an abstention: the Run A frame or the predicted Run B frame flagged too_dark (mean luma < 12 or p99 < 40 of 255)",
+    "both_gates": "the union of the two"
+  },
+  "annotator_remarks_recorded_before_seal": [
+    {
+      "camera_id": "cam0",
+      "runA_frame": 646,
+      "recorded_at_utc": "2026-09-02T08:11:37.119640+00:00",
+      "kind": "bracketed_by_occlusion",
+      "remark": "The house is visible in Run B a few frames before and after, but a truck hides it at the frames where the position matches. Labelled as match with an interval spanning the occluded frames; the preferred frame is the interval midpoint and could not be verified visually. This is a second occlusion instance, distinct from the confirmed runB cam0 240-270 one."
+    },
+    {
+      "camera_id": "cam0",
+      "runA_frame": 2399,
+      "recorded_at_utc": "2026-09-02T08:30:33.133742+00:00",
+      "kind": "turn_and_lateral_offset",
+      "remark": "Run B is mid-turn for many consecutive frames here and the distance to the pavement differs slightly from Run A, so neither the far+near test nor the centre-line test pins one frame. Labelled as match with +-3 frames."
+    }
+  ],
+  "methods": {
+    "submitted_unified": {
+      "description": "the submitted unified mapping, unmodified",
+      "held_out": true,
+      "cameras": {
+        "cam0": {
+          "labels": 24,
+          "match_labels": 21,
+          "undetermined_labels": 2,
+          "no_correspondence_labels": 1,
+          "accepted": 21,
+          "correct": 13,
+          "precision": 0.619,
+          "precision_wilson_95": [
+            0.4088,
+            0.7925
+          ],
+          "within_two": 17,
+          "within_two_rate": 0.8095,
+          "coverage_of_match_labels": 1.0,
+          "abstained_on_match_labels": 0,
+          "gated_match_labels": 0,
+          "interval_distance": {
+            "n": 21,
+            "median": 0.0,
+            "p90": 6.0,
+            "max": 10,
+            "within_two_frames": 17
+          },
+          "preferred_frame_error": {
+            "n": 21,
+            "median": 1.0,
+            "p90": 7.0,
+            "max": 13,
+            "within_two_frames": 16
+          },
+          "undetermined": {
+            "labels": 2,
+            "accepted": 2,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 1,
+            "false_accepts": 1,
+            "false_accept_query_ids": [
+              "cam0_v3_23"
+            ],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 24,
+            "correct": 13,
+            "precision": 0.5417,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "cam5": {
+          "labels": 24,
+          "match_labels": 23,
+          "undetermined_labels": 1,
+          "no_correspondence_labels": 0,
+          "accepted": 23,
+          "correct": 2,
+          "precision": 0.087,
+          "precision_wilson_95": [
+            0.0242,
+            0.268
+          ],
+          "within_two": 5,
+          "within_two_rate": 0.2174,
+          "coverage_of_match_labels": 1.0,
+          "abstained_on_match_labels": 0,
+          "gated_match_labels": 0,
+          "interval_distance": {
+            "n": 23,
+            "median": 4.0,
+            "p90": 12.400000000000002,
+            "max": 14,
+            "within_two_frames": 5
+          },
+          "preferred_frame_error": {
+            "n": 23,
+            "median": 4.0,
+            "p90": 12.8,
+            "max": 14,
+            "within_two_frames": 5
+          },
+          "undetermined": {
+            "labels": 1,
+            "accepted": 1,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 24,
+            "correct": 2,
+            "precision": 0.0833,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        }
+      },
+      "pooled": {
+        "labels": 48,
+        "match_labels": 44,
+        "undetermined_labels": 3,
+        "no_correspondence_labels": 1,
+        "accepted": 44,
+        "correct": 15,
+        "precision": 0.3409,
+        "precision_wilson_95": [
+          0.2188,
+          0.4886
+        ],
+        "within_two": 22,
+        "within_two_rate": 0.5,
+        "coverage_of_match_labels": 1.0,
+        "abstained_on_match_labels": 0,
+        "gated_match_labels": 0,
+        "interval_distance": {
+          "n": 44,
+          "median": 2.5,
+          "p90": 9.100000000000009,
+          "max": 14,
+          "within_two_frames": 22
+        },
+        "preferred_frame_error": {
+          "n": 44,
+          "median": 3.0,
+          "p90": 10.800000000000011,
+          "max": 14,
+          "within_two_frames": 21
+        },
+        "undetermined": {
+          "labels": 3,
+          "accepted": 3,
+          "abstained": 0,
+          "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+        },
+        "no_correspondence": {
+          "labels": 1,
+          "false_accepts": 1,
+          "false_accept_query_ids": [
+            "cam0_v3_23"
+          ],
+          "true_rejects": 0,
+          "true_reject_query_ids": []
+        },
+        "lower_bound_reading": {
+          "accepted": 48,
+          "correct": 15,
+          "precision": 0.3125,
+          "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+        }
+      },
+      "strata": {
+        "cam0": {
+          "kink": {
+            "labels": 8,
+            "match_labels": 7,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 1,
+            "accepted": 7,
+            "correct": 3,
+            "precision": 0.4286,
+            "precision_wilson_95": [
+              0.1582,
+              0.7495
+            ],
+            "within_two": 5,
+            "within_two_rate": 0.7143,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 7,
+              "median": 1.0,
+              "p90": 7.600000000000001,
+              "max": 10,
+              "within_two_frames": 5
+            },
+            "preferred_frame_error": {
+              "n": 7,
+              "median": 1.0,
+              "p90": 9.400000000000002,
+              "max": 13,
+              "within_two_frames": 4
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 1,
+              "false_accepts": 1,
+              "false_accept_query_ids": [
+                "cam0_v3_23"
+              ],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 8,
+              "correct": 3,
+              "precision": 0.375,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "dark": {
+            "labels": 4,
+            "match_labels": 3,
+            "undetermined_labels": 1,
+            "no_correspondence_labels": 0,
+            "accepted": 3,
+            "correct": 3,
+            "precision": 1.0,
+            "precision_wilson_95": [
+              0.4385,
+              1.0
+            ],
+            "within_two": 3,
+            "within_two_rate": 1.0,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 3,
+              "median": 0.0,
+              "p90": 0.0,
+              "max": 0,
+              "within_two_frames": 3
+            },
+            "preferred_frame_error": {
+              "n": 3,
+              "median": 0.0,
+              "p90": 0.0,
+              "max": 0,
+              "within_two_frames": 3
+            },
+            "undetermined": {
+              "labels": 1,
+              "accepted": 1,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 4,
+              "correct": 3,
+              "precision": 0.75,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "occlusion": {
+            "labels": 3,
+            "match_labels": 2,
+            "undetermined_labels": 1,
+            "no_correspondence_labels": 0,
+            "accepted": 2,
+            "correct": 2,
+            "precision": 1.0,
+            "precision_wilson_95": [
+              0.3424,
+              1.0
+            ],
+            "within_two": 2,
+            "within_two_rate": 1.0,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 2,
+              "median": 0.0,
+              "p90": 0.0,
+              "max": 0,
+              "within_two_frames": 2
+            },
+            "preferred_frame_error": {
+              "n": 2,
+              "median": 0.5,
+              "p90": 0.9,
+              "max": 1,
+              "within_two_frames": 2
+            },
+            "undetermined": {
+              "labels": 1,
+              "accepted": 1,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 3,
+              "correct": 2,
+              "precision": 0.6667,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "corridor": {
+            "labels": 9,
+            "match_labels": 9,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 9,
+            "correct": 5,
+            "precision": 0.5556,
+            "precision_wilson_95": [
+              0.2667,
+              0.8112
+            ],
+            "within_two": 7,
+            "within_two_rate": 0.7778,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 9,
+              "median": 0.0,
+              "p90": 5.2,
+              "max": 6,
+              "within_two_frames": 7
+            },
+            "preferred_frame_error": {
+              "n": 9,
+              "median": 1.0,
+              "p90": 6.4,
+              "max": 8,
+              "within_two_frames": 7
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 9,
+              "correct": 5,
+              "precision": 0.5556,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          }
+        },
+        "cam5": {
+          "kink": {
+            "labels": 10,
+            "match_labels": 10,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 10,
+            "correct": 0,
+            "precision": 0.0,
+            "precision_wilson_95": [
+              0.0,
+              0.2775
+            ],
+            "within_two": 1,
+            "within_two_rate": 0.1,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 10,
+              "median": 6.0,
+              "p90": 13.1,
+              "max": 14,
+              "within_two_frames": 1
+            },
+            "preferred_frame_error": {
+              "n": 10,
+              "median": 7.0,
+              "p90": 14.0,
+              "max": 14,
+              "within_two_frames": 1
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 10,
+              "correct": 0,
+              "precision": 0.0,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "dark": {
+            "labels": 5,
+            "match_labels": 4,
+            "undetermined_labels": 1,
+            "no_correspondence_labels": 0,
+            "accepted": 4,
+            "correct": 0,
+            "precision": 0.0,
+            "precision_wilson_95": [
+              0.0,
+              0.4899
+            ],
+            "within_two": 0,
+            "within_two_rate": 0.0,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 4,
+              "median": 4.0,
+              "p90": 10.3,
+              "max": 13,
+              "within_two_frames": 0
+            },
+            "preferred_frame_error": {
+              "n": 4,
+              "median": 4.5,
+              "p90": 10.600000000000001,
+              "max": 13,
+              "within_two_frames": 0
+            },
+            "undetermined": {
+              "labels": 1,
+              "accepted": 1,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 5,
+              "correct": 0,
+              "precision": 0.0,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "occlusion": {
+            "labels": 0,
+            "match_labels": 0,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 0,
+            "correct": 0,
+            "precision": null,
+            "precision_wilson_95": null,
+            "within_two": 0,
+            "within_two_rate": null,
+            "coverage_of_match_labels": null,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 0
+            },
+            "preferred_frame_error": {
+              "n": 0
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 0,
+              "correct": 0,
+              "precision": null,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "corridor": {
+            "labels": 9,
+            "match_labels": 9,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 9,
+            "correct": 2,
+            "precision": 0.2222,
+            "precision_wilson_95": [
+              0.0632,
+              0.5474
+            ],
+            "within_two": 4,
+            "within_two_rate": 0.4444,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 9,
+              "median": 3.0,
+              "p90": 5.0,
+              "max": 5,
+              "within_two_frames": 4
+            },
+            "preferred_frame_error": {
+              "n": 9,
+              "median": 3.0,
+              "p90": 5.0,
+              "max": 5,
+              "within_two_frames": 4
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 9,
+              "correct": 2,
+              "precision": 0.2222,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          }
+        }
+      },
+      "strata_pooled": {
+        "kink": {
+          "labels": 18,
+          "match_labels": 17,
+          "undetermined_labels": 0,
+          "no_correspondence_labels": 1,
+          "accepted": 17,
+          "correct": 3,
+          "precision": 0.1765,
+          "precision_wilson_95": [
+            0.0619,
+            0.4103
+          ],
+          "within_two": 6,
+          "within_two_rate": 0.3529,
+          "coverage_of_match_labels": 1.0,
+          "abstained_on_match_labels": 0,
+          "gated_match_labels": 0,
+          "interval_distance": {
+            "n": 17,
+            "median": 5.0,
+            "p90": 11.200000000000001,
+            "max": 14,
+            "within_two_frames": 6
+          },
+          "preferred_frame_error": {
+            "n": 17,
+            "median": 5.0,
+            "p90": 13.4,
+            "max": 14,
+            "within_two_frames": 5
+          },
+          "undetermined": {
+            "labels": 0,
+            "accepted": 0,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 1,
+            "false_accepts": 1,
+            "false_accept_query_ids": [
+              "cam0_v3_23"
+            ],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 18,
+            "correct": 3,
+            "precision": 0.1667,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "dark": {
+          "labels": 9,
+          "match_labels": 7,
+          "undetermined_labels": 2,
+          "no_correspondence_labels": 0,
+          "accepted": 7,
+          "correct": 3,
+          "precision": 0.4286,
+          "precision_wilson_95": [
+            0.1582,
+            0.7495
+          ],
+          "within_two": 3,
+          "within_two_rate": 0.4286,
+          "coverage_of_match_labels": 1.0,
+          "abstained_on_match_labels": 0,
+          "gated_match_labels": 0,
+          "interval_distance": {
+            "n": 7,
+            "median": 4.0,
+            "p90": 7.600000000000003,
+            "max": 13,
+            "within_two_frames": 3
+          },
+          "preferred_frame_error": {
+            "n": 7,
+            "median": 4.0,
+            "p90": 8.200000000000003,
+            "max": 13,
+            "within_two_frames": 3
+          },
+          "undetermined": {
+            "labels": 2,
+            "accepted": 2,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 9,
+            "correct": 3,
+            "precision": 0.3333,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "occlusion": {
+          "labels": 3,
+          "match_labels": 2,
+          "undetermined_labels": 1,
+          "no_correspondence_labels": 0,
+          "accepted": 2,
+          "correct": 2,
+          "precision": 1.0,
+          "precision_wilson_95": [
+            0.3424,
+            1.0
+          ],
+          "within_two": 2,
+          "within_two_rate": 1.0,
+          "coverage_of_match_labels": 1.0,
+          "abstained_on_match_labels": 0,
+          "gated_match_labels": 0,
+          "interval_distance": {
+            "n": 2,
+            "median": 0.0,
+            "p90": 0.0,
+            "max": 0,
+            "within_two_frames": 2
+          },
+          "preferred_frame_error": {
+            "n": 2,
+            "median": 0.5,
+            "p90": 0.9,
+            "max": 1,
+            "within_two_frames": 2
+          },
+          "undetermined": {
+            "labels": 1,
+            "accepted": 1,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 3,
+            "correct": 2,
+            "precision": 0.6667,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "corridor": {
+          "labels": 18,
+          "match_labels": 18,
+          "undetermined_labels": 0,
+          "no_correspondence_labels": 0,
+          "accepted": 18,
+          "correct": 7,
+          "precision": 0.3889,
+          "precision_wilson_95": [
+            0.2031,
+            0.6138
+          ],
+          "within_two": 11,
+          "within_two_rate": 0.6111,
+          "coverage_of_match_labels": 1.0,
+          "abstained_on_match_labels": 0,
+          "gated_match_labels": 0,
+          "interval_distance": {
+            "n": 18,
+            "median": 1.5,
+            "p90": 5.0,
+            "max": 6,
+            "within_two_frames": 11
+          },
+          "preferred_frame_error": {
+            "n": 18,
+            "median": 2.0,
+            "p90": 5.300000000000001,
+            "max": 8,
+            "within_two_frames": 11
+          },
+          "undetermined": {
+            "labels": 0,
+            "accepted": 0,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 18,
+            "correct": 7,
+            "precision": 0.3889,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        }
+      }
+    },
+    "slope_refinement_variant": {
+      "description": "build_task2_unified.py --refinement slope: Viterbi refinement with a slope prior, built before the v3 freeze and named by it",
+      "held_out": true,
+      "cameras": {
+        "cam0": {
+          "labels": 24,
+          "match_labels": 21,
+          "undetermined_labels": 2,
+          "no_correspondence_labels": 1,
+          "accepted": 21,
+          "correct": 16,
+          "precision": 0.7619,
+          "precision_wilson_95": [
+            0.5491,
+            0.8937
+          ],
+          "within_two": 17,
+          "within_two_rate": 0.8095,
+          "coverage_of_match_labels": 1.0,
+          "abstained_on_match_labels": 0,
+          "gated_match_labels": 0,
+          "interval_distance": {
+            "n": 21,
+            "median": 0.0,
+            "p90": 5.0,
+            "max": 8,
+            "within_two_frames": 17
+          },
+          "preferred_frame_error": {
+            "n": 21,
+            "median": 1.0,
+            "p90": 6.0,
+            "max": 11,
+            "within_two_frames": 17
+          },
+          "undetermined": {
+            "labels": 2,
+            "accepted": 2,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 1,
+            "false_accepts": 1,
+            "false_accept_query_ids": [
+              "cam0_v3_23"
+            ],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 24,
+            "correct": 16,
+            "precision": 0.6667,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "cam5": {
+          "labels": 24,
+          "match_labels": 23,
+          "undetermined_labels": 1,
+          "no_correspondence_labels": 0,
+          "accepted": 23,
+          "correct": 3,
+          "precision": 0.1304,
+          "precision_wilson_95": [
+            0.0454,
+            0.3213
+          ],
+          "within_two": 6,
+          "within_two_rate": 0.2609,
+          "coverage_of_match_labels": 1.0,
+          "abstained_on_match_labels": 0,
+          "gated_match_labels": 0,
+          "interval_distance": {
+            "n": 23,
+            "median": 4.0,
+            "p90": 9.600000000000001,
+            "max": 13,
+            "within_two_frames": 6
+          },
+          "preferred_frame_error": {
+            "n": 23,
+            "median": 4.0,
+            "p90": 11.400000000000002,
+            "max": 14,
+            "within_two_frames": 5
+          },
+          "undetermined": {
+            "labels": 1,
+            "accepted": 1,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 24,
+            "correct": 3,
+            "precision": 0.125,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        }
+      },
+      "pooled": {
+        "labels": 48,
+        "match_labels": 44,
+        "undetermined_labels": 3,
+        "no_correspondence_labels": 1,
+        "accepted": 44,
+        "correct": 19,
+        "precision": 0.4318,
+        "precision_wilson_95": [
+          0.2968,
+          0.5778
+        ],
+        "within_two": 23,
+        "within_two_rate": 0.5227,
+        "coverage_of_match_labels": 1.0,
+        "abstained_on_match_labels": 0,
+        "gated_match_labels": 0,
+        "interval_distance": {
+          "n": 44,
+          "median": 2.0,
+          "p90": 7.400000000000006,
+          "max": 13,
+          "within_two_frames": 23
+        },
+        "preferred_frame_error": {
+          "n": 44,
+          "median": 2.5,
+          "p90": 8.700000000000003,
+          "max": 14,
+          "within_two_frames": 22
+        },
+        "undetermined": {
+          "labels": 3,
+          "accepted": 3,
+          "abstained": 0,
+          "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+        },
+        "no_correspondence": {
+          "labels": 1,
+          "false_accepts": 1,
+          "false_accept_query_ids": [
+            "cam0_v3_23"
+          ],
+          "true_rejects": 0,
+          "true_reject_query_ids": []
+        },
+        "lower_bound_reading": {
+          "accepted": 48,
+          "correct": 19,
+          "precision": 0.3958,
+          "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+        }
+      },
+      "strata": {
+        "cam0": {
+          "kink": {
+            "labels": 8,
+            "match_labels": 7,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 1,
+            "accepted": 7,
+            "correct": 5,
+            "precision": 0.7143,
+            "precision_wilson_95": [
+              0.3589,
+              0.9178
+            ],
+            "within_two": 5,
+            "within_two_rate": 0.7143,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 7,
+              "median": 0.0,
+              "p90": 5.000000000000002,
+              "max": 8,
+              "within_two_frames": 5
+            },
+            "preferred_frame_error": {
+              "n": 7,
+              "median": 1.0,
+              "p90": 6.200000000000003,
+              "max": 11,
+              "within_two_frames": 5
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 1,
+              "false_accepts": 1,
+              "false_accept_query_ids": [
+                "cam0_v3_23"
+              ],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 8,
+              "correct": 5,
+              "precision": 0.625,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "dark": {
+            "labels": 4,
+            "match_labels": 3,
+            "undetermined_labels": 1,
+            "no_correspondence_labels": 0,
+            "accepted": 3,
+            "correct": 3,
+            "precision": 1.0,
+            "precision_wilson_95": [
+              0.4385,
+              1.0
+            ],
+            "within_two": 3,
+            "within_two_rate": 1.0,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 3,
+              "median": 0.0,
+              "p90": 0.0,
+              "max": 0,
+              "within_two_frames": 3
+            },
+            "preferred_frame_error": {
+              "n": 3,
+              "median": 0.0,
+              "p90": 0.0,
+              "max": 0,
+              "within_two_frames": 3
+            },
+            "undetermined": {
+              "labels": 1,
+              "accepted": 1,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 4,
+              "correct": 3,
+              "precision": 0.75,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "occlusion": {
+            "labels": 3,
+            "match_labels": 2,
+            "undetermined_labels": 1,
+            "no_correspondence_labels": 0,
+            "accepted": 2,
+            "correct": 2,
+            "precision": 1.0,
+            "precision_wilson_95": [
+              0.3424,
+              1.0
+            ],
+            "within_two": 2,
+            "within_two_rate": 1.0,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 2,
+              "median": 0.0,
+              "p90": 0.0,
+              "max": 0,
+              "within_two_frames": 2
+            },
+            "preferred_frame_error": {
+              "n": 2,
+              "median": 0.5,
+              "p90": 0.9,
+              "max": 1,
+              "within_two_frames": 2
+            },
+            "undetermined": {
+              "labels": 1,
+              "accepted": 1,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 3,
+              "correct": 2,
+              "precision": 0.6667,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "corridor": {
+            "labels": 9,
+            "match_labels": 9,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 9,
+            "correct": 6,
+            "precision": 0.6667,
+            "precision_wilson_95": [
+              0.3542,
+              0.8794
+            ],
+            "within_two": 7,
+            "within_two_rate": 0.7778,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 9,
+              "median": 0.0,
+              "p90": 5.2,
+              "max": 6,
+              "within_two_frames": 7
+            },
+            "preferred_frame_error": {
+              "n": 9,
+              "median": 0.0,
+              "p90": 6.4,
+              "max": 8,
+              "within_two_frames": 7
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 9,
+              "correct": 6,
+              "precision": 0.6667,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          }
+        },
+        "cam5": {
+          "kink": {
+            "labels": 10,
+            "match_labels": 10,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 10,
+            "correct": 1,
+            "precision": 0.1,
+            "precision_wilson_95": [
+              0.0179,
+              0.4042
+            ],
+            "within_two": 2,
+            "within_two_rate": 0.2,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 10,
+              "median": 4.0,
+              "p90": 10.299999999999999,
+              "max": 13,
+              "within_two_frames": 2
+            },
+            "preferred_frame_error": {
+              "n": 10,
+              "median": 4.5,
+              "p90": 12.2,
+              "max": 14,
+              "within_two_frames": 2
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 10,
+              "correct": 1,
+              "precision": 0.1,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "dark": {
+            "labels": 5,
+            "match_labels": 4,
+            "undetermined_labels": 1,
+            "no_correspondence_labels": 0,
+            "accepted": 4,
+            "correct": 0,
+            "precision": 0.0,
+            "precision_wilson_95": [
+              0.0,
+              0.4899
+            ],
+            "within_two": 0,
+            "within_two_rate": 0.0,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 4,
+              "median": 6.5,
+              "p90": 11.5,
+              "max": 13,
+              "within_two_frames": 0
+            },
+            "preferred_frame_error": {
+              "n": 4,
+              "median": 7.0,
+              "p90": 11.8,
+              "max": 13,
+              "within_two_frames": 0
+            },
+            "undetermined": {
+              "labels": 1,
+              "accepted": 1,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 5,
+              "correct": 0,
+              "precision": 0.0,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "occlusion": {
+            "labels": 0,
+            "match_labels": 0,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 0,
+            "correct": 0,
+            "precision": null,
+            "precision_wilson_95": null,
+            "within_two": 0,
+            "within_two_rate": null,
+            "coverage_of_match_labels": null,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 0
+            },
+            "preferred_frame_error": {
+              "n": 0
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 0,
+              "correct": 0,
+              "precision": null,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "corridor": {
+            "labels": 9,
+            "match_labels": 9,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 9,
+            "correct": 2,
+            "precision": 0.2222,
+            "precision_wilson_95": [
+              0.0632,
+              0.5474
+            ],
+            "within_two": 4,
+            "within_two_rate": 0.4444,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 9,
+              "median": 3.0,
+              "p90": 4.2,
+              "max": 5,
+              "within_two_frames": 4
+            },
+            "preferred_frame_error": {
+              "n": 9,
+              "median": 3.0,
+              "p90": 4.2,
+              "max": 5,
+              "within_two_frames": 3
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 9,
+              "correct": 2,
+              "precision": 0.2222,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          }
+        }
+      },
+      "strata_pooled": {
+        "kink": {
+          "labels": 18,
+          "match_labels": 17,
+          "undetermined_labels": 0,
+          "no_correspondence_labels": 1,
+          "accepted": 17,
+          "correct": 6,
+          "precision": 0.3529,
+          "precision_wilson_95": [
+            0.1731,
+            0.587
+          ],
+          "within_two": 7,
+          "within_two_rate": 0.4118,
+          "coverage_of_match_labels": 1.0,
+          "abstained_on_match_labels": 0,
+          "gated_match_labels": 0,
+          "interval_distance": {
+            "n": 17,
+            "median": 3.0,
+            "p90": 8.8,
+            "max": 13,
+            "within_two_frames": 7
+          },
+          "preferred_frame_error": {
+            "n": 17,
+            "median": 3.0,
+            "p90": 11.4,
+            "max": 14,
+            "within_two_frames": 7
+          },
+          "undetermined": {
+            "labels": 0,
+            "accepted": 0,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 1,
+            "false_accepts": 1,
+            "false_accept_query_ids": [
+              "cam0_v3_23"
+            ],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 18,
+            "correct": 6,
+            "precision": 0.3333,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "dark": {
+          "labels": 9,
+          "match_labels": 7,
+          "undetermined_labels": 2,
+          "no_correspondence_labels": 0,
+          "accepted": 7,
+          "correct": 3,
+          "precision": 0.4286,
+          "precision_wilson_95": [
+            0.1582,
+            0.7495
+          ],
+          "within_two": 3,
+          "within_two_rate": 0.4286,
+          "coverage_of_match_labels": 1.0,
+          "abstained_on_match_labels": 0,
+          "gated_match_labels": 0,
+          "interval_distance": {
+            "n": 7,
+            "median": 4.0,
+            "p90": 10.000000000000002,
+            "max": 13,
+            "within_two_frames": 3
+          },
+          "preferred_frame_error": {
+            "n": 7,
+            "median": 4.0,
+            "p90": 10.600000000000001,
+            "max": 13,
+            "within_two_frames": 3
+          },
+          "undetermined": {
+            "labels": 2,
+            "accepted": 2,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 9,
+            "correct": 3,
+            "precision": 0.3333,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "occlusion": {
+          "labels": 3,
+          "match_labels": 2,
+          "undetermined_labels": 1,
+          "no_correspondence_labels": 0,
+          "accepted": 2,
+          "correct": 2,
+          "precision": 1.0,
+          "precision_wilson_95": [
+            0.3424,
+            1.0
+          ],
+          "within_two": 2,
+          "within_two_rate": 1.0,
+          "coverage_of_match_labels": 1.0,
+          "abstained_on_match_labels": 0,
+          "gated_match_labels": 0,
+          "interval_distance": {
+            "n": 2,
+            "median": 0.0,
+            "p90": 0.0,
+            "max": 0,
+            "within_two_frames": 2
+          },
+          "preferred_frame_error": {
+            "n": 2,
+            "median": 0.5,
+            "p90": 0.9,
+            "max": 1,
+            "within_two_frames": 2
+          },
+          "undetermined": {
+            "labels": 1,
+            "accepted": 1,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 3,
+            "correct": 2,
+            "precision": 0.6667,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "corridor": {
+          "labels": 18,
+          "match_labels": 18,
+          "undetermined_labels": 0,
+          "no_correspondence_labels": 0,
+          "accepted": 18,
+          "correct": 8,
+          "precision": 0.4444,
+          "precision_wilson_95": [
+            0.2456,
+            0.6628
+          ],
+          "within_two": 11,
+          "within_two_rate": 0.6111,
+          "coverage_of_match_labels": 1.0,
+          "abstained_on_match_labels": 0,
+          "gated_match_labels": 0,
+          "interval_distance": {
+            "n": 18,
+            "median": 1.0,
+            "p90": 5.0,
+            "max": 6,
+            "within_two_frames": 11
+          },
+          "preferred_frame_error": {
+            "n": 18,
+            "median": 2.0,
+            "p90": 5.300000000000001,
+            "max": 8,
+            "within_two_frames": 10
+          },
+          "undetermined": {
+            "labels": 0,
+            "accepted": 0,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 18,
+            "correct": 8,
+            "precision": 0.4444,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        }
+      }
+    },
+    "posterior_model": {
+      "description": "the Bayes HMM posterior mapping, with an explicit null state",
+      "held_out": true,
+      "cameras": {
+        "cam0": {
+          "labels": 24,
+          "match_labels": 21,
+          "undetermined_labels": 2,
+          "no_correspondence_labels": 1,
+          "accepted": 21,
+          "correct": 15,
+          "precision": 0.7143,
+          "precision_wilson_95": [
+            0.5004,
+            0.8619
+          ],
+          "within_two": 18,
+          "within_two_rate": 0.8571,
+          "coverage_of_match_labels": 1.0,
+          "abstained_on_match_labels": 0,
+          "gated_match_labels": 0,
+          "interval_distance": {
+            "n": 21,
+            "median": 0.0,
+            "p90": 5.0,
+            "max": 6,
+            "within_two_frames": 18
+          },
+          "preferred_frame_error": {
+            "n": 21,
+            "median": 1.0,
+            "p90": 6.0,
+            "max": 9,
+            "within_two_frames": 17
+          },
+          "undetermined": {
+            "labels": 2,
+            "accepted": 2,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 1,
+            "false_accepts": 1,
+            "false_accept_query_ids": [
+              "cam0_v3_23"
+            ],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 24,
+            "correct": 15,
+            "precision": 0.625,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "cam5": {
+          "labels": 24,
+          "match_labels": 23,
+          "undetermined_labels": 1,
+          "no_correspondence_labels": 0,
+          "accepted": 22,
+          "correct": 2,
+          "precision": 0.0909,
+          "precision_wilson_95": [
+            0.0253,
+            0.2781
+          ],
+          "within_two": 10,
+          "within_two_rate": 0.4545,
+          "coverage_of_match_labels": 0.9565,
+          "abstained_on_match_labels": 1,
+          "gated_match_labels": 0,
+          "interval_distance": {
+            "n": 22,
+            "median": 3.0,
+            "p90": 5.900000000000002,
+            "max": 13,
+            "within_two_frames": 10
+          },
+          "preferred_frame_error": {
+            "n": 22,
+            "median": 3.0,
+            "p90": 6.900000000000002,
+            "max": 13,
+            "within_two_frames": 10
+          },
+          "undetermined": {
+            "labels": 1,
+            "accepted": 1,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 23,
+            "correct": 2,
+            "precision": 0.087,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        }
+      },
+      "pooled": {
+        "labels": 48,
+        "match_labels": 44,
+        "undetermined_labels": 3,
+        "no_correspondence_labels": 1,
+        "accepted": 43,
+        "correct": 17,
+        "precision": 0.3953,
+        "precision_wilson_95": [
+          0.2637,
+          0.5442
+        ],
+        "within_two": 28,
+        "within_two_rate": 0.6512,
+        "coverage_of_match_labels": 0.9773,
+        "abstained_on_match_labels": 1,
+        "gated_match_labels": 0,
+        "interval_distance": {
+          "n": 43,
+          "median": 1.0,
+          "p90": 5.800000000000004,
+          "max": 13,
+          "within_two_frames": 28
+        },
+        "preferred_frame_error": {
+          "n": 43,
+          "median": 2.0,
+          "p90": 6.800000000000004,
+          "max": 13,
+          "within_two_frames": 27
+        },
+        "undetermined": {
+          "labels": 3,
+          "accepted": 3,
+          "abstained": 0,
+          "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+        },
+        "no_correspondence": {
+          "labels": 1,
+          "false_accepts": 1,
+          "false_accept_query_ids": [
+            "cam0_v3_23"
+          ],
+          "true_rejects": 0,
+          "true_reject_query_ids": []
+        },
+        "lower_bound_reading": {
+          "accepted": 47,
+          "correct": 17,
+          "precision": 0.3617,
+          "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+        }
+      },
+      "strata": {
+        "cam0": {
+          "kink": {
+            "labels": 8,
+            "match_labels": 7,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 1,
+            "accepted": 7,
+            "correct": 5,
+            "precision": 0.7143,
+            "precision_wilson_95": [
+              0.3589,
+              0.9178
+            ],
+            "within_two": 6,
+            "within_two_rate": 0.8571,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 7,
+              "median": 0.0,
+              "p90": 3.0000000000000018,
+              "max": 6,
+              "within_two_frames": 6
+            },
+            "preferred_frame_error": {
+              "n": 7,
+              "median": 1.0,
+              "p90": 5.400000000000002,
+              "max": 9,
+              "within_two_frames": 5
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 1,
+              "false_accepts": 1,
+              "false_accept_query_ids": [
+                "cam0_v3_23"
+              ],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 8,
+              "correct": 5,
+              "precision": 0.625,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "dark": {
+            "labels": 4,
+            "match_labels": 3,
+            "undetermined_labels": 1,
+            "no_correspondence_labels": 0,
+            "accepted": 3,
+            "correct": 3,
+            "precision": 1.0,
+            "precision_wilson_95": [
+              0.4385,
+              1.0
+            ],
+            "within_two": 3,
+            "within_two_rate": 1.0,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 3,
+              "median": 0.0,
+              "p90": 0.0,
+              "max": 0,
+              "within_two_frames": 3
+            },
+            "preferred_frame_error": {
+              "n": 3,
+              "median": 0.0,
+              "p90": 0.0,
+              "max": 0,
+              "within_two_frames": 3
+            },
+            "undetermined": {
+              "labels": 1,
+              "accepted": 1,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 4,
+              "correct": 3,
+              "precision": 0.75,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "occlusion": {
+            "labels": 3,
+            "match_labels": 2,
+            "undetermined_labels": 1,
+            "no_correspondence_labels": 0,
+            "accepted": 2,
+            "correct": 2,
+            "precision": 1.0,
+            "precision_wilson_95": [
+              0.3424,
+              1.0
+            ],
+            "within_two": 2,
+            "within_two_rate": 1.0,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 2,
+              "median": 0.0,
+              "p90": 0.0,
+              "max": 0,
+              "within_two_frames": 2
+            },
+            "preferred_frame_error": {
+              "n": 2,
+              "median": 0.5,
+              "p90": 0.9,
+              "max": 1,
+              "within_two_frames": 2
+            },
+            "undetermined": {
+              "labels": 1,
+              "accepted": 1,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 3,
+              "correct": 2,
+              "precision": 0.6667,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "corridor": {
+            "labels": 9,
+            "match_labels": 9,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 9,
+            "correct": 5,
+            "precision": 0.5556,
+            "precision_wilson_95": [
+              0.2667,
+              0.8112
+            ],
+            "within_two": 7,
+            "within_two_rate": 0.7778,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 9,
+              "median": 0.0,
+              "p90": 5.2,
+              "max": 6,
+              "within_two_frames": 7
+            },
+            "preferred_frame_error": {
+              "n": 9,
+              "median": 1.0,
+              "p90": 6.4,
+              "max": 8,
+              "within_two_frames": 7
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 9,
+              "correct": 5,
+              "precision": 0.5556,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          }
+        },
+        "cam5": {
+          "kink": {
+            "labels": 10,
+            "match_labels": 10,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 9,
+            "correct": 0,
+            "precision": 0.0,
+            "precision_wilson_95": [
+              0.0,
+              0.2991
+            ],
+            "within_two": 5,
+            "within_two_rate": 0.5556,
+            "coverage_of_match_labels": 0.9,
+            "abstained_on_match_labels": 1,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 9,
+              "median": 2.0,
+              "p90": 5.2,
+              "max": 6,
+              "within_two_frames": 5
+            },
+            "preferred_frame_error": {
+              "n": 9,
+              "median": 2.0,
+              "p90": 6.2,
+              "max": 7,
+              "within_two_frames": 5
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 9,
+              "correct": 0,
+              "precision": 0.0,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "dark": {
+            "labels": 5,
+            "match_labels": 4,
+            "undetermined_labels": 1,
+            "no_correspondence_labels": 0,
+            "accepted": 4,
+            "correct": 0,
+            "precision": 0.0,
+            "precision_wilson_95": [
+              0.0,
+              0.4899
+            ],
+            "within_two": 1,
+            "within_two_rate": 0.25,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 4,
+              "median": 5.5,
+              "p90": 11.5,
+              "max": 13,
+              "within_two_frames": 1
+            },
+            "preferred_frame_error": {
+              "n": 4,
+              "median": 6.0,
+              "p90": 11.8,
+              "max": 13,
+              "within_two_frames": 1
+            },
+            "undetermined": {
+              "labels": 1,
+              "accepted": 1,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 5,
+              "correct": 0,
+              "precision": 0.0,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "occlusion": {
+            "labels": 0,
+            "match_labels": 0,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 0,
+            "correct": 0,
+            "precision": null,
+            "precision_wilson_95": null,
+            "within_two": 0,
+            "within_two_rate": null,
+            "coverage_of_match_labels": null,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 0
+            },
+            "preferred_frame_error": {
+              "n": 0
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 0,
+              "correct": 0,
+              "precision": null,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "corridor": {
+            "labels": 9,
+            "match_labels": 9,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 9,
+            "correct": 2,
+            "precision": 0.2222,
+            "precision_wilson_95": [
+              0.0632,
+              0.5474
+            ],
+            "within_two": 4,
+            "within_two_rate": 0.4444,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 9,
+              "median": 3.0,
+              "p90": 4.2,
+              "max": 5,
+              "within_two_frames": 4
+            },
+            "preferred_frame_error": {
+              "n": 9,
+              "median": 3.0,
+              "p90": 4.2,
+              "max": 5,
+              "within_two_frames": 4
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 9,
+              "correct": 2,
+              "precision": 0.2222,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          }
+        }
+      },
+      "strata_pooled": {
+        "kink": {
+          "labels": 18,
+          "match_labels": 17,
+          "undetermined_labels": 0,
+          "no_correspondence_labels": 1,
+          "accepted": 16,
+          "correct": 5,
+          "precision": 0.3125,
+          "precision_wilson_95": [
+            0.1416,
+            0.556
+          ],
+          "within_two": 11,
+          "within_two_rate": 0.6875,
+          "coverage_of_match_labels": 0.9412,
+          "abstained_on_match_labels": 1,
+          "gated_match_labels": 0,
+          "interval_distance": {
+            "n": 16,
+            "median": 2.0,
+            "p90": 5.5,
+            "max": 6,
+            "within_two_frames": 11
+          },
+          "preferred_frame_error": {
+            "n": 16,
+            "median": 2.0,
+            "p90": 6.5,
+            "max": 9,
+            "within_two_frames": 10
+          },
+          "undetermined": {
+            "labels": 0,
+            "accepted": 0,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 1,
+            "false_accepts": 1,
+            "false_accept_query_ids": [
+              "cam0_v3_23"
+            ],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 17,
+            "correct": 5,
+            "precision": 0.2941,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "dark": {
+          "labels": 9,
+          "match_labels": 7,
+          "undetermined_labels": 2,
+          "no_correspondence_labels": 0,
+          "accepted": 7,
+          "correct": 3,
+          "precision": 0.4286,
+          "precision_wilson_95": [
+            0.1582,
+            0.7495
+          ],
+          "within_two": 4,
+          "within_two_rate": 0.5714,
+          "coverage_of_match_labels": 1.0,
+          "abstained_on_match_labels": 0,
+          "gated_match_labels": 0,
+          "interval_distance": {
+            "n": 7,
+            "median": 2.0,
+            "p90": 10.000000000000002,
+            "max": 13,
+            "within_two_frames": 4
+          },
+          "preferred_frame_error": {
+            "n": 7,
+            "median": 2.0,
+            "p90": 10.600000000000001,
+            "max": 13,
+            "within_two_frames": 4
+          },
+          "undetermined": {
+            "labels": 2,
+            "accepted": 2,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 9,
+            "correct": 3,
+            "precision": 0.3333,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "occlusion": {
+          "labels": 3,
+          "match_labels": 2,
+          "undetermined_labels": 1,
+          "no_correspondence_labels": 0,
+          "accepted": 2,
+          "correct": 2,
+          "precision": 1.0,
+          "precision_wilson_95": [
+            0.3424,
+            1.0
+          ],
+          "within_two": 2,
+          "within_two_rate": 1.0,
+          "coverage_of_match_labels": 1.0,
+          "abstained_on_match_labels": 0,
+          "gated_match_labels": 0,
+          "interval_distance": {
+            "n": 2,
+            "median": 0.0,
+            "p90": 0.0,
+            "max": 0,
+            "within_two_frames": 2
+          },
+          "preferred_frame_error": {
+            "n": 2,
+            "median": 0.5,
+            "p90": 0.9,
+            "max": 1,
+            "within_two_frames": 2
+          },
+          "undetermined": {
+            "labels": 1,
+            "accepted": 1,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 3,
+            "correct": 2,
+            "precision": 0.6667,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "corridor": {
+          "labels": 18,
+          "match_labels": 18,
+          "undetermined_labels": 0,
+          "no_correspondence_labels": 0,
+          "accepted": 18,
+          "correct": 7,
+          "precision": 0.3889,
+          "precision_wilson_95": [
+            0.2031,
+            0.6138
+          ],
+          "within_two": 11,
+          "within_two_rate": 0.6111,
+          "coverage_of_match_labels": 1.0,
+          "abstained_on_match_labels": 0,
+          "gated_match_labels": 0,
+          "interval_distance": {
+            "n": 18,
+            "median": 1.0,
+            "p90": 5.0,
+            "max": 6,
+            "within_two_frames": 11
+          },
+          "preferred_frame_error": {
+            "n": 18,
+            "median": 2.0,
+            "p90": 5.300000000000001,
+            "max": 8,
+            "within_two_frames": 11
+          },
+          "undetermined": {
+            "labels": 0,
+            "accepted": 0,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 18,
+            "correct": 7,
+            "precision": 0.3889,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        }
+      }
+    },
+    "submitted_plus_slope_gate": {
+      "description": "submitted mapping with the frozen slope gate: a Run A row flagged near_kink in frame_quality_flags.csv (increment >= 6 within +-10 Run A frames) is turned into an abstention",
+      "held_out": true,
+      "cameras": {
+        "cam0": {
+          "labels": 24,
+          "match_labels": 21,
+          "undetermined_labels": 2,
+          "no_correspondence_labels": 1,
+          "accepted": 14,
+          "correct": 10,
+          "precision": 0.7143,
+          "precision_wilson_95": [
+            0.4535,
+            0.8828
+          ],
+          "within_two": 12,
+          "within_two_rate": 0.8571,
+          "coverage_of_match_labels": 0.6667,
+          "abstained_on_match_labels": 7,
+          "gated_match_labels": 7,
+          "interval_distance": {
+            "n": 14,
+            "median": 0.0,
+            "p90": 4.100000000000003,
+            "max": 6,
+            "within_two_frames": 12
+          },
+          "preferred_frame_error": {
+            "n": 14,
+            "median": 0.5,
+            "p90": 4.800000000000004,
+            "max": 8,
+            "within_two_frames": 12
+          },
+          "undetermined": {
+            "labels": 2,
+            "accepted": 2,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 1,
+            "false_accepts": 1,
+            "false_accept_query_ids": [
+              "cam0_v3_23"
+            ],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 17,
+            "correct": 10,
+            "precision": 0.5882,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "cam5": {
+          "labels": 24,
+          "match_labels": 23,
+          "undetermined_labels": 1,
+          "no_correspondence_labels": 0,
+          "accepted": 12,
+          "correct": 1,
+          "precision": 0.0833,
+          "precision_wilson_95": [
+            0.0149,
+            0.3539
+          ],
+          "within_two": 4,
+          "within_two_rate": 0.3333,
+          "coverage_of_match_labels": 0.5217,
+          "abstained_on_match_labels": 11,
+          "gated_match_labels": 11,
+          "interval_distance": {
+            "n": 12,
+            "median": 4.0,
+            "p90": 5.0,
+            "max": 13,
+            "within_two_frames": 4
+          },
+          "preferred_frame_error": {
+            "n": 12,
+            "median": 4.0,
+            "p90": 5.0,
+            "max": 13,
+            "within_two_frames": 4
+          },
+          "undetermined": {
+            "labels": 1,
+            "accepted": 0,
+            "abstained": 1,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 12,
+            "correct": 1,
+            "precision": 0.0833,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        }
+      },
+      "pooled": {
+        "labels": 48,
+        "match_labels": 44,
+        "undetermined_labels": 3,
+        "no_correspondence_labels": 1,
+        "accepted": 26,
+        "correct": 11,
+        "precision": 0.4231,
+        "precision_wilson_95": [
+          0.2554,
+          0.6105
+        ],
+        "within_two": 16,
+        "within_two_rate": 0.6154,
+        "coverage_of_match_labels": 0.5909,
+        "abstained_on_match_labels": 18,
+        "gated_match_labels": 18,
+        "interval_distance": {
+          "n": 26,
+          "median": 1.0,
+          "p90": 5.0,
+          "max": 13,
+          "within_two_frames": 16
+        },
+        "preferred_frame_error": {
+          "n": 26,
+          "median": 2.0,
+          "p90": 5.5,
+          "max": 13,
+          "within_two_frames": 16
+        },
+        "undetermined": {
+          "labels": 3,
+          "accepted": 2,
+          "abstained": 1,
+          "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+        },
+        "no_correspondence": {
+          "labels": 1,
+          "false_accepts": 1,
+          "false_accept_query_ids": [
+            "cam0_v3_23"
+          ],
+          "true_rejects": 0,
+          "true_reject_query_ids": []
+        },
+        "lower_bound_reading": {
+          "accepted": 29,
+          "correct": 11,
+          "precision": 0.3793,
+          "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+        }
+      },
+      "strata": {
+        "cam0": {
+          "kink": {
+            "labels": 8,
+            "match_labels": 7,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 1,
+            "accepted": 1,
+            "correct": 1,
+            "precision": 1.0,
+            "precision_wilson_95": [
+              0.2065,
+              1.0
+            ],
+            "within_two": 1,
+            "within_two_rate": 1.0,
+            "coverage_of_match_labels": 0.1429,
+            "abstained_on_match_labels": 6,
+            "gated_match_labels": 6,
+            "interval_distance": {
+              "n": 1,
+              "median": 0.0,
+              "p90": 0.0,
+              "max": 0,
+              "within_two_frames": 1
+            },
+            "preferred_frame_error": {
+              "n": 1,
+              "median": 1.0,
+              "p90": 1.0,
+              "max": 1,
+              "within_two_frames": 1
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 1,
+              "false_accepts": 1,
+              "false_accept_query_ids": [
+                "cam0_v3_23"
+              ],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 2,
+              "correct": 1,
+              "precision": 0.5,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "dark": {
+            "labels": 4,
+            "match_labels": 3,
+            "undetermined_labels": 1,
+            "no_correspondence_labels": 0,
+            "accepted": 3,
+            "correct": 3,
+            "precision": 1.0,
+            "precision_wilson_95": [
+              0.4385,
+              1.0
+            ],
+            "within_two": 3,
+            "within_two_rate": 1.0,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 3,
+              "median": 0.0,
+              "p90": 0.0,
+              "max": 0,
+              "within_two_frames": 3
+            },
+            "preferred_frame_error": {
+              "n": 3,
+              "median": 0.0,
+              "p90": 0.0,
+              "max": 0,
+              "within_two_frames": 3
+            },
+            "undetermined": {
+              "labels": 1,
+              "accepted": 1,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 4,
+              "correct": 3,
+              "precision": 0.75,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "occlusion": {
+            "labels": 3,
+            "match_labels": 2,
+            "undetermined_labels": 1,
+            "no_correspondence_labels": 0,
+            "accepted": 2,
+            "correct": 2,
+            "precision": 1.0,
+            "precision_wilson_95": [
+              0.3424,
+              1.0
+            ],
+            "within_two": 2,
+            "within_two_rate": 1.0,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 2,
+              "median": 0.0,
+              "p90": 0.0,
+              "max": 0,
+              "within_two_frames": 2
+            },
+            "preferred_frame_error": {
+              "n": 2,
+              "median": 0.5,
+              "p90": 0.9,
+              "max": 1,
+              "within_two_frames": 2
+            },
+            "undetermined": {
+              "labels": 1,
+              "accepted": 1,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 3,
+              "correct": 2,
+              "precision": 0.6667,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "corridor": {
+            "labels": 9,
+            "match_labels": 9,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 8,
+            "correct": 4,
+            "precision": 0.5,
+            "precision_wilson_95": [
+              0.2152,
+              0.7848
+            ],
+            "within_two": 6,
+            "within_two_rate": 0.75,
+            "coverage_of_match_labels": 0.8889,
+            "abstained_on_match_labels": 1,
+            "gated_match_labels": 1,
+            "interval_distance": {
+              "n": 8,
+              "median": 0.5,
+              "p90": 5.3,
+              "max": 6,
+              "within_two_frames": 6
+            },
+            "preferred_frame_error": {
+              "n": 8,
+              "median": 1.5,
+              "p90": 6.6,
+              "max": 8,
+              "within_two_frames": 6
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 8,
+              "correct": 4,
+              "precision": 0.5,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          }
+        },
+        "cam5": {
+          "kink": {
+            "labels": 10,
+            "match_labels": 10,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 1,
+            "correct": 0,
+            "precision": 0.0,
+            "precision_wilson_95": [
+              0.0,
+              0.7935
+            ],
+            "within_two": 1,
+            "within_two_rate": 1.0,
+            "coverage_of_match_labels": 0.1,
+            "abstained_on_match_labels": 9,
+            "gated_match_labels": 9,
+            "interval_distance": {
+              "n": 1,
+              "median": 1.0,
+              "p90": 1.0,
+              "max": 1,
+              "within_two_frames": 1
+            },
+            "preferred_frame_error": {
+              "n": 1,
+              "median": 1.0,
+              "p90": 1.0,
+              "max": 1,
+              "within_two_frames": 1
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 1,
+              "correct": 0,
+              "precision": 0.0,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "dark": {
+            "labels": 5,
+            "match_labels": 4,
+            "undetermined_labels": 1,
+            "no_correspondence_labels": 0,
+            "accepted": 3,
+            "correct": 0,
+            "precision": 0.0,
+            "precision_wilson_95": [
+              0.0,
+              0.5615
+            ],
+            "within_two": 0,
+            "within_two_rate": 0.0,
+            "coverage_of_match_labels": 0.75,
+            "abstained_on_match_labels": 1,
+            "gated_match_labels": 1,
+            "interval_distance": {
+              "n": 3,
+              "median": 4.0,
+              "p90": 11.200000000000001,
+              "max": 13,
+              "within_two_frames": 0
+            },
+            "preferred_frame_error": {
+              "n": 3,
+              "median": 4.0,
+              "p90": 11.200000000000001,
+              "max": 13,
+              "within_two_frames": 0
+            },
+            "undetermined": {
+              "labels": 1,
+              "accepted": 0,
+              "abstained": 1,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 3,
+              "correct": 0,
+              "precision": 0.0,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "occlusion": {
+            "labels": 0,
+            "match_labels": 0,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 0,
+            "correct": 0,
+            "precision": null,
+            "precision_wilson_95": null,
+            "within_two": 0,
+            "within_two_rate": null,
+            "coverage_of_match_labels": null,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 0
+            },
+            "preferred_frame_error": {
+              "n": 0
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 0,
+              "correct": 0,
+              "precision": null,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "corridor": {
+            "labels": 9,
+            "match_labels": 9,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 8,
+            "correct": 1,
+            "precision": 0.125,
+            "precision_wilson_95": [
+              0.0224,
+              0.4709
+            ],
+            "within_two": 3,
+            "within_two_rate": 0.375,
+            "coverage_of_match_labels": 0.8889,
+            "abstained_on_match_labels": 1,
+            "gated_match_labels": 1,
+            "interval_distance": {
+              "n": 8,
+              "median": 3.5,
+              "p90": 5.0,
+              "max": 5,
+              "within_two_frames": 3
+            },
+            "preferred_frame_error": {
+              "n": 8,
+              "median": 3.5,
+              "p90": 5.0,
+              "max": 5,
+              "within_two_frames": 3
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 8,
+              "correct": 1,
+              "precision": 0.125,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          }
+        }
+      },
+      "strata_pooled": {
+        "kink": {
+          "labels": 18,
+          "match_labels": 17,
+          "undetermined_labels": 0,
+          "no_correspondence_labels": 1,
+          "accepted": 2,
+          "correct": 1,
+          "precision": 0.5,
+          "precision_wilson_95": [
+            0.0945,
+            0.9055
+          ],
+          "within_two": 2,
+          "within_two_rate": 1.0,
+          "coverage_of_match_labels": 0.1176,
+          "abstained_on_match_labels": 15,
+          "gated_match_labels": 15,
+          "interval_distance": {
+            "n": 2,
+            "median": 0.5,
+            "p90": 0.9,
+            "max": 1,
+            "within_two_frames": 2
+          },
+          "preferred_frame_error": {
+            "n": 2,
+            "median": 1.0,
+            "p90": 1.0,
+            "max": 1,
+            "within_two_frames": 2
+          },
+          "undetermined": {
+            "labels": 0,
+            "accepted": 0,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 1,
+            "false_accepts": 1,
+            "false_accept_query_ids": [
+              "cam0_v3_23"
+            ],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 3,
+            "correct": 1,
+            "precision": 0.3333,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "dark": {
+          "labels": 9,
+          "match_labels": 7,
+          "undetermined_labels": 2,
+          "no_correspondence_labels": 0,
+          "accepted": 6,
+          "correct": 3,
+          "precision": 0.5,
+          "precision_wilson_95": [
+            0.1876,
+            0.8124
+          ],
+          "within_two": 3,
+          "within_two_rate": 0.5,
+          "coverage_of_match_labels": 0.8571,
+          "abstained_on_match_labels": 1,
+          "gated_match_labels": 1,
+          "interval_distance": {
+            "n": 6,
+            "median": 2.0,
+            "p90": 8.5,
+            "max": 13,
+            "within_two_frames": 3
+          },
+          "preferred_frame_error": {
+            "n": 6,
+            "median": 2.0,
+            "p90": 8.5,
+            "max": 13,
+            "within_two_frames": 3
+          },
+          "undetermined": {
+            "labels": 2,
+            "accepted": 1,
+            "abstained": 1,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 7,
+            "correct": 3,
+            "precision": 0.4286,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "occlusion": {
+          "labels": 3,
+          "match_labels": 2,
+          "undetermined_labels": 1,
+          "no_correspondence_labels": 0,
+          "accepted": 2,
+          "correct": 2,
+          "precision": 1.0,
+          "precision_wilson_95": [
+            0.3424,
+            1.0
+          ],
+          "within_two": 2,
+          "within_two_rate": 1.0,
+          "coverage_of_match_labels": 1.0,
+          "abstained_on_match_labels": 0,
+          "gated_match_labels": 0,
+          "interval_distance": {
+            "n": 2,
+            "median": 0.0,
+            "p90": 0.0,
+            "max": 0,
+            "within_two_frames": 2
+          },
+          "preferred_frame_error": {
+            "n": 2,
+            "median": 0.5,
+            "p90": 0.9,
+            "max": 1,
+            "within_two_frames": 2
+          },
+          "undetermined": {
+            "labels": 1,
+            "accepted": 1,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 3,
+            "correct": 2,
+            "precision": 0.6667,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "corridor": {
+          "labels": 18,
+          "match_labels": 18,
+          "undetermined_labels": 0,
+          "no_correspondence_labels": 0,
+          "accepted": 16,
+          "correct": 5,
+          "precision": 0.3125,
+          "precision_wilson_95": [
+            0.1416,
+            0.556
+          ],
+          "within_two": 9,
+          "within_two_rate": 0.5625,
+          "coverage_of_match_labels": 0.8889,
+          "abstained_on_match_labels": 2,
+          "gated_match_labels": 2,
+          "interval_distance": {
+            "n": 16,
+            "median": 2.0,
+            "p90": 5.0,
+            "max": 6,
+            "within_two_frames": 9
+          },
+          "preferred_frame_error": {
+            "n": 16,
+            "median": 2.0,
+            "p90": 5.5,
+            "max": 8,
+            "within_two_frames": 9
+          },
+          "undetermined": {
+            "labels": 0,
+            "accepted": 0,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 16,
+            "correct": 5,
+            "precision": 0.3125,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        }
+      }
+    },
+    "submitted_plus_dark_gate": {
+      "description": "Task 3 reading: submitted mapping with DATA_POLICY.md's exposure rule as an abstention - a row whose Run A frame or whose predicted Run B frame is flagged too_dark is turned into an abstention",
+      "held_out": true,
+      "cameras": {
+        "cam0": {
+          "labels": 24,
+          "match_labels": 21,
+          "undetermined_labels": 2,
+          "no_correspondence_labels": 1,
+          "accepted": 16,
+          "correct": 8,
+          "precision": 0.5,
+          "precision_wilson_95": [
+            0.28,
+            0.72
+          ],
+          "within_two": 12,
+          "within_two_rate": 0.75,
+          "coverage_of_match_labels": 0.7619,
+          "abstained_on_match_labels": 5,
+          "gated_match_labels": 5,
+          "interval_distance": {
+            "n": 16,
+            "median": 0.5,
+            "p90": 6.0,
+            "max": 10,
+            "within_two_frames": 12
+          },
+          "preferred_frame_error": {
+            "n": 16,
+            "median": 1.0,
+            "p90": 7.5,
+            "max": 13,
+            "within_two_frames": 11
+          },
+          "undetermined": {
+            "labels": 2,
+            "accepted": 0,
+            "abstained": 2,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 1,
+            "false_accepts": 1,
+            "false_accept_query_ids": [
+              "cam0_v3_23"
+            ],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 17,
+            "correct": 8,
+            "precision": 0.4706,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "cam5": {
+          "labels": 24,
+          "match_labels": 23,
+          "undetermined_labels": 1,
+          "no_correspondence_labels": 0,
+          "accepted": 19,
+          "correct": 2,
+          "precision": 0.1053,
+          "precision_wilson_95": [
+            0.0294,
+            0.3139
+          ],
+          "within_two": 5,
+          "within_two_rate": 0.2632,
+          "coverage_of_match_labels": 0.8261,
+          "abstained_on_match_labels": 4,
+          "gated_match_labels": 4,
+          "interval_distance": {
+            "n": 19,
+            "median": 4.0,
+            "p90": 10.599999999999998,
+            "max": 14,
+            "within_two_frames": 5
+          },
+          "preferred_frame_error": {
+            "n": 19,
+            "median": 4.0,
+            "p90": 12.399999999999999,
+            "max": 14,
+            "within_two_frames": 5
+          },
+          "undetermined": {
+            "labels": 1,
+            "accepted": 0,
+            "abstained": 1,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 19,
+            "correct": 2,
+            "precision": 0.1053,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        }
+      },
+      "pooled": {
+        "labels": 48,
+        "match_labels": 44,
+        "undetermined_labels": 3,
+        "no_correspondence_labels": 1,
+        "accepted": 35,
+        "correct": 10,
+        "precision": 0.2857,
+        "precision_wilson_95": [
+          0.1633,
+          0.4505
+        ],
+        "within_two": 17,
+        "within_two_rate": 0.4857,
+        "coverage_of_match_labels": 0.7955,
+        "abstained_on_match_labels": 9,
+        "gated_match_labels": 9,
+        "interval_distance": {
+          "n": 35,
+          "median": 3.0,
+          "p90": 8.800000000000004,
+          "max": 14,
+          "within_two_frames": 17
+        },
+        "preferred_frame_error": {
+          "n": 35,
+          "median": 3.0,
+          "p90": 10.400000000000006,
+          "max": 14,
+          "within_two_frames": 16
+        },
+        "undetermined": {
+          "labels": 3,
+          "accepted": 0,
+          "abstained": 3,
+          "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+        },
+        "no_correspondence": {
+          "labels": 1,
+          "false_accepts": 1,
+          "false_accept_query_ids": [
+            "cam0_v3_23"
+          ],
+          "true_rejects": 0,
+          "true_reject_query_ids": []
+        },
+        "lower_bound_reading": {
+          "accepted": 36,
+          "correct": 10,
+          "precision": 0.2778,
+          "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+        }
+      },
+      "strata": {
+        "cam0": {
+          "kink": {
+            "labels": 8,
+            "match_labels": 7,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 1,
+            "accepted": 7,
+            "correct": 3,
+            "precision": 0.4286,
+            "precision_wilson_95": [
+              0.1582,
+              0.7495
+            ],
+            "within_two": 5,
+            "within_two_rate": 0.7143,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 7,
+              "median": 1.0,
+              "p90": 7.600000000000001,
+              "max": 10,
+              "within_two_frames": 5
+            },
+            "preferred_frame_error": {
+              "n": 7,
+              "median": 1.0,
+              "p90": 9.400000000000002,
+              "max": 13,
+              "within_two_frames": 4
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 1,
+              "false_accepts": 1,
+              "false_accept_query_ids": [
+                "cam0_v3_23"
+              ],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 8,
+              "correct": 3,
+              "precision": 0.375,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "dark": {
+            "labels": 4,
+            "match_labels": 3,
+            "undetermined_labels": 1,
+            "no_correspondence_labels": 0,
+            "accepted": 0,
+            "correct": 0,
+            "precision": null,
+            "precision_wilson_95": null,
+            "within_two": 0,
+            "within_two_rate": null,
+            "coverage_of_match_labels": 0.0,
+            "abstained_on_match_labels": 3,
+            "gated_match_labels": 3,
+            "interval_distance": {
+              "n": 0
+            },
+            "preferred_frame_error": {
+              "n": 0
+            },
+            "undetermined": {
+              "labels": 1,
+              "accepted": 0,
+              "abstained": 1,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 0,
+              "correct": 0,
+              "precision": null,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "occlusion": {
+            "labels": 3,
+            "match_labels": 2,
+            "undetermined_labels": 1,
+            "no_correspondence_labels": 0,
+            "accepted": 1,
+            "correct": 1,
+            "precision": 1.0,
+            "precision_wilson_95": [
+              0.2065,
+              1.0
+            ],
+            "within_two": 1,
+            "within_two_rate": 1.0,
+            "coverage_of_match_labels": 0.5,
+            "abstained_on_match_labels": 1,
+            "gated_match_labels": 1,
+            "interval_distance": {
+              "n": 1,
+              "median": 0.0,
+              "p90": 0.0,
+              "max": 0,
+              "within_two_frames": 1
+            },
+            "preferred_frame_error": {
+              "n": 1,
+              "median": 0.0,
+              "p90": 0.0,
+              "max": 0,
+              "within_two_frames": 1
+            },
+            "undetermined": {
+              "labels": 1,
+              "accepted": 0,
+              "abstained": 1,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 1,
+              "correct": 1,
+              "precision": 1.0,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "corridor": {
+            "labels": 9,
+            "match_labels": 9,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 8,
+            "correct": 4,
+            "precision": 0.5,
+            "precision_wilson_95": [
+              0.2152,
+              0.7848
+            ],
+            "within_two": 6,
+            "within_two_rate": 0.75,
+            "coverage_of_match_labels": 0.8889,
+            "abstained_on_match_labels": 1,
+            "gated_match_labels": 1,
+            "interval_distance": {
+              "n": 8,
+              "median": 0.5,
+              "p90": 5.3,
+              "max": 6,
+              "within_two_frames": 6
+            },
+            "preferred_frame_error": {
+              "n": 8,
+              "median": 0.5,
+              "p90": 6.6,
+              "max": 8,
+              "within_two_frames": 6
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 8,
+              "correct": 4,
+              "precision": 0.5,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          }
+        },
+        "cam5": {
+          "kink": {
+            "labels": 10,
+            "match_labels": 10,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 10,
+            "correct": 0,
+            "precision": 0.0,
+            "precision_wilson_95": [
+              0.0,
+              0.2775
+            ],
+            "within_two": 1,
+            "within_two_rate": 0.1,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 10,
+              "median": 6.0,
+              "p90": 13.1,
+              "max": 14,
+              "within_two_frames": 1
+            },
+            "preferred_frame_error": {
+              "n": 10,
+              "median": 7.0,
+              "p90": 14.0,
+              "max": 14,
+              "within_two_frames": 1
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 10,
+              "correct": 0,
+              "precision": 0.0,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "dark": {
+            "labels": 5,
+            "match_labels": 4,
+            "undetermined_labels": 1,
+            "no_correspondence_labels": 0,
+            "accepted": 0,
+            "correct": 0,
+            "precision": null,
+            "precision_wilson_95": null,
+            "within_two": 0,
+            "within_two_rate": null,
+            "coverage_of_match_labels": 0.0,
+            "abstained_on_match_labels": 4,
+            "gated_match_labels": 4,
+            "interval_distance": {
+              "n": 0
+            },
+            "preferred_frame_error": {
+              "n": 0
+            },
+            "undetermined": {
+              "labels": 1,
+              "accepted": 0,
+              "abstained": 1,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 0,
+              "correct": 0,
+              "precision": null,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "occlusion": {
+            "labels": 0,
+            "match_labels": 0,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 0,
+            "correct": 0,
+            "precision": null,
+            "precision_wilson_95": null,
+            "within_two": 0,
+            "within_two_rate": null,
+            "coverage_of_match_labels": null,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 0
+            },
+            "preferred_frame_error": {
+              "n": 0
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 0,
+              "correct": 0,
+              "precision": null,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "corridor": {
+            "labels": 9,
+            "match_labels": 9,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 9,
+            "correct": 2,
+            "precision": 0.2222,
+            "precision_wilson_95": [
+              0.0632,
+              0.5474
+            ],
+            "within_two": 4,
+            "within_two_rate": 0.4444,
+            "coverage_of_match_labels": 1.0,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 9,
+              "median": 3.0,
+              "p90": 5.0,
+              "max": 5,
+              "within_two_frames": 4
+            },
+            "preferred_frame_error": {
+              "n": 9,
+              "median": 3.0,
+              "p90": 5.0,
+              "max": 5,
+              "within_two_frames": 4
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 9,
+              "correct": 2,
+              "precision": 0.2222,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          }
+        }
+      },
+      "strata_pooled": {
+        "kink": {
+          "labels": 18,
+          "match_labels": 17,
+          "undetermined_labels": 0,
+          "no_correspondence_labels": 1,
+          "accepted": 17,
+          "correct": 3,
+          "precision": 0.1765,
+          "precision_wilson_95": [
+            0.0619,
+            0.4103
+          ],
+          "within_two": 6,
+          "within_two_rate": 0.3529,
+          "coverage_of_match_labels": 1.0,
+          "abstained_on_match_labels": 0,
+          "gated_match_labels": 0,
+          "interval_distance": {
+            "n": 17,
+            "median": 5.0,
+            "p90": 11.200000000000001,
+            "max": 14,
+            "within_two_frames": 6
+          },
+          "preferred_frame_error": {
+            "n": 17,
+            "median": 5.0,
+            "p90": 13.4,
+            "max": 14,
+            "within_two_frames": 5
+          },
+          "undetermined": {
+            "labels": 0,
+            "accepted": 0,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 1,
+            "false_accepts": 1,
+            "false_accept_query_ids": [
+              "cam0_v3_23"
+            ],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 18,
+            "correct": 3,
+            "precision": 0.1667,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "dark": {
+          "labels": 9,
+          "match_labels": 7,
+          "undetermined_labels": 2,
+          "no_correspondence_labels": 0,
+          "accepted": 0,
+          "correct": 0,
+          "precision": null,
+          "precision_wilson_95": null,
+          "within_two": 0,
+          "within_two_rate": null,
+          "coverage_of_match_labels": 0.0,
+          "abstained_on_match_labels": 7,
+          "gated_match_labels": 7,
+          "interval_distance": {
+            "n": 0
+          },
+          "preferred_frame_error": {
+            "n": 0
+          },
+          "undetermined": {
+            "labels": 2,
+            "accepted": 0,
+            "abstained": 2,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 0,
+            "correct": 0,
+            "precision": null,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "occlusion": {
+          "labels": 3,
+          "match_labels": 2,
+          "undetermined_labels": 1,
+          "no_correspondence_labels": 0,
+          "accepted": 1,
+          "correct": 1,
+          "precision": 1.0,
+          "precision_wilson_95": [
+            0.2065,
+            1.0
+          ],
+          "within_two": 1,
+          "within_two_rate": 1.0,
+          "coverage_of_match_labels": 0.5,
+          "abstained_on_match_labels": 1,
+          "gated_match_labels": 1,
+          "interval_distance": {
+            "n": 1,
+            "median": 0.0,
+            "p90": 0.0,
+            "max": 0,
+            "within_two_frames": 1
+          },
+          "preferred_frame_error": {
+            "n": 1,
+            "median": 0.0,
+            "p90": 0.0,
+            "max": 0,
+            "within_two_frames": 1
+          },
+          "undetermined": {
+            "labels": 1,
+            "accepted": 0,
+            "abstained": 1,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 1,
+            "correct": 1,
+            "precision": 1.0,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "corridor": {
+          "labels": 18,
+          "match_labels": 18,
+          "undetermined_labels": 0,
+          "no_correspondence_labels": 0,
+          "accepted": 17,
+          "correct": 6,
+          "precision": 0.3529,
+          "precision_wilson_95": [
+            0.1731,
+            0.587
+          ],
+          "within_two": 10,
+          "within_two_rate": 0.5882,
+          "coverage_of_match_labels": 0.9444,
+          "abstained_on_match_labels": 1,
+          "gated_match_labels": 1,
+          "interval_distance": {
+            "n": 17,
+            "median": 2.0,
+            "p90": 5.0,
+            "max": 6,
+            "within_two_frames": 10
+          },
+          "preferred_frame_error": {
+            "n": 17,
+            "median": 2.0,
+            "p90": 5.4,
+            "max": 8,
+            "within_two_frames": 10
+          },
+          "undetermined": {
+            "labels": 0,
+            "accepted": 0,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 17,
+            "correct": 6,
+            "precision": 0.3529,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        }
+      }
+    },
+    "submitted_plus_both_gates": {
+      "description": "submitted mapping with both gates applied (union of the two)",
+      "held_out": true,
+      "cameras": {
+        "cam0": {
+          "labels": 24,
+          "match_labels": 21,
+          "undetermined_labels": 2,
+          "no_correspondence_labels": 1,
+          "accepted": 9,
+          "correct": 5,
+          "precision": 0.5556,
+          "precision_wilson_95": [
+            0.2667,
+            0.8112
+          ],
+          "within_two": 7,
+          "within_two_rate": 0.7778,
+          "coverage_of_match_labels": 0.4286,
+          "abstained_on_match_labels": 12,
+          "gated_match_labels": 12,
+          "interval_distance": {
+            "n": 9,
+            "median": 0.0,
+            "p90": 5.2,
+            "max": 6,
+            "within_two_frames": 7
+          },
+          "preferred_frame_error": {
+            "n": 9,
+            "median": 1.0,
+            "p90": 6.4,
+            "max": 8,
+            "within_two_frames": 7
+          },
+          "undetermined": {
+            "labels": 2,
+            "accepted": 0,
+            "abstained": 2,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 1,
+            "false_accepts": 1,
+            "false_accept_query_ids": [
+              "cam0_v3_23"
+            ],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 10,
+            "correct": 5,
+            "precision": 0.5,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "cam5": {
+          "labels": 24,
+          "match_labels": 23,
+          "undetermined_labels": 1,
+          "no_correspondence_labels": 0,
+          "accepted": 9,
+          "correct": 1,
+          "precision": 0.1111,
+          "precision_wilson_95": [
+            0.0199,
+            0.435
+          ],
+          "within_two": 4,
+          "within_two_rate": 0.4444,
+          "coverage_of_match_labels": 0.3913,
+          "abstained_on_match_labels": 14,
+          "gated_match_labels": 14,
+          "interval_distance": {
+            "n": 9,
+            "median": 3.0,
+            "p90": 5.0,
+            "max": 5,
+            "within_two_frames": 4
+          },
+          "preferred_frame_error": {
+            "n": 9,
+            "median": 3.0,
+            "p90": 5.0,
+            "max": 5,
+            "within_two_frames": 4
+          },
+          "undetermined": {
+            "labels": 1,
+            "accepted": 0,
+            "abstained": 1,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 9,
+            "correct": 1,
+            "precision": 0.1111,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        }
+      },
+      "pooled": {
+        "labels": 48,
+        "match_labels": 44,
+        "undetermined_labels": 3,
+        "no_correspondence_labels": 1,
+        "accepted": 18,
+        "correct": 6,
+        "precision": 0.3333,
+        "precision_wilson_95": [
+          0.1628,
+          0.5625
+        ],
+        "within_two": 11,
+        "within_two_rate": 0.6111,
+        "coverage_of_match_labels": 0.4091,
+        "abstained_on_match_labels": 26,
+        "gated_match_labels": 26,
+        "interval_distance": {
+          "n": 18,
+          "median": 1.5,
+          "p90": 5.0,
+          "max": 6,
+          "within_two_frames": 11
+        },
+        "preferred_frame_error": {
+          "n": 18,
+          "median": 2.0,
+          "p90": 5.300000000000001,
+          "max": 8,
+          "within_two_frames": 11
+        },
+        "undetermined": {
+          "labels": 3,
+          "accepted": 0,
+          "abstained": 3,
+          "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+        },
+        "no_correspondence": {
+          "labels": 1,
+          "false_accepts": 1,
+          "false_accept_query_ids": [
+            "cam0_v3_23"
+          ],
+          "true_rejects": 0,
+          "true_reject_query_ids": []
+        },
+        "lower_bound_reading": {
+          "accepted": 19,
+          "correct": 6,
+          "precision": 0.3158,
+          "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+        }
+      },
+      "strata": {
+        "cam0": {
+          "kink": {
+            "labels": 8,
+            "match_labels": 7,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 1,
+            "accepted": 1,
+            "correct": 1,
+            "precision": 1.0,
+            "precision_wilson_95": [
+              0.2065,
+              1.0
+            ],
+            "within_two": 1,
+            "within_two_rate": 1.0,
+            "coverage_of_match_labels": 0.1429,
+            "abstained_on_match_labels": 6,
+            "gated_match_labels": 6,
+            "interval_distance": {
+              "n": 1,
+              "median": 0.0,
+              "p90": 0.0,
+              "max": 0,
+              "within_two_frames": 1
+            },
+            "preferred_frame_error": {
+              "n": 1,
+              "median": 1.0,
+              "p90": 1.0,
+              "max": 1,
+              "within_two_frames": 1
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 1,
+              "false_accepts": 1,
+              "false_accept_query_ids": [
+                "cam0_v3_23"
+              ],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 2,
+              "correct": 1,
+              "precision": 0.5,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "dark": {
+            "labels": 4,
+            "match_labels": 3,
+            "undetermined_labels": 1,
+            "no_correspondence_labels": 0,
+            "accepted": 0,
+            "correct": 0,
+            "precision": null,
+            "precision_wilson_95": null,
+            "within_two": 0,
+            "within_two_rate": null,
+            "coverage_of_match_labels": 0.0,
+            "abstained_on_match_labels": 3,
+            "gated_match_labels": 3,
+            "interval_distance": {
+              "n": 0
+            },
+            "preferred_frame_error": {
+              "n": 0
+            },
+            "undetermined": {
+              "labels": 1,
+              "accepted": 0,
+              "abstained": 1,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 0,
+              "correct": 0,
+              "precision": null,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "occlusion": {
+            "labels": 3,
+            "match_labels": 2,
+            "undetermined_labels": 1,
+            "no_correspondence_labels": 0,
+            "accepted": 1,
+            "correct": 1,
+            "precision": 1.0,
+            "precision_wilson_95": [
+              0.2065,
+              1.0
+            ],
+            "within_two": 1,
+            "within_two_rate": 1.0,
+            "coverage_of_match_labels": 0.5,
+            "abstained_on_match_labels": 1,
+            "gated_match_labels": 1,
+            "interval_distance": {
+              "n": 1,
+              "median": 0.0,
+              "p90": 0.0,
+              "max": 0,
+              "within_two_frames": 1
+            },
+            "preferred_frame_error": {
+              "n": 1,
+              "median": 0.0,
+              "p90": 0.0,
+              "max": 0,
+              "within_two_frames": 1
+            },
+            "undetermined": {
+              "labels": 1,
+              "accepted": 0,
+              "abstained": 1,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 1,
+              "correct": 1,
+              "precision": 1.0,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "corridor": {
+            "labels": 9,
+            "match_labels": 9,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 7,
+            "correct": 3,
+            "precision": 0.4286,
+            "precision_wilson_95": [
+              0.1582,
+              0.7495
+            ],
+            "within_two": 5,
+            "within_two_rate": 0.7143,
+            "coverage_of_match_labels": 0.7778,
+            "abstained_on_match_labels": 2,
+            "gated_match_labels": 2,
+            "interval_distance": {
+              "n": 7,
+              "median": 1.0,
+              "p90": 5.4,
+              "max": 6,
+              "within_two_frames": 5
+            },
+            "preferred_frame_error": {
+              "n": 7,
+              "median": 1.0,
+              "p90": 6.800000000000001,
+              "max": 8,
+              "within_two_frames": 5
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 7,
+              "correct": 3,
+              "precision": 0.4286,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          }
+        },
+        "cam5": {
+          "kink": {
+            "labels": 10,
+            "match_labels": 10,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 1,
+            "correct": 0,
+            "precision": 0.0,
+            "precision_wilson_95": [
+              0.0,
+              0.7935
+            ],
+            "within_two": 1,
+            "within_two_rate": 1.0,
+            "coverage_of_match_labels": 0.1,
+            "abstained_on_match_labels": 9,
+            "gated_match_labels": 9,
+            "interval_distance": {
+              "n": 1,
+              "median": 1.0,
+              "p90": 1.0,
+              "max": 1,
+              "within_two_frames": 1
+            },
+            "preferred_frame_error": {
+              "n": 1,
+              "median": 1.0,
+              "p90": 1.0,
+              "max": 1,
+              "within_two_frames": 1
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 1,
+              "correct": 0,
+              "precision": 0.0,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "dark": {
+            "labels": 5,
+            "match_labels": 4,
+            "undetermined_labels": 1,
+            "no_correspondence_labels": 0,
+            "accepted": 0,
+            "correct": 0,
+            "precision": null,
+            "precision_wilson_95": null,
+            "within_two": 0,
+            "within_two_rate": null,
+            "coverage_of_match_labels": 0.0,
+            "abstained_on_match_labels": 4,
+            "gated_match_labels": 4,
+            "interval_distance": {
+              "n": 0
+            },
+            "preferred_frame_error": {
+              "n": 0
+            },
+            "undetermined": {
+              "labels": 1,
+              "accepted": 0,
+              "abstained": 1,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 0,
+              "correct": 0,
+              "precision": null,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "occlusion": {
+            "labels": 0,
+            "match_labels": 0,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 0,
+            "correct": 0,
+            "precision": null,
+            "precision_wilson_95": null,
+            "within_two": 0,
+            "within_two_rate": null,
+            "coverage_of_match_labels": null,
+            "abstained_on_match_labels": 0,
+            "gated_match_labels": 0,
+            "interval_distance": {
+              "n": 0
+            },
+            "preferred_frame_error": {
+              "n": 0
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 0,
+              "correct": 0,
+              "precision": null,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          },
+          "corridor": {
+            "labels": 9,
+            "match_labels": 9,
+            "undetermined_labels": 0,
+            "no_correspondence_labels": 0,
+            "accepted": 8,
+            "correct": 1,
+            "precision": 0.125,
+            "precision_wilson_95": [
+              0.0224,
+              0.4709
+            ],
+            "within_two": 3,
+            "within_two_rate": 0.375,
+            "coverage_of_match_labels": 0.8889,
+            "abstained_on_match_labels": 1,
+            "gated_match_labels": 1,
+            "interval_distance": {
+              "n": 8,
+              "median": 3.5,
+              "p90": 5.0,
+              "max": 5,
+              "within_two_frames": 3
+            },
+            "preferred_frame_error": {
+              "n": 8,
+              "median": 3.5,
+              "p90": 5.0,
+              "max": 5,
+              "within_two_frames": 3
+            },
+            "undetermined": {
+              "labels": 0,
+              "accepted": 0,
+              "abstained": 0,
+              "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+            },
+            "no_correspondence": {
+              "labels": 0,
+              "false_accepts": 0,
+              "false_accept_query_ids": [],
+              "true_rejects": 0,
+              "true_reject_query_ids": []
+            },
+            "lower_bound_reading": {
+              "accepted": 8,
+              "correct": 1,
+              "precision": 0.125,
+              "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+            }
+          }
+        }
+      },
+      "strata_pooled": {
+        "kink": {
+          "labels": 18,
+          "match_labels": 17,
+          "undetermined_labels": 0,
+          "no_correspondence_labels": 1,
+          "accepted": 2,
+          "correct": 1,
+          "precision": 0.5,
+          "precision_wilson_95": [
+            0.0945,
+            0.9055
+          ],
+          "within_two": 2,
+          "within_two_rate": 1.0,
+          "coverage_of_match_labels": 0.1176,
+          "abstained_on_match_labels": 15,
+          "gated_match_labels": 15,
+          "interval_distance": {
+            "n": 2,
+            "median": 0.5,
+            "p90": 0.9,
+            "max": 1,
+            "within_two_frames": 2
+          },
+          "preferred_frame_error": {
+            "n": 2,
+            "median": 1.0,
+            "p90": 1.0,
+            "max": 1,
+            "within_two_frames": 2
+          },
+          "undetermined": {
+            "labels": 0,
+            "accepted": 0,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 1,
+            "false_accepts": 1,
+            "false_accept_query_ids": [
+              "cam0_v3_23"
+            ],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 3,
+            "correct": 1,
+            "precision": 0.3333,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "dark": {
+          "labels": 9,
+          "match_labels": 7,
+          "undetermined_labels": 2,
+          "no_correspondence_labels": 0,
+          "accepted": 0,
+          "correct": 0,
+          "precision": null,
+          "precision_wilson_95": null,
+          "within_two": 0,
+          "within_two_rate": null,
+          "coverage_of_match_labels": 0.0,
+          "abstained_on_match_labels": 7,
+          "gated_match_labels": 7,
+          "interval_distance": {
+            "n": 0
+          },
+          "preferred_frame_error": {
+            "n": 0
+          },
+          "undetermined": {
+            "labels": 2,
+            "accepted": 0,
+            "abstained": 2,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 0,
+            "correct": 0,
+            "precision": null,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "occlusion": {
+          "labels": 3,
+          "match_labels": 2,
+          "undetermined_labels": 1,
+          "no_correspondence_labels": 0,
+          "accepted": 1,
+          "correct": 1,
+          "precision": 1.0,
+          "precision_wilson_95": [
+            0.2065,
+            1.0
+          ],
+          "within_two": 1,
+          "within_two_rate": 1.0,
+          "coverage_of_match_labels": 0.5,
+          "abstained_on_match_labels": 1,
+          "gated_match_labels": 1,
+          "interval_distance": {
+            "n": 1,
+            "median": 0.0,
+            "p90": 0.0,
+            "max": 0,
+            "within_two_frames": 1
+          },
+          "preferred_frame_error": {
+            "n": 1,
+            "median": 0.0,
+            "p90": 0.0,
+            "max": 0,
+            "within_two_frames": 1
+          },
+          "undetermined": {
+            "labels": 1,
+            "accepted": 0,
+            "abstained": 1,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 1,
+            "correct": 1,
+            "precision": 1.0,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        },
+        "corridor": {
+          "labels": 18,
+          "match_labels": 18,
+          "undetermined_labels": 0,
+          "no_correspondence_labels": 0,
+          "accepted": 15,
+          "correct": 4,
+          "precision": 0.2667,
+          "precision_wilson_95": [
+            0.109,
+            0.5195
+          ],
+          "within_two": 8,
+          "within_two_rate": 0.5333,
+          "coverage_of_match_labels": 0.8333,
+          "abstained_on_match_labels": 3,
+          "gated_match_labels": 3,
+          "interval_distance": {
+            "n": 15,
+            "median": 2.0,
+            "p90": 5.0,
+            "max": 6,
+            "within_two_frames": 8
+          },
+          "preferred_frame_error": {
+            "n": 15,
+            "median": 2.0,
+            "p90": 5.6,
+            "max": 8,
+            "within_two_frames": 8
+          },
+          "undetermined": {
+            "labels": 0,
+            "accepted": 0,
+            "abstained": 0,
+            "note": "reported as counts only; an undetermined label is not a negative and cannot make an acceptance right or wrong"
+          },
+          "no_correspondence": {
+            "labels": 0,
+            "false_accepts": 0,
+            "false_accept_query_ids": [],
+            "true_rejects": 0,
+            "true_reject_query_ids": []
+          },
+          "lower_bound_reading": {
+            "accepted": 15,
+            "correct": 4,
+            "precision": 0.2667,
+            "note": "every acceptance on a non-match label charged as an error. The seal says undetermined rows are not negatives, so this is a lower bound, not the reported precision."
+          }
+        }
+      }
+    }
+  },
+  "kink_claim_test": {
+    "claim": "The claim under test, made on the v2 labels: match labels near a mapping kink miss more often than labels away from one. On v3 the comparison is the kink stratum against the corridor stratum, which is the untargeted control; the v2 labels play no part in it.",
+    "v2_reference": "For reference only, the v2 numbers that produced the claim: CAM0 0.5 near (4 of 8) against 0.2083 away (5 of 24); CAM5 0.6667 against 0.6087.",
+    "miss_definition": "an accepted match label whose interval distance exceeds 0",
+    "per_method": {
+      "submitted_unified": {
+        "cam0": {
+          "kink": {
+            "match_labels": 7,
+            "accepted": 7,
+            "abstained": 0,
+            "misses_interval_distance_gt_0": 4,
+            "miss_rate": 0.5714,
+            "miss_rate_wilson_95": [
+              0.2505,
+              0.8418
+            ],
+            "median_interval_distance": 1.0,
+            "max_interval_distance": 10
+          },
+          "corridor": {
+            "match_labels": 9,
+            "accepted": 9,
+            "abstained": 0,
+            "misses_interval_distance_gt_0": 4,
+            "miss_rate": 0.4444,
+            "miss_rate_wilson_95": [
+              0.1888,
+              0.7333
+            ],
+            "median_interval_distance": 0.0,
+            "max_interval_distance": 6
+          },
+          "kink_minus_corridor_miss_rate": 0.127
+        },
+        "cam5": {
+          "kink": {
+            "match_labels": 10,
+            "accepted": 10,
+            "abstained": 0,
+            "misses_interval_distance_gt_0": 10,
+            "miss_rate": 1.0,
+            "miss_rate_wilson_95": [
+              0.7225,
+              1.0
+            ],
+            "median_interval_distance": 6.0,
+            "max_interval_distance": 14
+          },
+          "corridor": {
+            "match_labels": 9,
+            "accepted": 9,
+            "abstained": 0,
+            "misses_interval_distance_gt_0": 7,
+            "miss_rate": 0.7778,
+            "miss_rate_wilson_95": [
+              0.4526,
+              0.9368
+            ],
+            "median_interval_distance": 3.0,
+            "max_interval_distance": 5
+          },
+          "kink_minus_corridor_miss_rate": 0.2222
+        },
+        "pooled": {
+          "kink": {
+            "match_labels": 17,
+            "accepted": 17,
+            "abstained": 0,
+            "misses_interval_distance_gt_0": 14,
+            "miss_rate": 0.8235,
+            "miss_rate_wilson_95": [
+              0.5897,
+              0.9381
+            ],
+            "median_interval_distance": 5.0,
+            "max_interval_distance": 14
+          },
+          "corridor": {
+            "match_labels": 18,
+            "accepted": 18,
+            "abstained": 0,
+            "misses_interval_distance_gt_0": 11,
+            "miss_rate": 0.6111,
+            "miss_rate_wilson_95": [
+              0.3862,
+              0.7969
+            ],
+            "median_interval_distance": 1.5,
+            "max_interval_distance": 6
+          },
+          "kink_minus_corridor_miss_rate": 0.2124
+        }
+      },
+      "slope_refinement_variant": {
+        "cam0": {
+          "kink": {
+            "match_labels": 7,
+            "accepted": 7,
+            "abstained": 0,
+            "misses_interval_distance_gt_0": 2,
+            "miss_rate": 0.2857,
+            "miss_rate_wilson_95": [
+              0.0822,
+              0.6411
+            ],
+            "median_interval_distance": 0.0,
+            "max_interval_distance": 8
+          },
+          "corridor": {
+            "match_labels": 9,
+            "accepted": 9,
+            "abstained": 0,
+            "misses_interval_distance_gt_0": 3,
+            "miss_rate": 0.3333,
+            "miss_rate_wilson_95": [
+              0.1206,
+              0.6458
+            ],
+            "median_interval_distance": 0.0,
+            "max_interval_distance": 6
+          },
+          "kink_minus_corridor_miss_rate": -0.0476
+        },
+        "cam5": {
+          "kink": {
+            "match_labels": 10,
+            "accepted": 10,
+            "abstained": 0,
+            "misses_interval_distance_gt_0": 9,
+            "miss_rate": 0.9,
+            "miss_rate_wilson_95": [
+              0.5958,
+              0.9821
+            ],
+            "median_interval_distance": 4.0,
+            "max_interval_distance": 13
+          },
+          "corridor": {
+            "match_labels": 9,
+            "accepted": 9,
+            "abstained": 0,
+            "misses_interval_distance_gt_0": 7,
+            "miss_rate": 0.7778,
+            "miss_rate_wilson_95": [
+              0.4526,
+              0.9368
+            ],
+            "median_interval_distance": 3.0,
+            "max_interval_distance": 5
+          },
+          "kink_minus_corridor_miss_rate": 0.1222
+        },
+        "pooled": {
+          "kink": {
+            "match_labels": 17,
+            "accepted": 17,
+            "abstained": 0,
+            "misses_interval_distance_gt_0": 11,
+            "miss_rate": 0.6471,
+            "miss_rate_wilson_95": [
+              0.413,
+              0.8269
+            ],
+            "median_interval_distance": 3.0,
+            "max_interval_distance": 13
+          },
+          "corridor": {
+            "match_labels": 18,
+            "accepted": 18,
+            "abstained": 0,
+            "misses_interval_distance_gt_0": 10,
+            "miss_rate": 0.5556,
+            "miss_rate_wilson_95": [
+              0.3372,
+              0.7544
+            ],
+            "median_interval_distance": 1.0,
+            "max_interval_distance": 6
+          },
+          "kink_minus_corridor_miss_rate": 0.0915
+        }
+      },
+      "posterior_model": {
+        "cam0": {
+          "kink": {
+            "match_labels": 7,
+            "accepted": 7,
+            "abstained": 0,
+            "misses_interval_distance_gt_0": 2,
+            "miss_rate": 0.2857,
+            "miss_rate_wilson_95": [
+              0.0822,
+              0.6411
+            ],
+            "median_interval_distance": 0.0,
+            "max_interval_distance": 6
+          },
+          "corridor": {
+            "match_labels": 9,
+            "accepted": 9,
+            "abstained": 0,
+            "misses_interval_distance_gt_0": 4,
+            "miss_rate": 0.4444,
+            "miss_rate_wilson_95": [
+              0.1888,
+              0.7333
+            ],
+            "median_interval_distance": 0.0,
+            "max_interval_distance": 6
+          },
+          "kink_minus_corridor_miss_rate": -0.1587
+        },
+        "cam5": {
+          "kink": {
+            "match_labels": 10,
+            "accepted": 9,
+            "abstained": 1,
+            "misses_interval_distance_gt_0": 9,
+            "miss_rate": 1.0,
+            "miss_rate_wilson_95": [
+              0.7009,
+              1.0
+            ],
+            "median_interval_distance": 2.0,
+            "max_interval_distance": 6
+          },
+          "corridor": {
+            "match_labels": 9,
+            "accepted": 9,
+            "abstained": 0,
+            "misses_interval_distance_gt_0": 7,
+            "miss_rate": 0.7778,
+            "miss_rate_wilson_95": [
+              0.4526,
+              0.9368
+            ],
+            "median_interval_distance": 3.0,
+            "max_interval_distance": 5
+          },
+          "kink_minus_corridor_miss_rate": 0.2222
+        },
+        "pooled": {
+          "kink": {
+            "match_labels": 17,
+            "accepted": 16,
+            "abstained": 1,
+            "misses_interval_distance_gt_0": 11,
+            "miss_rate": 0.6875,
+            "miss_rate_wilson_95": [
+              0.444,
+              0.8584
+            ],
+            "median_interval_distance": 2.0,
+            "max_interval_distance": 6
+          },
+          "corridor": {
+            "match_labels": 18,
+            "accepted": 18,
+            "abstained": 0,
+            "misses_interval_distance_gt_0": 11,
+            "miss_rate": 0.6111,
+            "miss_rate_wilson_95": [
+              0.3862,
+              0.7969
+            ],
+            "median_interval_distance": 1.0,
+            "max_interval_distance": 6
+          },
+          "kink_minus_corridor_miss_rate": 0.0764
+        }
+      },
+      "submitted_plus_slope_gate": {
+        "cam0": {
+          "kink": {
+            "match_labels": 7,
+            "accepted": 1,
+            "abstained": 6,
+            "misses_interval_distance_gt_0": 0,
+            "miss_rate": 0.0,
+            "miss_rate_wilson_95": [
+              0.0,
+              0.7935
+            ],
+            "median_interval_distance": 0.0,
+            "max_interval_distance": 0
+          },
+          "corridor": {
+            "match_labels": 9,
+            "accepted": 8,
+            "abstained": 1,
+            "misses_interval_distance_gt_0": 4,
+            "miss_rate": 0.5,
+            "miss_rate_wilson_95": [
+              0.2152,
+              0.7848
+            ],
+            "median_interval_distance": 0.5,
+            "max_interval_distance": 6
+          },
+          "kink_minus_corridor_miss_rate": -0.5
+        },
+        "cam5": {
+          "kink": {
+            "match_labels": 10,
+            "accepted": 1,
+            "abstained": 9,
+            "misses_interval_distance_gt_0": 1,
+            "miss_rate": 1.0,
+            "miss_rate_wilson_95": [
+              0.2065,
+              1.0
+            ],
+            "median_interval_distance": 1.0,
+            "max_interval_distance": 1
+          },
+          "corridor": {
+            "match_labels": 9,
+            "accepted": 8,
+            "abstained": 1,
+            "misses_interval_distance_gt_0": 7,
+            "miss_rate": 0.875,
+            "miss_rate_wilson_95": [
+              0.5291,
+              0.9776
+            ],
+            "median_interval_distance": 3.5,
+            "max_interval_distance": 5
+          },
+          "kink_minus_corridor_miss_rate": 0.125
+        },
+        "pooled": {
+          "kink": {
+            "match_labels": 17,
+            "accepted": 2,
+            "abstained": 15,
+            "misses_interval_distance_gt_0": 1,
+            "miss_rate": 0.5,
+            "miss_rate_wilson_95": [
+              0.0945,
+              0.9055
+            ],
+            "median_interval_distance": 0.5,
+            "max_interval_distance": 1
+          },
+          "corridor": {
+            "match_labels": 18,
+            "accepted": 16,
+            "abstained": 2,
+            "misses_interval_distance_gt_0": 11,
+            "miss_rate": 0.6875,
+            "miss_rate_wilson_95": [
+              0.444,
+              0.8584
+            ],
+            "median_interval_distance": 2.0,
+            "max_interval_distance": 6
+          },
+          "kink_minus_corridor_miss_rate": -0.1875
+        }
+      },
+      "submitted_plus_dark_gate": {
+        "cam0": {
+          "kink": {
+            "match_labels": 7,
+            "accepted": 7,
+            "abstained": 0,
+            "misses_interval_distance_gt_0": 4,
+            "miss_rate": 0.5714,
+            "miss_rate_wilson_95": [
+              0.2505,
+              0.8418
+            ],
+            "median_interval_distance": 1.0,
+            "max_interval_distance": 10
+          },
+          "corridor": {
+            "match_labels": 9,
+            "accepted": 8,
+            "abstained": 1,
+            "misses_interval_distance_gt_0": 4,
+            "miss_rate": 0.5,
+            "miss_rate_wilson_95": [
+              0.2152,
+              0.7848
+            ],
+            "median_interval_distance": 0.5,
+            "max_interval_distance": 6
+          },
+          "kink_minus_corridor_miss_rate": 0.0714
+        },
+        "cam5": {
+          "kink": {
+            "match_labels": 10,
+            "accepted": 10,
+            "abstained": 0,
+            "misses_interval_distance_gt_0": 10,
+            "miss_rate": 1.0,
+            "miss_rate_wilson_95": [
+              0.7225,
+              1.0
+            ],
+            "median_interval_distance": 6.0,
+            "max_interval_distance": 14
+          },
+          "corridor": {
+            "match_labels": 9,
+            "accepted": 9,
+            "abstained": 0,
+            "misses_interval_distance_gt_0": 7,
+            "miss_rate": 0.7778,
+            "miss_rate_wilson_95": [
+              0.4526,
+              0.9368
+            ],
+            "median_interval_distance": 3.0,
+            "max_interval_distance": 5
+          },
+          "kink_minus_corridor_miss_rate": 0.2222
+        },
+        "pooled": {
+          "kink": {
+            "match_labels": 17,
+            "accepted": 17,
+            "abstained": 0,
+            "misses_interval_distance_gt_0": 14,
+            "miss_rate": 0.8235,
+            "miss_rate_wilson_95": [
+              0.5897,
+              0.9381
+            ],
+            "median_interval_distance": 5.0,
+            "max_interval_distance": 14
+          },
+          "corridor": {
+            "match_labels": 18,
+            "accepted": 17,
+            "abstained": 1,
+            "misses_interval_distance_gt_0": 11,
+            "miss_rate": 0.6471,
+            "miss_rate_wilson_95": [
+              0.413,
+              0.8269
+            ],
+            "median_interval_distance": 2.0,
+            "max_interval_distance": 6
+          },
+          "kink_minus_corridor_miss_rate": 0.1764
+        }
+      },
+      "submitted_plus_both_gates": {
+        "cam0": {
+          "kink": {
+            "match_labels": 7,
+            "accepted": 1,
+            "abstained": 6,
+            "misses_interval_distance_gt_0": 0,
+            "miss_rate": 0.0,
+            "miss_rate_wilson_95": [
+              0.0,
+              0.7935
+            ],
+            "median_interval_distance": 0.0,
+            "max_interval_distance": 0
+          },
+          "corridor": {
+            "match_labels": 9,
+            "accepted": 7,
+            "abstained": 2,
+            "misses_interval_distance_gt_0": 4,
+            "miss_rate": 0.5714,
+            "miss_rate_wilson_95": [
+              0.2505,
+              0.8418
+            ],
+            "median_interval_distance": 1.0,
+            "max_interval_distance": 6
+          },
+          "kink_minus_corridor_miss_rate": -0.5714
+        },
+        "cam5": {
+          "kink": {
+            "match_labels": 10,
+            "accepted": 1,
+            "abstained": 9,
+            "misses_interval_distance_gt_0": 1,
+            "miss_rate": 1.0,
+            "miss_rate_wilson_95": [
+              0.2065,
+              1.0
+            ],
+            "median_interval_distance": 1.0,
+            "max_interval_distance": 1
+          },
+          "corridor": {
+            "match_labels": 9,
+            "accepted": 8,
+            "abstained": 1,
+            "misses_interval_distance_gt_0": 7,
+            "miss_rate": 0.875,
+            "miss_rate_wilson_95": [
+              0.5291,
+              0.9776
+            ],
+            "median_interval_distance": 3.5,
+            "max_interval_distance": 5
+          },
+          "kink_minus_corridor_miss_rate": 0.125
+        },
+        "pooled": {
+          "kink": {
+            "match_labels": 17,
+            "accepted": 2,
+            "abstained": 15,
+            "misses_interval_distance_gt_0": 1,
+            "miss_rate": 0.5,
+            "miss_rate_wilson_95": [
+              0.0945,
+              0.9055
+            ],
+            "median_interval_distance": 0.5,
+            "max_interval_distance": 1
+          },
+          "corridor": {
+            "match_labels": 18,
+            "accepted": 15,
+            "abstained": 3,
+            "misses_interval_distance_gt_0": 11,
+            "miss_rate": 0.7333,
+            "miss_rate_wilson_95": [
+              0.4805,
+              0.891
+            ],
+            "median_interval_distance": 2.0,
+            "max_interval_distance": 6
+          },
+          "kink_minus_corridor_miss_rate": -0.2333
+        }
+      }
+    },
+    "replicated_on_v3": {
+      "cameras_where_the_kink_stratum_misses_more": [
+        "cam0",
+        "cam5"
+      ],
+      "verdict_basis": "direction only; with 7-10 kink and 9 corridor labels per camera the Wilson intervals overlap heavily and no rate is established"
+    },
+    "verdict": "Replication verdict: the kink stratum misses more often than the corridor stratum on CAM0, CAM5. The intervals overlap at these counts, so this is a direction, not a rate."
+  },
+  "pose_convention_check": {
+    "filmstrip_raster": [
+      960,
+      720
+    ],
+    "method": "pose_dx_px / pose_dy_px as written into each label, in filmstrip pixels; compared against the pose diagnostic's matcher-convention median scaled from its own raster to the filmstrip raster",
+    "cameras": {
+      "cam0": {
+        "match_labels_measured": 21,
+        "measured_dx_px_at_measurement_raster": 0.0,
+        "measured_dy_px_at_measurement_raster": 0.0,
+        "measured_dx_px_scaled_to_filmstrip": 0.0,
+        "measured_dy_px_scaled_to_filmstrip": 0.0,
+        "seeded_default": [
+          0,
+          0
+        ],
+        "annotator_dx_px": {
+          "median": 0.0,
+          "mad": 0.0,
+          "iqr": [
+            0.0,
+            0.0
+          ],
+          "min": 0.0,
+          "max": 0.0
+        },
+        "annotator_dy_px": {
+          "median": 0.0,
+          "mad": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "rows_left_at_the_seeded_default": 24,
+        "dx_median_minus_scaled_measurement": 0.0,
+        "dx_sign_agrees_with_measurement": true,
+        "label_convention_dx_px_scaled_to_filmstrip": 0.0
+      },
+      "cam5": {
+        "match_labels_measured": 23,
+        "measured_dx_px_at_measurement_raster": -37.5,
+        "measured_dy_px_at_measurement_raster": -11.0,
+        "measured_dx_px_scaled_to_filmstrip": -40.18,
+        "measured_dy_px_scaled_to_filmstrip": -11.79,
+        "seeded_default": [
+          -40,
+          -12
+        ],
+        "annotator_dx_px": {
+          "median": 81.0,
+          "mad": 17.0,
+          "iqr": [
+            68.0,
+            102.0
+          ],
+          "min": 10.0,
+          "max": 200.0
+        },
+        "annotator_dy_px": {
+          "median": 0.0,
+          "mad": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "rows_left_at_the_seeded_default": 1,
+        "dx_median_minus_scaled_measurement": 121.18,
+        "dx_sign_agrees_with_measurement": false,
+        "label_convention_dx_px_scaled_to_filmstrip": -60.0
+      }
+    },
+    "verdict": "The CAM5 sliders the annotator settled on have the opposite sign to the seeded default and a larger magnitude: median 81.0 px against the measured -40.18 px, with dy at 0.0 px against -11.79. The one CAM5 row left at the seeded default is the undetermined query, so the default was overridden on every row the annotator could actually align. That is a sign error in how the measured shift was applied to the viewer, not a defect in the labels: the compensation moves the displayed Run B raster and the annotator corrected it by eye per query. CAM0's measured offset is 0/0 and every CAM0 row is 0/0, which is the control."
+  }
+}

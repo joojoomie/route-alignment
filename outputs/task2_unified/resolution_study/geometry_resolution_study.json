@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "built_at_utc": "2026-09-01T15:38:41.051412+00:00",
+  "label_source": "original calibration labels, reclassified as development data",
+  "evidence_status": "development-only component selection; not an accuracy estimate and not evaluated on the sealed blind set",
+  "selection_rule": "maximum passing pairs, ties broken by lower cost per pair",
+  "selected_resolution": {
+    "cam0": "896x672",
+    "cam5": "896x672"
+  },
+  "finding": "Passing rate peaks at 896x672 and falls again at native resolution, where fine foliage texture inflates the raw match count while the inlier ratio collapses. Keypoint count alone would have chosen wrong.",
+  "records": [
+    {
+      "camera_id": "cam0",
+      "width": 448,
+      "height": 336,
+      "pairs": 6,
+      "median_keypoints_runA": 720,
+      "median_keypoints_runB": 683,
+      "median_matches": 22,
+      "median_inliers": 18,
+      "mean_inlier_ratio": 0.8108,
+      "passed_distributed_support": 2,
+      "seconds_per_pair": 0.416
+    },
+    {
+      "camera_id": "cam0",
+      "width": 640,
+      "height": 480,
+      "pairs": 6,
+      "median_keypoints_runA": 1513,
+      "median_keypoints_runB": 1461,
+      "median_matches": 31,
+      "median_inliers": 21,
+      "mean_inlier_ratio": 0.6957,
+      "passed_distributed_support": 4,
+      "seconds_per_pair": 0.822
+    },
+    {
+      "camera_id": "cam0",
+      "width": 896,
+      "height": 672,
+      "pairs": 6,
+      "median_keypoints_runA": 3083,
+      "median_keypoints_runB": 2912,
+      "median_matches": 48,
+      "median_inliers": 29,
+      "mean_inlier_ratio": 0.6052,
+      "passed_distributed_support": 6,
+      "seconds_per_pair": 1.726
+    },
+    {
+      "camera_id": "cam0",
+      "width": 1440,
+      "height": 1080,
+      "pairs": 6,
+      "median_keypoints_runA": 9053,
+      "median_keypoints_runB": 7323,
+      "median_matches": 85,
+      "median_inliers": 27,
+      "mean_inlier_ratio": 0.3859,
+      "passed_distributed_support": 4,
+      "seconds_per_pair": 5.627
+    },
+    {
+      "camera_id": "cam5",
+      "width": 448,
+      "height": 336,
+      "pairs": 6,
+      "median_keypoints_runA": 612,
+      "median_keypoints_runB": 519,
+      "median_matches": 12,
+      "median_inliers": 10,
+      "mean_inlier_ratio": 0.7076,
+      "passed_distributed_support": 1,
+      "seconds_per_pair": 0.351
+    },
+    {
+      "camera_id": "cam5",
+      "width": 640,
+      "height": 480,
+      "pairs": 6,
+      "median_keypoints_runA": 1259,
+      "median_keypoints_runB": 1015,
+      "median_matches": 21,
+      "median_inliers": 11,
+      "mean_inlier_ratio": 0.622,
+      "passed_distributed_support": 1,
+      "seconds_per_pair": 0.727
+    },
+    {
+      "camera_id": "cam5",
+      "width": 896,
+      "height": 672,
+      "pairs": 6,
+      "median_keypoints_runA": 2607,
+      "median_keypoints_runB": 1952,
+      "median_matches": 40,
+      "median_inliers": 16,
+      "mean_inlier_ratio": 0.4629,
+      "passed_distributed_support": 5,
+      "seconds_per_pair": 1.39
+    },
+    {
+      "camera_id": "cam5",
+      "width": 1440,
+      "height": 1080,
+      "pairs": 6,
+      "median_keypoints_runA": 7333,
+      "median_keypoints_runB": 4649,
+      "median_matches": 86,
+      "median_inliers": 23,
+      "mean_inlier_ratio": 0.3283,
+      "passed_distributed_support": 2,
+      "seconds_per_pair": 4.23
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": 2,
+  "regenerated_because": "weak_alignment_rows carried the v1 sparse-anchor counts (1071 CAM0, 287 CAM5) long after the submitted mapping became the unified dense one. The column now describes the submitted mapping and the v1 counts move to their own column so the change is visible.",
+  "columns": {
+    "canonical_decoded_images": "outputs/task3/frame_quality_flags.csv",
+    "pre_route_or_transition_excluded": "outputs/task2_keyframes/route_phase_boundaries.csv",
+    "route_region_images": "canonical_decoded_images - pre_route_or_transition_excluded",
+    "development_representatives": "outputs/task2_keyframes/keyframe_selection_summary.csv",
+    "weak_alignment_rows": "outputs/task2_unified/<camera>/frame_mapping_unified.csv, rows with a runB_frame",
+    "sparse_anchor_alternative_rows": "outputs/task2_final/<camera>_frame_mapping.csv, rows with a runB_frame"
+  },
+  "weak_supervision_note": "Every one of these rows is a weak positive, not a label. Coverage is not accuracy: see the blind evaluations for what a populated row is actually worth, per camera.",
+  "totals": {
+    "canonical_decoded_images": 10585,
+    "pre_route_or_transition_excluded": 588,
+    "route_region_images": 9997,
+    "development_representatives": 1197,
+    "weak_alignment_rows": 4584,
+    "sparse_anchor_alternative_rows": 1358
+  }
+}

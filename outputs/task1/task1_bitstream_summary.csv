@@ -1,0 +1,5 @@
+run,camera,file,file_size_bytes,file_size_is_4096_block_aligned,bitstream_picture_count,coded_raster,display_raster,cropped_luma_rows,slice_type_I,slice_type_P,slice_type_B,idr_count,idr_interval_frames,final_gop_length,reordered_picture_count,reordered_picture_fraction,per_picture_sei
+runA,cam0,cam0_20_yuv420p_output.hevc,128974848,True,2674,1440x1088,1440x1080,8,11,674,1989,11,250,174,1989,0.743829,pic_timing=2674
+runA,cam5,cam5_20_yuv420p_output.hevc,121896960,True,2674,1440x1088,1440x1080,8,11,674,1989,11,250,174,1989,0.743829,pic_timing=2674
+runB,cam0,cam0_20_yuv420p_output (1).hevc,69992448,True,2622,1440x1088,1440x1080,8,11,661,1950,11,250,122,1950,0.743707,pic_timing=2622
+runB,cam5,cam5_20_yuv420p_output (1).hevc,63963136,True,2615,1440x1088,1440x1080,8,11,659,1945,11,250,115,1946,0.744168,pic_timing=2615

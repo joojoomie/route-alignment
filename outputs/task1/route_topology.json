@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "built_at_utc": "2026-09-02T12:14:20.206214+00:00",
+  "what_this_measures": "Loop structure and internal aliasing of the route, read from the frozen DINOv2-S descriptor cache the matcher itself uses.",
+  "what_it_does_not_do": "It does not prove metric loop closure. Without GPS or odometry, a high tail-to-head cosine supports an approximate revisit hypothesis only, and the alignment still treats departure and arrival as distinct occurrences.",
+  "definitions": {
+    "tail_frames": 100,
+    "head_frames": 300,
+    "non_local_separation_frames": 150,
+    "alias_cosine_threshold": 0.85,
+    "route_start_source": "outputs/task2_keyframes/route_phase_boundaries.csv"
+  },
+  "route_bounds": {
+    "runA_start": 180,
+    "runB_start": 114
+  },
+  "descriptor_caches": {
+    "runA_cam0": "outputs/task2_unified/cam0/descriptors_runA_cam0_32d3d8c2ee9c_448x336_bt709-tv2pc_maska17e88c45245_dinov2s-masked-v1.npy",
+    "runB_cam0": "outputs/task2_unified/cam0/descriptors_runB_cam0_0ca49c26aec2_448x336_bt709-tv2pc_maska17e88c45245_dinov2s-masked-v1.npy",
+    "runA_cam5": "outputs/task2_unified/cam5/descriptors_runA_cam5_2bc77eacd508_448x336_bt709-tv2pc_maska17e88c45245_dinov2s-masked-v1.npy",
+    "runB_cam5": "outputs/task2_unified/cam5/descriptors_runB_cam5_7246b79f0a96_448x336_bt709-tv2pc_maska17e88c45245_dinov2s-masked-v1.npy"
+  },
+  "cameras": {
+    "cam0": {
+      "runs": {
+        "runA": {
+          "frames": 2674,
+          "route_start": 180,
+          "revisit": {
+            "available": true,
+            "tail_window": [
+              2574,
+              2673
+            ],
+            "head_window": [
+              180,
+              479
+            ],
+            "best_cosine": 0.9814,
+            "tail_frame": 2604,
+            "head_frame": 180,
+            "median_cosine": 0.7273
+          }
+        },
+        "runB": {
+          "frames": 2622,
+          "route_start": 114,
+          "revisit": {
+            "available": true,
+            "tail_window": [
+              2522,
+              2621
+            ],
+            "head_window": [
+              114,
+              413
+            ],
+            "best_cosine": 0.9376,
+            "tail_frame": 2534,
+            "head_frame": 134,
+            "median_cosine": 0.7221
+          }
+        }
+      },
+      "runA_aliasing": {
+        "route_frames": 2494,
+        "separation_frames": 150,
+        "eligible_pairs": 2745996,
+        "cosine_threshold": 0.85,
+        "non_local_pairs": 99721,
+        "non_local_fraction": 0.036315,
+        "by_threshold": {
+          "0.8": 459028,
+          "0.85": 99721,
+          "0.9": 10290
+        }
+      }
+    },
+    "cam5": {
+      "runs": {
+        "runA": {
+          "frames": 2674,
+          "route_start": 180,
+          "revisit": {
+            "available": true,
+            "tail_window": [
+              2574,
+              2673
+            ],
+            "head_window": [
+              180,
+              479
+            ],
+            "best_cosine": 0.9749,
+            "tail_frame": 2602,
+            "head_frame": 180,
+            "median_cosine": 0.8207
+          }
+        },
+        "runB": {
+          "frames": 2615,
+          "route_start": 114,
+          "revisit": {
+            "available": true,
+            "tail_window": [
+              2515,
+              2614
+            ],
+            "head_window": [
+              114,
+              413
+            ],
+            "best_cosine": 0.9436,
+            "tail_frame": 2603,
+            "head_frame": 122,
+            "median_cosine": 0.7937
+          }
+        }
+      },
+      "runA_aliasing": {
+        "route_frames": 2494,
+        "separation_frames": 150,
+        "eligible_pairs": 2745996,
+        "cosine_threshold": 0.85,
+        "non_local_pairs": 234024,
+        "non_local_fraction": 0.085224,
+        "by_threshold": {
+          "0.8": 756186,
+          "0.85": 234024,
+          "0.9": 16242
+        }
+      }
+    }
+  },
+  "aliasing_ratio": {
+    "definition": "CAM5 non-local look-alike pairs divided by CAM0's, Run A",
+    "cam0_pairs": 99721,
+    "cam5_pairs": 234024,
+    "ratio_cam5_over_cam0": 2.35,
+    "by_threshold": {
+      "0.8": 1.65,
+      "0.85": 2.35,
+      "0.9": 1.58
+    },
+    "note": "The counts move with the cosine threshold; the ratio is what the report cites and it is reported at three thresholds so its stability is visible rather than assumed."
+  }
+}

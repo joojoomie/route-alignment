@@ -1,0 +1,317 @@
+{
+  "schema_version": 1,
+  "built_at_utc": "2026-09-02T06:50:17.805498+00:00",
+  "method": "posterior model with an explicit null state",
+  "ground_truth": "by construction: a stretch of Run B is withheld, so frames whose partner lay inside it genuinely have none. Which frames those are is decided by an INDEPENDENT alignment (the unified matcher), not by the model under test; the model's own definition is reported beside it so the difference - the circularity - is measurable.",
+  "scope": "Measures whether the mechanism can notice an absence. It does not estimate how often absences occur on a real route, and it is not a substitute for a held-out label set.",
+  "decision_thresholds": {
+    "max_null_posterior": 0.05,
+    "min_window_posterior": 0.3
+  },
+  "cameras": {
+    "cam0": {
+      "camera_id": "cam0",
+      "route_frames": 2436,
+      "by_hole_width": {
+        "60": {
+          "trials": 3,
+          "detection_rate": 0.3976,
+          "detection_rate_self_defined": 0.3643,
+          "false_alarm_rate": 0.0073
+        },
+        "150": {
+          "trials": 3,
+          "detection_rate": 0.6419,
+          "detection_rate_self_defined": 0.6321,
+          "false_alarm_rate": 0.0061
+        },
+        "400": {
+          "trials": 3,
+          "detection_rate": 0.8348,
+          "detection_rate_self_defined": 0.841,
+          "false_alarm_rate": 0.0069
+        }
+      },
+      "trials": [
+        {
+          "hole_width": 60,
+          "hole_runB_range": [
+            610,
+            669
+          ],
+          "orphaned_frames": 41,
+          "unaffected_frames": 2320,
+          "abstained_when_orphaned": 0.0,
+          "abstained_when_unaffected": 0.0073,
+          "self_defined_abstained_when_orphaned": 0.0,
+          "median_null_posterior_orphaned": 0.0287,
+          "median_null_posterior_unaffected": 0.00059
+        },
+        {
+          "hole_width": 60,
+          "hole_runB_range": [
+            2161,
+            2220
+          ],
+          "orphaned_frames": 40,
+          "unaffected_frames": 2323,
+          "abstained_when_orphaned": 0.45,
+          "abstained_when_unaffected": 0.0073,
+          "self_defined_abstained_when_orphaned": 0.45,
+          "median_null_posterior_orphaned": 0.04772,
+          "median_null_posterior_unaffected": 0.00057
+        },
+        {
+          "hole_width": 60,
+          "hole_runB_range": [
+            1176,
+            1235
+          ],
+          "orphaned_frames": 35,
+          "unaffected_frames": 2318,
+          "abstained_when_orphaned": 0.7429,
+          "abstained_when_unaffected": 0.0073,
+          "self_defined_abstained_when_orphaned": 0.6429,
+          "median_null_posterior_orphaned": 0.06246,
+          "median_null_posterior_unaffected": 0.00056
+        },
+        {
+          "hole_width": 150,
+          "hole_runB_range": [
+            1526,
+            1675
+          ],
+          "orphaned_frames": 118,
+          "unaffected_frames": 2244,
+          "abstained_when_orphaned": 0.4661,
+          "abstained_when_unaffected": 0.0076,
+          "self_defined_abstained_when_orphaned": 0.4783,
+          "median_null_posterior_orphaned": 0.0226,
+          "median_null_posterior_unaffected": 0.00055
+        },
+        {
+          "hole_width": 150,
+          "hole_runB_range": [
+            1099,
+            1248
+          ],
+          "orphaned_frames": 123,
+          "unaffected_frames": 2230,
+          "abstained_when_orphaned": 0.8455,
+          "abstained_when_unaffected": 0.0081,
+          "self_defined_abstained_when_orphaned": 0.7939,
+          "median_null_posterior_orphaned": 0.02163,
+          "median_null_posterior_unaffected": 0.00055
+        },
+        {
+          "hole_width": 150,
+          "hole_runB_range": [
+            702,
+            851
+          ],
+          "orphaned_frames": 127,
+          "unaffected_frames": 2229,
+          "abstained_when_orphaned": 0.6142,
+          "abstained_when_unaffected": 0.0027,
+          "self_defined_abstained_when_orphaned": 0.6241,
+          "median_null_posterior_orphaned": 0.06447,
+          "median_null_posterior_unaffected": 0.0006
+        },
+        {
+          "hole_width": 400,
+          "hole_runB_range": [
+            633,
+            1032
+          ],
+          "orphaned_frames": 376,
+          "unaffected_frames": 1985,
+          "abstained_when_orphaned": 0.8484,
+          "abstained_when_unaffected": 0.003,
+          "self_defined_abstained_when_orphaned": 0.8507,
+          "median_null_posterior_orphaned": 0.06809,
+          "median_null_posterior_unaffected": 0.00063
+        },
+        {
+          "hole_width": 400,
+          "hole_runB_range": [
+            1894,
+            2293
+          ],
+          "orphaned_frames": 367,
+          "unaffected_frames": 2005,
+          "abstained_when_orphaned": 0.8338,
+          "abstained_when_unaffected": 0.0085,
+          "self_defined_abstained_when_orphaned": 0.85,
+          "median_null_posterior_orphaned": 0.01354,
+          "median_null_posterior_unaffected": 0.00057
+        },
+        {
+          "hole_width": 400,
+          "hole_runB_range": [
+            1016,
+            1415
+          ],
+          "orphaned_frames": 377,
+          "unaffected_frames": 1974,
+          "abstained_when_orphaned": 0.8223,
+          "abstained_when_unaffected": 0.0091,
+          "self_defined_abstained_when_orphaned": 0.8223,
+          "median_null_posterior_orphaned": 0.00924,
+          "median_null_posterior_unaffected": 0.00058
+        }
+      ]
+    },
+    "cam5": {
+      "camera_id": "cam5",
+      "route_frames": 2436,
+      "by_hole_width": {
+        "60": {
+          "trials": 3,
+          "detection_rate": 0.9286,
+          "detection_rate_self_defined": 0.853,
+          "false_alarm_rate": 0.0186
+        },
+        "150": {
+          "trials": 3,
+          "detection_rate": 0.8647,
+          "detection_rate_self_defined": 0.9004,
+          "false_alarm_rate": 0.0228
+        },
+        "400": {
+          "trials": 3,
+          "detection_rate": 0.789,
+          "detection_rate_self_defined": 0.7933,
+          "false_alarm_rate": 0.0197
+        }
+      },
+      "trials": [
+        {
+          "hole_width": 60,
+          "hole_runB_range": [
+            1954,
+            2013
+          ],
+          "orphaned_frames": 42,
+          "unaffected_frames": 2109,
+          "abstained_when_orphaned": 0.7857,
+          "abstained_when_unaffected": 0.0185,
+          "self_defined_abstained_when_orphaned": 0.8293,
+          "median_null_posterior_orphaned": 0.06619,
+          "median_null_posterior_unaffected": 0.00084
+        },
+        {
+          "hole_width": 60,
+          "hole_runB_range": [
+            1374,
+            1433
+          ],
+          "orphaned_frames": 15,
+          "unaffected_frames": 2152,
+          "abstained_when_orphaned": 1.0,
+          "abstained_when_unaffected": 0.0186,
+          "self_defined_abstained_when_orphaned": 0.8649,
+          "median_null_posterior_orphaned": 0.09406,
+          "median_null_posterior_unaffected": 0.00083
+        },
+        {
+          "hole_width": 60,
+          "hole_runB_range": [
+            1374,
+            1433
+          ],
+          "orphaned_frames": 15,
+          "unaffected_frames": 2152,
+          "abstained_when_orphaned": 1.0,
+          "abstained_when_unaffected": 0.0186,
+          "self_defined_abstained_when_orphaned": 0.8649,
+          "median_null_posterior_orphaned": 0.09406,
+          "median_null_posterior_unaffected": 0.00083
+        },
+        {
+          "hole_width": 150,
+          "hole_runB_range": [
+            571,
+            720
+          ],
+          "orphaned_frames": 132,
+          "unaffected_frames": 2009,
+          "abstained_when_orphaned": 0.9242,
+          "abstained_when_unaffected": 0.0189,
+          "self_defined_abstained_when_orphaned": 0.9111,
+          "median_null_posterior_orphaned": 0.0593,
+          "median_null_posterior_unaffected": 0.00082
+        },
+        {
+          "hole_width": 150,
+          "hole_runB_range": [
+            1450,
+            1599
+          ],
+          "orphaned_frames": 56,
+          "unaffected_frames": 2085,
+          "abstained_when_orphaned": 0.875,
+          "abstained_when_unaffected": 0.0283,
+          "self_defined_abstained_when_orphaned": 0.9189,
+          "median_null_posterior_orphaned": 0.10455,
+          "median_null_posterior_unaffected": 0.00083
+        },
+        {
+          "hole_width": 150,
+          "hole_runB_range": [
+            1106,
+            1255
+          ],
+          "orphaned_frames": 78,
+          "unaffected_frames": 2084,
+          "abstained_when_orphaned": 0.7949,
+          "abstained_when_unaffected": 0.0211,
+          "self_defined_abstained_when_orphaned": 0.8712,
+          "median_null_posterior_orphaned": 0.02281,
+          "median_null_posterior_unaffected": 0.00094
+        },
+        {
+          "hole_width": 400,
+          "hole_runB_range": [
+            1798,
+            2197
+          ],
+          "orphaned_frames": 361,
+          "unaffected_frames": 1786,
+          "abstained_when_orphaned": 0.7812,
+          "abstained_when_unaffected": 0.0162,
+          "self_defined_abstained_when_orphaned": 0.7747,
+          "median_null_posterior_orphaned": 0.03766,
+          "median_null_posterior_unaffected": 0.00074
+        },
+        {
+          "hole_width": 400,
+          "hole_runB_range": [
+            398,
+            797
+          ],
+          "orphaned_frames": 404,
+          "unaffected_frames": 1741,
+          "abstained_when_orphaned": 0.8292,
+          "abstained_when_unaffected": 0.023,
+          "self_defined_abstained_when_orphaned": 0.8438,
+          "median_null_posterior_orphaned": 0.05499,
+          "median_null_posterior_unaffected": 0.00088
+        },
+        {
+          "hole_width": 400,
+          "hole_runB_range": [
+            703,
+            1102
+          ],
+          "orphaned_frames": 374,
+          "unaffected_frames": 1770,
+          "abstained_when_orphaned": 0.7567,
+          "abstained_when_unaffected": 0.0198,
+          "self_defined_abstained_when_orphaned": 0.7614,
+          "median_null_posterior_orphaned": 0.0535,
+          "median_null_posterior_unaffected": 0.00085
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,358 @@
+{
+  "schema_version": 3,
+  "label_set": "blind_v3b",
+  "cameras_exported": [
+    "cam5"
+  ],
+  "built_at_utc": "2026-09-02T09:57:53.124514+00:00",
+  "pages_regenerated_at_utc": null,
+  "query_set_sha256": "b7df8d342d4664f9ccb367bb73d37f6c7aee873bb2679e56e0eda5168ad715e8",
+  "random_seed": 20260903,
+  "queries_per_camera": 24,
+  "strata_plan": {
+    "cam0": {
+      "kink": 8,
+      "dark": 4,
+      "occlusion": 3,
+      "corridor": 9
+    },
+    "cam5": {
+      "kink": 10,
+      "dark": 5,
+      "occlusion": 0,
+      "corridor": 9
+    }
+  },
+  "sampling_rules": {
+    "strata": {
+      "kink": "Run A frames within +-12 of a submitted-mapping kink of at least 6 frames; lit kinks preferred; spread by farthest-point ordering; at most one query per kink",
+      "dark": "Run A frames whose submitted partner falls inside a contiguous Run B too_dark stretch of at least 4 frames, longest stretches first",
+      "occlusion": "Run A frames inside the confirmed Run B occlusion. CAM0 only: the occlusion was observed on CAM0's side of the vehicle, so there is no evidence for a matching CAM5 stratum. CAM5's three slots were reallocated to two extra kink queries and one extra dark query.",
+      "corridor": "uniformly spaced bins over the whole route with a seeded jitter inside each bin; the untargeted control stratum"
+    },
+    "excluded_idle": "Run A frames outside [180, 2616) are parked and carry no travelling correspondence",
+    "minimum_distance_from_previously_labelled": 10,
+    "previously_labelled_sources": [
+      "outputs/task2_evaluation/blind_v2/blind_v2_labels.csv",
+      "outputs/task2_evaluation/blind_v3/blind_v3_labels.csv",
+      "outputs/task2_keyframes/manual_annotations.csv",
+      "outputs/task2_keyframes/anchor_candidates.csv"
+    ],
+    "stratum_shortfall_policy": "A targeted stratum with no free ordinal left moves its unfilled slots to the corridor stratum. Every move is recorded per camera under strata_shortfalls, because a set with fewer kink queries than planned is a weaker test of kinks and the reported per-stratum counts must be the ones actually exported.",
+    "minimum_distance_between_queries": 10,
+    "minimum_distance_between_queries_within_occlusion": 5,
+    "occlusion_spacing_note": "The confirmed occlusion spans 30 Run A frames and two nearby ordinals are already labelled, so three queries cannot be 10 apart inside it. Only the query-to-query spacing is relaxed there; the 10-frame distance to every previously labelled ordinal is not."
+  },
+  "stratum_dependency_disclosure": "Strata were located using the structure of the submitted unified mapping: its kink positions and, for the dark stratum, its Run A -> Run B partner for each frame. This affects WHICH frames are asked about. It does not affect WHAT the annotator sees: the page carries the Run A frame, a linear route-progress start position computed from the route boundaries alone, and the Run B filmstrip. No stratum tag, no mapping partner, no confidence and no prediction is present in the exported HTML, and a test greps the pages for the submitted partner of every query and fails if one appears. The consequence to state when reporting: per-stratum rates are conditional on the submitted mapping having put its kinks where it did, so they measure 'is this method right where it says something surprising', not an unbiased route-wide rate. The corridor stratum is the unbiased comparison.",
+  "prior_policy": "linear route-progress arithmetic only; contains no model output, no baseline path, and no previous prediction",
+  "served_root": {
+    "path": "outputs/task2_blind_v3b/pages",
+    "why": "The annotator's http.server is pointed one level below this manifest. The manifest names each query's stratum and the dark stratum's Run B window; a directory listing at the served root must not be able to reach it."
+  },
+  "blindness": {
+    "model_columns_present": false,
+    "predictions_present": false,
+    "previous_labels_present": false,
+    "stratum_shown_to_annotator": false,
+    "automatic_best_frame_hint": false
+  },
+  "annotator_aids": {
+    "pose_compensation": "Two-axis translation of the Run B image with sliders. compensation = -displacement; positive moves Run B right/down. measuredDxPx/measuredDyPx are the raw measured scene displacement of Run B relative to Run A on the measurement raster; dxPx/dyPx are the translate() the page applies to the Run B image to undo it, on the filmstrip raster. The measured CAM5 displacement (-37.5, -11) px at 896x672 therefore exports as a compensation of (40, 12) px at 960x720; CAM0 is (0, 0). ON by default for CAM5, OFF for CAM0. The chosen value is written into every label.",
+    "pose_compensation_sign_history": "The first v3 export shipped the raw measurement as the compensation, so the page moved Run B a further 40 px left and doubled the CAM5 misalignment. The annotator then used the slider to recover, which let frame error and shift trade off against each other. See outputs/task2_evaluation/blind_v3/TOOL_DEFECT_cam5.md.",
+    "pose_slider_clamp": "Both sliders are clamped to the exported default +-25 px and the default is drawn as a tick. A persistent warning under them says the slider may not be used to make a frame fit: change the frame until the far and near residuals are equal, and only then take a small slider tweak to zero both.",
+    "guide_band_rule": "The far guide must be placed in the top 50% of the frame and the near guide in the bottom 33%; both bands are drawn faintly and the page refuses to save a label while either guide is outside its band, with a tooltip saying which one and why. Two guides at the same depth cannot break the far + near rule apart.",
+    "depth_guides": "A far line and a near line the annotator drags onto Run A. Both lines are drawn in Run A image coordinates in both panes; the compensation moves the Run B raster onto those coordinates rather than duplicating the shift on the lines, which would cancel it. At the correct Run B frame one common shift aligns both depths; parallax breaks the near line first. Each guide carries an x and a y: the vertical line at x is the alignment cue, the marker at y says which depth band the feature was taken from. Both are saved per query as fractions of frame width and height.",
+    "band_blink": "Blink restricted to the far band (top 45%) or the near band (bottom third), alongside the full-frame blend, difference and blink modes.",
+    "no_suggestion": "No best-frame hint, ghost-direction arrow or ranked candidate is computed anywhere on the page. Any such aid would leak a matching method into labels whose only value is being independent of one."
+  },
+  "protocol_fix_vs_v2": "v2 offered a single 'no usable match' button, so its no-match rows mix 'I cannot tell' with 'there is no such place' and can be scored as neither an abstention target nor an error. v3 splits them: label is one of match, undetermined, or no_correspondence, and the reason is a required choice rather than a free-text afterthought.",
+  "pose_convention": "compensation = -displacement; positive moves Run B right/down. measuredDxPx/measuredDyPx are the raw measured scene displacement of Run B relative to Run A on the measurement raster; dxPx/dyPx are the translate() the page applies to the Run B image to undo it, on the filmstrip raster.",
+  "cameras": {
+    "cam5": {
+      "queries": [
+        {
+          "queryId": "cam5_v3b_00",
+          "runAFrame": 224,
+          "linearPriorRunBFrame": 159,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            180,
+            314
+          ]
+        },
+        {
+          "queryId": "cam5_v3b_01",
+          "runAFrame": 417,
+          "linearPriorRunBFrame": 357,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            315,
+            449
+          ]
+        },
+        {
+          "queryId": "cam5_v3b_02",
+          "runAFrame": 576,
+          "linearPriorRunBFrame": 520,
+          "stratum": "dark",
+          "dark_runB_stretch": [
+            424,
+            487
+          ],
+          "dark_runB_stretch_length": 64
+        },
+        {
+          "queryId": "cam5_v3b_03",
+          "runAFrame": 586,
+          "linearPriorRunBFrame": 531,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            450,
+            585
+          ]
+        },
+        {
+          "queryId": "cam5_v3b_04",
+          "runAFrame": 654,
+          "linearPriorRunBFrame": 600,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            586,
+            720
+          ]
+        },
+        {
+          "queryId": "cam5_v3b_05",
+          "runAFrame": 792,
+          "linearPriorRunBFrame": 742,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            721,
+            855
+          ]
+        },
+        {
+          "queryId": "cam5_v3b_06",
+          "runAFrame": 925,
+          "linearPriorRunBFrame": 879,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            856,
+            991
+          ]
+        },
+        {
+          "queryId": "cam5_v3b_07",
+          "runAFrame": 1023,
+          "linearPriorRunBFrame": 979,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            992,
+            1126
+          ]
+        },
+        {
+          "queryId": "cam5_v3b_08",
+          "runAFrame": 1202,
+          "linearPriorRunBFrame": 1163,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            1127,
+            1261
+          ]
+        },
+        {
+          "queryId": "cam5_v3b_09",
+          "runAFrame": 1361,
+          "linearPriorRunBFrame": 1326,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            1262,
+            1397
+          ]
+        },
+        {
+          "queryId": "cam5_v3b_10",
+          "runAFrame": 1491,
+          "linearPriorRunBFrame": 1459,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            1398,
+            1532
+          ]
+        },
+        {
+          "queryId": "cam5_v3b_11",
+          "runAFrame": 1526,
+          "linearPriorRunBFrame": 1495,
+          "stratum": "kink",
+          "kink_runA_frame": 1514,
+          "kink_increment": 7,
+          "kink_dark": false
+        },
+        {
+          "queryId": "cam5_v3b_12",
+          "runAFrame": 1558,
+          "linearPriorRunBFrame": 1528,
+          "stratum": "kink",
+          "kink_runA_frame": 1554,
+          "kink_increment": 10,
+          "kink_dark": false
+        },
+        {
+          "queryId": "cam5_v3b_13",
+          "runAFrame": 1618,
+          "linearPriorRunBFrame": 1590,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            1533,
+            1667
+          ]
+        },
+        {
+          "queryId": "cam5_v3b_14",
+          "runAFrame": 1704,
+          "linearPriorRunBFrame": 1678,
+          "stratum": "kink",
+          "kink_runA_frame": 1692,
+          "kink_increment": 7,
+          "kink_dark": false
+        },
+        {
+          "queryId": "cam5_v3b_15",
+          "runAFrame": 1723,
+          "linearPriorRunBFrame": 1698,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            1668,
+            1803
+          ]
+        },
+        {
+          "queryId": "cam5_v3b_16",
+          "runAFrame": 1878,
+          "linearPriorRunBFrame": 1857,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            1804,
+            1938
+          ]
+        },
+        {
+          "queryId": "cam5_v3b_17",
+          "runAFrame": 1977,
+          "linearPriorRunBFrame": 1958,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            1939,
+            2073
+          ]
+        },
+        {
+          "queryId": "cam5_v3b_18",
+          "runAFrame": 2187,
+          "linearPriorRunBFrame": 2174,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            2074,
+            2209
+          ]
+        },
+        {
+          "queryId": "cam5_v3b_19",
+          "runAFrame": 2237,
+          "linearPriorRunBFrame": 2225,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            2210,
+            2344
+          ]
+        },
+        {
+          "queryId": "cam5_v3b_20",
+          "runAFrame": 2277,
+          "linearPriorRunBFrame": 2266,
+          "stratum": "kink",
+          "kink_runA_frame": 2289,
+          "kink_increment": 6,
+          "kink_dark": false
+        },
+        {
+          "queryId": "cam5_v3b_21",
+          "runAFrame": 2396,
+          "linearPriorRunBFrame": 2388,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            2345,
+            2479
+          ]
+        },
+        {
+          "queryId": "cam5_v3b_22",
+          "runAFrame": 2470,
+          "linearPriorRunBFrame": 2464,
+          "stratum": "kink",
+          "kink_runA_frame": 2458,
+          "kink_increment": 14,
+          "kink_dark": false
+        },
+        {
+          "queryId": "cam5_v3b_23",
+          "runAFrame": 2587,
+          "linearPriorRunBFrame": 2584,
+          "stratum": "corridor",
+          "corridor_stratum": [
+            2480,
+            2615
+          ]
+        }
+      ],
+      "runA_route_start": 180,
+      "runA_route_end_exclusive": 2616,
+      "runB_route_start": 114,
+      "runB_route_end": 2614,
+      "strata_counts": {
+        "occlusion": 0,
+        "dark": 1,
+        "kink": 5,
+        "corridor": 18
+      },
+      "strata_shortfalls": [
+        {
+          "stratum": "dark",
+          "planned": 5,
+          "placed": 1,
+          "moved_to_corridor": 4,
+          "why": "no free Run A ordinal remained in this stratum at least 10 frames from every previously labelled ordinal and 10 from every other query"
+        },
+        {
+          "stratum": "kink",
+          "planned": 10,
+          "placed": 5,
+          "moved_to_corridor": 5,
+          "why": "no free Run A ordinal remained in this stratum at least 10 frames from every previously labelled ordinal and 10 from every other query"
+        }
+      ],
+      "previously_labelled_ordinals_blocked": {
+        "blind_v2_labels": 40,
+        "blind_v3_labels": 24,
+        "manual_annotations": 24,
+        "anchor_candidates": 36
+      },
+      "pose_defaults": {
+        "measuredDxPx": -37.5,
+        "measuredDyPx": -11.0,
+        "measuredRaster": [
+          896,
+          672
+        ],
+        "dxPx": 40,
+        "dyPx": 12,
+        "compensated": true,
+        "sliderRangePx": 25,
+        "convention": "compensation = -displacement; positive moves Run B right/down. measuredDxPx/measuredDyPx are the raw measured scene displacement of Run B relative to Run A on the measurement raster; dxPx/dyPx are the translate() the page applies to the Run B image to undo it, on the filmstrip raster."
+      },
+      "runB_filmstrip_frames": 2501
+    }
+  }
+}

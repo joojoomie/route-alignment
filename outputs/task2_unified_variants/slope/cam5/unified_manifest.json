@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "pipeline_version": "unified-v1",
+  "built_at_utc": "2026-09-02T07:35:26.473413+00:00",
+  "camera_id": "cam5",
+  "variant": "slope",
+  "refinement": {
+    "mode": "slope",
+    "refine_radius": 8,
+    "structure_grid": [
+      12,
+      16
+    ],
+    "slope_weight": 0.05,
+    "step_bounds": [
+      0,
+      3
+    ],
+    "expected_step_source": "coarse densified estimate's local increment",
+    "note": "Viterbi over the +/-radius windows: emission is the structure cosine, transition cost is slope_weight per frame of departure from the coarse increment, monotonicity is a hard step bound."
+  },
+  "descriptor_version": "dinov2s-masked-v1",
+  "mask_version": "a17e88c45245",
+  "colour_id": "bt709-tv2pc",
+  "descriptor_raster": [
+    448,
+    336
+  ],
+  "geometry_raster": [
+    896,
+    672
+  ],
+  "route": {
+    "runA_start": 180,
+    "runA_end_exclusive": 2616,
+    "runB_start": 114,
+    "runB_end_exclusive": 2615
+  },
+  "rows": 2674,
+  "mapped": 2207,
+  "coverage": 0.825355,
+  "status_counts": {
+    "idle_segment": 238,
+    "accepted_sequence_supported": 301,
+    "accepted_strong": 1898,
+    "accepted_bridged_short_gap": 8,
+    "sequence_failed": 190,
+    "loop_ambiguous": 4,
+    "geometry_failed": 32,
+    "out_of_route": 3
+  },
+  "geometry_checks": 187,
+  "geometry_passed": 115,
+  "geometry_median_matches": 41,
+  "search_policy": "global monotonic path; no prior band",
+  "strict_geometry": false,
+  "confidence_is_calibrated_probability": false,
+  "confidence_semantics": "ordinal, not a probability: 1.00 strong, 0.67 sequence-supported, 0.50 geometry-propagated, 0.33 bridged, 0.00 abstain. The categorical label is carried in `tier`. A calibrated probability exists only in the posterior model, which has no held-out number and is not submitted."
+}

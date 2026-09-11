@@ -1,0 +1,9 @@
+camera_id,width,height,pairs,median_keypoints_runA,median_keypoints_runB,median_matches,median_inliers,mean_inlier_ratio,passed_distributed_support,seconds_per_pair
+cam0,448,336,6,720,683,22,18,0.8108,2,0.416
+cam0,640,480,6,1513,1461,31,21,0.6957,4,0.822
+cam0,896,672,6,3083,2912,48,29,0.6052,6,1.726
+cam0,1440,1080,6,9053,7323,85,27,0.3859,4,5.627
+cam5,448,336,6,612,519,12,10,0.7076,1,0.351
+cam5,640,480,6,1259,1015,21,11,0.622,1,0.727
+cam5,896,672,6,2607,1952,40,16,0.4629,5,1.39
+cam5,1440,1080,6,7333,4649,86,23,0.3283,2,4.23

@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-09-01T10:09:55.422753+00:00",
+  "camera_id": "cam0",
+  "classification": "post_hoc_visual_and_descriptor_supported_route_topology_observation",
+  "observation": "CAM0 appears to return near its starting location in both runs",
+  "route_topology_hypothesis": "approximately_closed_loop",
+  "physical_or_geodetic_closure_proved": false,
+  "metric_distance_to_start_available": false,
+  "timestamp_rows_used": false,
+  "descriptor_source": "outputs/task2_dense_v2/cam0/descriptor_cache_dense_v2.npz",
+  "descriptor_interpretation": "frozen DINOv2-S cosine similarity and rank are measured representation evidence, not a probability or physical-distance measurement",
+  "geometry_interpretation": "RootSIFT/RANSAC uses the existing Task 2 gate without retuning; weak geometry corroborates some local structure but is not an automatic accept",
+  "diagnostic_windows_are_post_hoc": true,
+  "runs": [
+    {
+      "run": "runA",
+      "camera": "cam0",
+      "departure_window": [
+        180,
+        320
+      ],
+      "arrival_window": [
+        2450,
+        2534
+      ],
+      "selected_departure_frame": 232,
+      "selected_arrival_frame": 2534,
+      "dinov2_cosine_similarity": 0.941329,
+      "departure_candidate_rank_among_nonlocal_earlier_frames": 1,
+      "nonlocal_earlier_candidate_count": 531,
+      "top_nonlocal_earlier_candidates": [
+        {
+          "frame": 232,
+          "cosine_similarity": 0.941329,
+          "inside_departure_window": true
+        },
+        {
+          "frame": 236,
+          "cosine_similarity": 0.931628,
+          "inside_departure_window": true
+        },
+        {
+          "frame": 228,
+          "cosine_similarity": 0.915105,
+          "inside_departure_window": true
+        },
+        {
+          "frame": 224,
+          "cosine_similarity": 0.905439,
+          "inside_departure_window": true
+        },
+        {
+          "frame": 208,
+          "cosine_similarity": 0.901805,
+          "inside_departure_window": true
+        }
+      ],
+      "geometry": {
+        "status_under_existing_task2_gate": "weak",
+        "model": "fundamental_matrix",
+        "departure_keypoints": 779,
+        "arrival_keypoints": 837,
+        "descriptor_matches": 17,
+        "ransac_inliers": 10,
+        "ransac_inlier_ratio": 0.588235,
+        "median_residual": 0.135291,
+        "departure_grid_cells": 6,
+        "arrival_grid_cells": 5,
+        "interpretation": "corroborating_local_geometry_but_below_existing_task2_acceptance_gate"
+      }
+    },
+    {
+      "run": "runB",
+      "camera": "cam0",
+      "departure_window": [
+        85,
+        233
+      ],
+      "arrival_window": [
+        2450,
+        2545
+      ],
+      "selected_departure_frame": 133,
+      "selected_arrival_frame": 2545,
+      "dinov2_cosine_similarity": 0.948067,
+      "departure_candidate_rank_among_nonlocal_earlier_frames": 1,
+      "nonlocal_earlier_candidate_count": 553,
+      "top_nonlocal_earlier_candidates": [
+        {
+          "frame": 133,
+          "cosine_similarity": 0.948067,
+          "inside_departure_window": true
+        },
+        {
+          "frame": 137,
+          "cosine_similarity": 0.925118,
+          "inside_departure_window": true
+        },
+        {
+          "frame": 129,
+          "cosine_similarity": 0.924474,
+          "inside_departure_window": true
+        },
+        {
+          "frame": 109,
+          "cosine_similarity": 0.922552,
+          "inside_departure_window": true
+        },
+        {
+          "frame": 125,
+          "cosine_similarity": 0.920893,
+          "inside_departure_window": true
+        }
+      ],
+      "geometry": {
+        "status_under_existing_task2_gate": "weak",
+        "model": "fundamental_matrix",
+        "departure_keypoints": 825,
+        "arrival_keypoints": 807,
+        "descriptor_matches": 9,
+        "ransac_inliers": 8,
+        "ransac_inlier_ratio": 0.888889,
+        "median_residual": 0.188685,
+        "departure_grid_cells": 5,
+        "arrival_grid_cells": 5,
+        "interpretation": "corroborating_local_geometry_but_below_existing_task2_acceptance_gate"
+      }
+    }
+  ],
+  "operational_consequence": "Treat departure and arrival as separate temporal occurrences of one possible location group; use an unwrapped monotonic path and prohibit seam crossing.",
+  "artifacts": {
+    "pairs_csv": "outputs/task1/cam0_loop_closure_pairs.csv",
+    "comparison_png": "outputs/task1/cam0_loop_closure_comparison.png"
+  }
+}

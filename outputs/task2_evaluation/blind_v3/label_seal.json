@@ -1,0 +1,107 @@
+{
+  "schema_version": 3,
+  "label_set": "blind_v3",
+  "query_set_sha256": "f2f7bcb9c866dd887e8b4d22408a7cbd694e3666dfb60eae9eba7e62cf25f847",
+  "query_set_exported_at_utc": "2026-09-02T07:43:09.034629+00:00",
+  "method_freeze_sha256_at_seal_time": "e3b115533f5d9414eb947337b85e1f568420fbd5756a496ef7abc36a7db3d962",
+  "sealed_at_utc": "2026-09-02T09:14:33.436283+00:00",
+  "label_file": "outputs/task2_evaluation/blind_v3/blind_v3_labels.csv",
+  "label_file_sha256": "e747d9775e2b2140cf1b7d8b703439d8b39079726a546f9714925658bcf9f1cd",
+  "rows": 48,
+  "per_camera": {
+    "cam0": {
+      "labels": 24,
+      "by_label": {
+        "match": 21,
+        "undetermined": 2,
+        "no_correspondence": 1
+      },
+      "by_stratum": {
+        "kink": {
+          "match": 7,
+          "undetermined": 0,
+          "no_correspondence": 1
+        },
+        "occlusion": {
+          "match": 2,
+          "undetermined": 1,
+          "no_correspondence": 0
+        },
+        "corridor": {
+          "match": 9,
+          "undetermined": 0,
+          "no_correspondence": 0
+        },
+        "dark": {
+          "match": 3,
+          "undetermined": 1,
+          "no_correspondence": 0
+        }
+      }
+    },
+    "cam5": {
+      "labels": 24,
+      "by_label": {
+        "match": 23,
+        "undetermined": 1,
+        "no_correspondence": 0
+      },
+      "by_stratum": {
+        "corridor": {
+          "match": 9,
+          "undetermined": 0,
+          "no_correspondence": 0
+        },
+        "kink": {
+          "match": 10,
+          "undetermined": 0,
+          "no_correspondence": 0
+        },
+        "dark": {
+          "match": 4,
+          "undetermined": 1,
+          "no_correspondence": 0
+        }
+      }
+    }
+  },
+  "label_semantics": {
+    "match": "a Run B frame shows the same world position, within the recorded interval",
+    "undetermined": "a counterpart may exist; the annotator could not identify which frame. Not evidence for or against abstention - exclude from the denominator and report how many were excluded.",
+    "no_correspondence": "no Run B frame shows this place, because the view was blocked or the route was not driven there. This is the correct abstention target."
+  },
+  "blindness_checks_performed": [
+    "no model-derived or stratum columns present",
+    "every query answered, none left unlabelled",
+    "Run A frames match the exported query set exactly",
+    "undetermined and no_correspondence rows name no Run B frame",
+    "preferred frame lies inside its acceptable interval",
+    "every Run B frame lies inside the exported Run B route range"
+  ],
+  "trust_model": "The seal proves these labels existed unchanged before the method freeze that cites this hash. It does not prove the labels were never inspected; that would require third-party custody.",
+  "stratum_dependency_disclosure": "Strata were located using the structure of the submitted unified mapping: its kink positions and, for the dark stratum, its Run A -> Run B partner for each frame. This affects WHICH frames are asked about. It does not affect WHAT the annotator sees: the page carries the Run A frame, a linear route-progress start position computed from the route boundaries alone, and the Run B filmstrip. No stratum tag, no mapping partner, no confidence and no prediction is present in the exported HTML, and a test greps the pages for the submitted partner of every query and fails if one appears. The consequence to state when reporting: per-stratum rates are conditional on the submitted mapping having put its kinks where it did, so they measure 'is this method right where it says something surprising', not an unbiased route-wide rate. The corridor stratum is the unbiased comparison.",
+  "method_freeze_v3_sha256": "014782a969c1913f3afe803512450ef4850b19d1f916456209150d3df52b90ce",
+  "chain": {
+    "query_set_exported_at_utc": "2026-09-02T07:43:09.034629+00:00",
+    "method_frozen_at_utc": "2026-09-02T07:53:32.023239+00:00",
+    "labels_sealed_at_utc": "2026-09-02T09:14:33.436283+00:00",
+    "ordering_holds": true,
+    "note": "Amended in place after sealing to cite the v3 freeze; sealed_at_utc and label_file_sha256 untouched."
+  },
+  "annotator_remarks_recorded_before_seal": [
+    {
+      "camera_id": "cam0",
+      "runA_frame": 646,
+      "recorded_at_utc": "2026-09-02T08:11:37.119640+00:00",
+      "kind": "bracketed_by_occlusion",
+      "remark": "The house is visible in Run B a few frames before and after, but a truck hides it at the frames where the position matches. Labelled as match with an interval spanning the occluded frames; the preferred frame is the interval midpoint and could not be verified visually. This is a second occlusion instance, distinct from the confirmed runB cam0 240-270 one."
+    },
+    {
+      "camera_id": "cam0",
+      "runA_frame": 2399,
+      "recorded_at_utc": "2026-09-02T08:30:33.133742+00:00",
+      "kind": "turn_and_lateral_offset",
+      "remark": "Run B is mid-turn for many consecutive frames here and the distance to the pavement differs slightly from Run A, so neither the far+near test nor the centre-line test pins one frame. Labelled as match with +-3 frames."
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "mask_version": "a17e88c45245",
+  "built_at_utc": "2026-09-01T13:16:38.529077+00:00",
+  "method": "staticness = |grad(temporal median)| / (temporal std + 1); seeded threshold, morphological closing and hole fill to recover droplet bodies, unioned with never-bright optical dead zone",
+  "parameters": {
+    "analysis_raster": "448x336",
+    "sample_stride": 8,
+    "staticness_seed": 0.3,
+    "never_bright_fraction": 0.18,
+    "closing_size": 9,
+    "dilation_size": 5,
+    "minimum_component_pixels": 60,
+    "patch_exclusion_fraction": 0.25
+  },
+  "learned_components": "none; this mask uses no trained model",
+  "streams": {
+    "runA_cam0": {
+      "never_bright_fraction": 0.017617984693877552,
+      "camera_attached_fraction": 0.05341863307823129,
+      "exclusion_fraction": 0.07152822066326531,
+      "valid_patch_fraction": 0.90234375,
+      "frames_used": 335
+    },
+    "runA_cam5": {
+      "never_bright_fraction": 0.002358365221088435,
+      "camera_attached_fraction": 0.012329931972789115,
+      "exclusion_fraction": 0.014987244897959183,
+      "valid_patch_fraction": 0.97265625,
+      "frames_used": 335
+    },
+    "runB_cam0": {
+      "never_bright_fraction": 0.08551897321428571,
+      "camera_attached_fraction": 0.043666294642857144,
+      "exclusion_fraction": 0.12986288265306123,
+      "valid_patch_fraction": 0.84375,
+      "frames_used": 328
+    },
+    "runB_cam5": {
+      "never_bright_fraction": 0.03268494897959184,
+      "camera_attached_fraction": 0.09915098852040816,
+      "exclusion_fraction": 0.13432716836734693,
+      "valid_patch_fraction": 0.8359375,
+      "frames_used": 327
+    }
+  }
+}

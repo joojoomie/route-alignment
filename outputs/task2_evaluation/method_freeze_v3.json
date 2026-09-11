@@ -1,0 +1,131 @@
+{
+  "schema_version": 3,
+  "label_set": "blind_v3",
+  "query_set_sha256": "f2f7bcb9c866dd887e8b4d22408a7cbd694e3666dfb60eae9eba7e62cf25f847",
+  "query_set_exported_at_utc": "2026-09-02T07:43:09.034629+00:00",
+  "artifact_sha256": {
+    "submitted_unified/cam0": "2c2f703f831fbf07473384b9f5bdc503cb63ff5d326393b90a9047c72631208d",
+    "submitted_unified/cam5": "185e53354b36896a66939f8019ed0b4f13d98d420dbfbc64fbbc32a09e91eef2",
+    "slope_refinement_variant/cam0": "86b2514e2eceb8210f234d1bbbc817108d402e1e4a0820ac85020d6006faac43",
+    "slope_refinement_variant/cam5": "f0d8f8624099b29c194b65e44cb0acb3abc23bdaeaaa458d4889b60d720dca80",
+    "posterior_model/cam0": "d469a1908212c14518e52f3ce00f4832c2b61aaf7e0631235917f343f1803b61",
+    "posterior_model/cam5": "f4ab0e6941ea04245ba0fa757d348a9d18474238a37c1e6bbf3a234547eabc95",
+    "kinks/cam0": "035c1e05e8f93f1ba7e97ac36741128ea041ca3d958cae2d5b66b657f200833c",
+    "kinks/cam5": "803536893621c2af630d4f28c8cc13d56ad1554c67c23f352c48d79071515c07",
+    "frame_quality_flags": "7461b3eadc6b72fd76f75896492d945787f12b1a7158c482bc7ceb7a280fbbaf",
+    "mapping_kinks": "52c2b73656da9f9f770f0e9b19c72f905da15600858c8415c35ec0b213e45aaa"
+  },
+  "slope_gate_rule": {
+    "kink_min_increment": 6,
+    "demote_within_runA_frames": 10
+  },
+  "unified_parameters": {
+    "pipeline_version": "unified-v1",
+    "descriptor_version": "dinov2s-masked-v1",
+    "mask_version": "a17e88c45245",
+    "colour_id": "bt709-tv2pc",
+    "descriptor_raster": [
+      448,
+      336
+    ],
+    "geometry_raster": [
+      896,
+      672
+    ],
+    "coarse_stride": 4,
+    "dtw_steps": [
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        2,
+        2
+      ]
+    ],
+    "slope_penalty_weight": 0.035,
+    "skip_penalty_weight": 0.008,
+    "min_slope": 0.2,
+    "max_slope": 2.0,
+    "refine_radius": 8,
+    "structure_grid": [
+      12,
+      16
+    ],
+    "window_radii": [
+      2,
+      5,
+      10,
+      20
+    ],
+    "alternative_separation": 48,
+    "strong_sequence_scales": 4,
+    "supported_sequence_scales": 3,
+    "max_bridged_gap": 10,
+    "geometry_sample_stride": 12,
+    "geometry_gates": {
+      "min_matches": 20,
+      "min_inliers": 12,
+      "min_inlier_ratio": 0.25,
+      "grid": [
+        3,
+        4
+      ],
+      "min_cells": 3,
+      "min_rows": 2,
+      "min_columns": 2,
+      "min_horizontal_spread": 0.2,
+      "min_vertical_spread": 0.18
+    },
+    "sift": {
+      "ratio_threshold": 0.8,
+      "min_matches_for_ransac": 8,
+      "bottom_exclusion_fraction": 0.125
+    },
+    "run_a_route_tail_exclusive": 2616
+  },
+  "slope_variant_parameters": {
+    "variant": "slope",
+    "refinement": {
+      "mode": "slope",
+      "refine_radius": 8,
+      "structure_grid": [
+        12,
+        16
+      ],
+      "slope_weight": 0.05,
+      "step_bounds": [
+        0,
+        3
+      ],
+      "expected_step_source": "coarse densified estimate's local increment",
+      "note": "Viterbi over the +/-radius windows: emission is the structure cosine, transition cost is slope_weight per frame of departure from the coarse increment, monotonicity is a hard step bound."
+    }
+  },
+  "v2_freeze_sha256": "e3b115533f5d9414eb947337b85e1f568420fbd5756a496ef7abc36a7db3d962",
+  "what_the_labels_may_judge": [
+    "kinks",
+    "posterior_model",
+    "slope_refinement_variant",
+    "submitted_unified"
+  ],
+  "rule": "No artifact hashed here may change after this freeze until the v3 labels are sealed and scored. Anything else built afterwards has no held-out number from v3.",
+  "freeze_sha256": "014782a969c1913f3afe803512450ef4850b19d1f916456209150d3df52b90ce",
+  "frozen_at_utc": "2026-09-02T07:53:32.023239+00:00"
+}

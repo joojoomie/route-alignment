@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "rescored_at_utc": "2026-09-01T16:30:10.214927+00:00",
+  "correction": "All 11 'no usable match' labels meant the annotator could not determine the counterpart, not that no counterpart exists. The query set was sampled entirely inside the mutually traversed route, so a genuine absence was impossible by construction.",
+  "correction_timing": "Made after the blind results were seen. Applied identically to both methods. It raises both, and raises the denser method more.",
+  "abstention_is_untestable_here": "With zero true no-correspondence cases, this label set cannot evaluate abstention in either direction. The earlier reading, that the dense method's abstention had collapsed, is withdrawn as unsupported. Testing abstention needs queries sampled where correspondence genuinely fails.",
+  "methods": {
+    "v1_frozen_submitted": {
+      "cam0": {
+        "labels_total": 40,
+        "labels_determinable": 32,
+        "labels_undetermined": 8,
+        "as_labelled": {
+          "accepted": 17,
+          "correct": 11,
+          "precision": 0.6471,
+          "precision_wilson_95": [
+            0.413,
+            0.8269
+          ],
+          "coverage": 0.425
+        },
+        "corrected": {
+          "accepted": 17,
+          "correct": 11,
+          "precision": 0.6471,
+          "precision_wilson_95": [
+            0.413,
+            0.8269
+          ],
+          "coverage_of_determinable": 0.5312,
+          "answered_undetermined": 0
+        },
+        "preferred_frame_error": {
+          "n": 17,
+          "median": 1.0,
+          "p90": 3.4000000000000004,
+          "p95": 4.399999999999999,
+          "max": 6,
+          "within_one_frame": 14,
+          "within_two_frames": 14
+        },
+        "interval_distance": {
+          "n": 17,
+          "median": 0.0,
+          "p90": 2.4000000000000004,
+          "p95": 3.3999999999999986,
+          "max": 5,
+          "within_one_frame": 14,
+          "within_two_frames": 15
+        }
+      },
+      "cam5": {
+        "labels_total": 40,
+        "labels_determinable": 37,
+        "labels_undetermined": 3,
+        "as_labelled": {
+          "accepted": 4,
+          "correct": 1,
+          "precision": 0.25,
+          "precision_wilson_95": [
+            0.0456,
+            0.6994
+          ],
+          "coverage": 0.1
+        },
+        "corrected": {
+          "accepted": 4,
+          "correct": 1,
+          "precision": 0.25,
+          "precision_wilson_95": [
+            0.0456,
+            0.6994
+          ],
+          "coverage_of_determinable": 0.1081,
+          "answered_undetermined": 0
+        },
+        "preferred_frame_error": {
+          "n": 4,
+          "median": 1.5,
+          "p90": 3.4000000000000004,
+          "p95": 3.6999999999999993,
+          "max": 4,
+          "within_one_frame": 2,
+          "within_two_frames": 3
+        },
+        "interval_distance": {
+          "n": 4,
+          "median": 1.0,
+          "p90": 2.4000000000000004,
+          "p95": 2.6999999999999993,
+          "max": 3,
+          "within_one_frame": 3,
+          "within_two_frames": 3
+        }
+      }
+    },
+    "v2_unified": {
+      "cam0": {
+        "labels_total": 40,
+        "labels_determinable": 32,
+        "labels_undetermined": 8,
+        "as_labelled": {
+          "accepted": 40,
+          "correct": 23,
+          "precision": 0.575,
+          "precision_wilson_95": [
+            0.422,
+            0.7149
+          ],
+          "coverage": 1.0
+        },
+        "corrected": {
+          "accepted": 32,
+          "correct": 23,
+          "precision": 0.7188,
+          "precision_wilson_95": [
+            0.5463,
+            0.8444
+          ],
+          "coverage_of_determinable": 1.0,
+          "answered_undetermined": 8
+        },
+        "preferred_frame_error": {
+          "n": 32,
+          "median": 1.0,
+          "p90": 5.800000000000004,
+          "p95": 8.899999999999999,
+          "max": 15,
+          "within_one_frame": 26,
+          "within_two_frames": 26
+        },
+        "interval_distance": {
+          "n": 32,
+          "median": 0.0,
+          "p90": 4.800000000000004,
+          "p95": 8.45,
+          "max": 14,
+          "within_one_frame": 26,
+          "within_two_frames": 27
+        }
+      },
+      "cam5": {
+        "labels_total": 40,
+        "labels_determinable": 37,
+        "labels_undetermined": 3,
+        "as_labelled": {
+          "accepted": 35,
+          "correct": 12,
+          "precision": 0.3429,
+          "precision_wilson_95": [
+            0.2083,
+            0.5085
+          ],
+          "coverage": 0.875
+        },
+        "corrected": {
+          "accepted": 32,
+          "correct": 12,
+          "precision": 0.375,
+          "precision_wilson_95": [
+            0.2293,
+            0.5475
+          ],
+          "coverage_of_determinable": 0.8649,
+          "answered_undetermined": 3
+        },
+        "preferred_frame_error": {
+          "n": 32,
+          "median": 2.0,
+          "p90": 4.0,
+          "p95": 8.0,
+          "max": 16,
+          "within_one_frame": 15,
+          "within_two_frames": 21
+        },
+        "interval_distance": {
+          "n": 32,
+          "median": 1.0,
+          "p90": 4.0,
+          "p95": 7.449999999999999,
+          "max": 16,
+          "within_one_frame": 18,
+          "within_two_frames": 22
+        }
+      }
+    }
+  }
+}

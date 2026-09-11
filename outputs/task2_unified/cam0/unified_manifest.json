@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "pipeline_version": "unified-v1",
+  "built_at_utc": "2026-09-01T15:39:55.975864+00:00",
+  "camera_id": "cam0",
+  "descriptor_version": "dinov2s-masked-v1",
+  "mask_version": "a17e88c45245",
+  "colour_id": "bt709-tv2pc",
+  "descriptor_raster": [
+    448,
+    336
+  ],
+  "geometry_raster": [
+    896,
+    672
+  ],
+  "route": {
+    "runA_start": 180,
+    "runA_end_exclusive": 2616,
+    "runB_start": 114,
+    "runB_end_exclusive": 2622
+  },
+  "rows": 2674,
+  "mapped": 2401,
+  "coverage": 0.897906,
+  "status_counts": {
+    "idle_segment": 238,
+    "loop_ambiguous": 3,
+    "geometry_failed": 29,
+    "accepted_sequence_supported": 35,
+    "accepted_strong": 2366,
+    "out_of_route": 3
+  },
+  "geometry_checks": 202,
+  "geometry_passed": 160,
+  "geometry_median_matches": 80,
+  "search_policy": "global monotonic path; no prior band",
+  "confidence_is_calibrated_probability": false,
+  "manifest_amended_at_utc": "2026-09-02T12:20:30.304737+00:00",
+  "manifest_amendment_reason": "The manifest recorded that confidence is not a calibrated probability but never said what its values mean, which of them the shipped file actually contains, or that the mapping is many-to-one. An adversarial read of the bundle found all three undocumented. Added here as an amendment rather than by rebuilding, because the mapping CSVs are hashed by three method freezes and must stay byte-identical.",
+  "confidence_semantics": {
+    "kind": "ordinal rank, not a probability",
+    "is_calibrated_probability": false,
+    "scale": {
+      "1.00": "uncalibrated_strong: local geometry was verified at this row",
+      "0.67": "uncalibrated_sequence_supported: the sequence gate carried it, geometry did not verify it here",
+      "0.50": "uncalibrated_geometry_propagated: a nearby sampled check passed and was propagated",
+      "0.33": "uncalibrated_bridged: a short gap bridged between two accepted neighbours",
+      "0.00": "abstain: no partner is asserted; this is not a negative"
+    },
+    "categorical_label_column": "tier",
+    "ordering_only": "The numbers order the tiers and nothing more. 1.00 does not mean certain and 0.67 is not two thirds of a probability; the blind evaluations measure what a tier is actually worth.",
+    "abstention": "0.00 with an empty runB_frame is an abstention, never a negative. It says this method asserts no partner here, not that no partner exists.",
+    "values_absent_from_this_file": {
+      "0.50": "uncalibrated_geometry_propagated: a nearby sampled check passed and was propagated - does not occur in this file",
+      "0.33": "uncalibrated_bridged: a short gap bridged between two accepted neighbours - does not occur in this file"
+    },
+    "note_on_0_50": "0.50, the geometry-propagated tier, DOES NOT OCCUR in the submitted unified mappings: no shipped row carries it."
+  },
+  "confidence_tier_values_present": {
+    "1.00": 2366,
+    "0.67": 35,
+    "0.00": 273
+  },
+  "tier_counts_present": {
+    "abstain": 273,
+    "uncalibrated_sequence_supported": 35,
+    "uncalibrated_strong": 2366
+  },
+  "many_to_one_structure": {
+    "distinct_runB_partners": 1881,
+    "rows_sharing_a_partner": 825,
+    "fraction_of_mapped_rows_sharing_a_partner": 0.3436,
+    "max_multiplicity": 12,
+    "why": "Run B traverses parts of the route more slowly than Run A, so several Run A frames correctly name the same Run B frame. This is the expected shape of the answer, not a defect.",
+    "what_a_consumer_must_do": "Do not treat runB_frame as a key. When sampling training pairs, weight by 1/multiplicity or de-duplicate on the Run B side, or the slow stretches dominate."
+  }
+}

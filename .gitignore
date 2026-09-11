@@ -1,0 +1,14 @@
+# raw recordings are not redistributed
+runA/
+runB/
+*.hevc
+# caches, builds, local config
+build/
+outputs/**/descriptors_*.npy
+outputs/**/tokens_*.npy
+outputs/**/vlad_vocabulary_*.npy
+outputs/task2_blind_v*/pages/
+.claude/
+__pycache__/
+*.pyc
+.DS_Store

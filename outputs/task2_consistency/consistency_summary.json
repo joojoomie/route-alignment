@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "built_at_utc": "2026-09-01T15:40:41.360651+00:00",
+  "signal_class": "label-free dense consistency; never an accuracy claim",
+  "coverage": {
+    "cam0": {
+      "rows": 2674,
+      "mapped": 2401,
+      "coverage": 0.897906,
+      "status_counts": {
+        "accepted_strong": 2366,
+        "idle_segment": 238,
+        "accepted_sequence_supported": 35,
+        "geometry_failed": 29,
+        "loop_ambiguous": 3,
+        "out_of_route": 3
+      }
+    },
+    "cam5": {
+      "rows": 2674,
+      "mapped": 2183,
+      "coverage": 0.81638,
+      "status_counts": {
+        "accepted_strong": 1881,
+        "accepted_sequence_supported": 294,
+        "idle_segment": 238,
+        "sequence_failed": 190,
+        "geometry_failed": 56,
+        "accepted_bridged_short_gap": 8,
+        "loop_ambiguous": 4,
+        "out_of_route": 3
+      }
+    }
+  },
+  "cross_camera_agreement": {
+    "frames_mapped_by_both_cameras": 2183,
+    "apparent_camera_offset_frames": {
+      "median": -3.0,
+      "p5": -8.0,
+      "p95": 9.0,
+      "note": "Not an error. The two cameras are not proved synchronised, so a constant component of this difference is unattributable."
+    },
+    "disagreement_about_the_running_offset": {
+      "median_absolute": 1.0,
+      "p90_absolute": 8.0,
+      "p95_absolute": 11.0,
+      "max_absolute": 23.0,
+      "frames_over_threshold": 137,
+      "fraction_over_threshold": 0.06275767292716446,
+      "threshold_frames": 10
+    },
+    "largest_disagreement_regions": [
+      {
+        "runA_start": 2416,
+        "runA_end": 2432,
+        "frames": 13,
+        "peak_disagreement": 23
+      },
+      {
+        "runA_start": 545,
+        "runA_end": 560,
+        "frames": 16,
+        "peak_disagreement": 22
+      },
+      {
+        "runA_start": 1068,
+        "runA_end": 1110,
+        "frames": 43,
+        "peak_disagreement": 19
+      },
+      {
+        "runA_start": 536,
+        "runA_end": 543,
+        "frames": 8,
+        "peak_disagreement": 17
+      },
+      {
+        "runA_start": 907,
+        "runA_end": 915,
+        "frames": 9,
+        "peak_disagreement": 16
+      },
+      {
+        "runA_start": 1549,
+        "runA_end": 1553,
+        "frames": 5,
+        "peak_disagreement": 16
+      },
+      {
+        "runA_start": 1690,
+        "runA_end": 1700,
+        "frames": 11,
+        "peak_disagreement": 15
+      },
+      {
+        "runA_start": 1685,
+        "runA_end": 1688,
+        "frames": 4,
+        "peak_disagreement": 14
+      },
+      {
+        "runA_start": 370,
+        "runA_end": 373,
+        "frames": 4,
+        "peak_disagreement": 13
+      },
+      {
+        "runA_start": 522,
+        "runA_end": 525,
+        "frames": 4,
+        "peak_disagreement": 13
+      }
+    ],
+    "status_of_disagreeing_frames": {
+      "cam0": {
+        "accepted_strong": 137
+      },
+      "cam5": {
+        "accepted_strong": 105,
+        "accepted_sequence_supported": 32
+      }
+    },
+    "interpretation": "Agreement is corroboration, not proof: the cameras can fail together where the vehicle's own trajectory is the cause. Disagreement is the stronger direction - it proves at least one camera is wrong there."
+  }
+}

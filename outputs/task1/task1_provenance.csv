@@ -1,0 +1,14 @@
+figure,classification,source_or_method,interpretation
+File size,Measured,Filesystem byte count (Path.stat),Also converted to MiB using 2^20 bytes
+"Codec, visible/coded raster, pixel format",Tool-reported,FFprobe stream fields,Visible raster is 1440x1080; coded raster is 1440x1088 before the signalled crop; neither is an image-array measurement
+Nominal frame rate,Tool-reported,FFprobe r_frame_rate,10 FPS; metadata-versus-inference origin was not independently established
+FFprobe avg_frame_rate,Tool-reported,FFprobe avg_frame_rate,25 FPS; not used as achieved cadence because the raw streams have no usable PTS/DTS
+FFprobe frame count,Measured scan,ffprobe -count_frames,Cross-check only; not the Task 2 frame identity source
+Decoded image count and RGB shape,Measured decode,ffmpeg version 8.1.2 Copyright (c) 2000-2026 the FFmpeg developers; RGB24 image pass,Defines Task 2 display-order image ordinals and checks every emitted array shape
+Packet count and PTS/DTS presence,Measured scan,ffprobe packet scan,Packet count is sanity-only and is not another frame-count measurement
+"Timestamp rows, start, and end",Measured,Complete sidecar text contents,Run-level capture-log evidence; rows are not assigned to decoded images
+"Log span, cadence, interval statistics",Derived,Integer-nanosecond timestamp differences,"Describes capture events in the sidecars, not exact decoded-video cadence"
+Cross-camera sidecar equality,Measured comparison,Element-wise array equality,Does not establish decoded-frame-index synchronization
+Recording local time and place,Assumed,"Sidecar UTC start plus UTC+8, inferred from a road sign read in the frames ('Kawasan SD 13', Bandar Sri Damansara, Malaysia)","Run A 2025-02-28 14:24 local, Run B 2024-04-13 17:12 local. The timezone is inferred from signage and is declared nowhere in the data; Run B is eleven months earlier than Run A, so the run names carry no chronology"
+Display-order picture quality cycle,Measured,"Gradient energy detrended by a 21-frame rolling median, grouped by display ordinal mod 4","Quality cycles with period 4, as a hierarchical-B GOP predicts: non-reference pictures are coded more coarsely and even ordinals are sharper by 1.8% (Run A CAM0) to 3.5% (Run B CAM0). No parity bias reached the mapping; selected Run B frames split 948/933 even/odd on CAM0 and 732/753 on CAM5"
+"Route start boundary, Run B",Derived,"Frame-to-frame difference trace at 720x540, quarter-subsampled, both runs, CAM0","Run A steps from 0.5-0.8 to 3.4 at frame 174, a threshold-independent departure at 173-174. Run B creeps: 0.5 at 38, 1.2 at 44, 2.6 at 60, still about 3.5 at 78, with no step edge. Run B's route start is therefore an interval of roughly frames 40-120, not a single ordinal"

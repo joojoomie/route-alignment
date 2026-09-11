@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "pipeline_version": "unified-v1",
+  "built_at_utc": "2026-09-02T01:49:37.459815+00:00",
+  "camera_id": "cam0",
+  "descriptor_version": "dinov2s-masked-v1",
+  "mask_version": "a17e88c45245",
+  "colour_id": "bt709-tv2pc",
+  "descriptor_raster": [
+    448,
+    336
+  ],
+  "geometry_raster": [
+    896,
+    672
+  ],
+  "route": {
+    "runA_start": 180,
+    "runA_end_exclusive": 2616,
+    "runB_start": 114,
+    "runB_end_exclusive": 2622
+  },
+  "rows": 2674,
+  "mapped": 2401,
+  "coverage": 0.897906,
+  "status_counts": {
+    "idle_segment": 238,
+    "loop_ambiguous": 3,
+    "geometry_failed": 29,
+    "accepted_sequence_supported": 4,
+    "accepted_geometry_propagated": 2241,
+    "accepted_strong": 156,
+    "out_of_route": 3
+  },
+  "geometry_checks": 202,
+  "geometry_passed": 160,
+  "geometry_median_matches": 80,
+  "search_policy": "global monotonic path; no prior band",
+  "strict_geometry": true,
+  "confidence_is_calibrated_probability": false
+}

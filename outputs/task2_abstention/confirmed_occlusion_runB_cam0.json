@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "built_at_utc": "2026-09-02T06:14:59.705479+00:00",
+  "run": "runB",
+  "camera": "cam0",
+  "interval": {
+    "start": 240,
+    "end": 270
+  },
+  "detail": [
+    {
+      "start": 247,
+      "end": 252,
+      "occluder": "oncoming box lorry, whole frame"
+    },
+    {
+      "start": 258,
+      "end": 270,
+      "occluder": "passing silver car, about two thirds of frame"
+    }
+  ],
+  "source": "visual inspection of decoded frames; not a label",
+  "evidence_status": "One instance, found by eye, with bounds read off a contact sheet. It is a confirmed positive for 'no correspondence exists here', which the blind label set contains none of. It is not an annotated ground-truth set and no rate may be computed from it.",
+  "why_it_matters": "For roughly 30 consecutive Run B frames the descriptors describe a vehicle's side panel rather than a place. The claim is strongest over the fully occluded core, where no Run A frame can have a counterpart at all; over the partly occluded tail a third of the scene is still visible, and one blind label (cam0_v2_02, A355) does sit there and was answered. A method that can express 'no correspondence' should abstain over the core.",
+  "unified_mapping": {
+    "mapping": "outputs/task2_unified/cam0/frame_mapping_unified.csv",
+    "rows_mapped_into_interval": 30,
+    "runA_frames": {
+      "first": 327,
+      "last": 356
+    },
+    "status_counts": {
+      "accepted_strong": 30
+    },
+    "abstained": false,
+    "confidence": {
+      "min": 1.0,
+      "median": 1.0,
+      "max": 1.0
+    },
+    "tier": {
+      "uncalibrated_strong": 30
+    },
+    "geometry_checked": {
+      "false": 28,
+      "true": 2
+    },
+    "geometry_supportive": {
+      "false": 28,
+      "true": 2
+    }
+  },
+  "posterior_mapping": {
+    "mapping": "outputs/task2_bayes/cam0/frame_mapping_bayes.csv",
+    "rows_mapped_into_interval": 30,
+    "runA_frames": {
+      "first": 327,
+      "last": 356
+    },
+    "status_counts": {
+      "accepted_posterior": 30
+    },
+    "abstained": false,
+    "posterior_probability": {
+      "min": 0.987219,
+      "median": 0.999665,
+      "max": 0.999994
+    },
+    "posterior_no_correspondence": {
+      "min": 4e-06,
+      "median": 4.1e-05,
+      "max": 0.000207
+    }
+  },
+  "fully_occluded_core": {
+    "interval": [
+      247,
+      252
+    ],
+    "unified": {
+      "mapping": "outputs/task2_unified/cam0/frame_mapping_unified.csv",
+      "rows_mapped_into_interval": 5,
+      "runA_frames": {
+        "first": 334,
+        "last": 338
+      },
+      "status_counts": {
+        "accepted_strong": 5
+      },
+      "abstained": false,
+      "confidence": {
+        "min": 1.0,
+        "median": 1.0,
+        "max": 1.0
+      },
+      "tier": {
+        "uncalibrated_strong": 5
+      }
+    },
+    "posterior": {
+      "mapping": "outputs/task2_bayes/cam0/frame_mapping_bayes.csv",
+      "rows_mapped_into_interval": 5,
+      "runA_frames": {
+        "first": 334,
+        "last": 338
+      },
+      "status_counts": {
+        "accepted_posterior": 5
+      },
+      "abstained": false,
+      "posterior_probability": {
+        "min": 0.997869,
+        "median": 0.99928,
+        "max": 0.999994
+      },
+      "posterior_no_correspondence": {
+        "min": 4e-06,
+        "median": 1.4e-05,
+        "max": 5.3e-05
+      }
+    }
+  },
+  "exposure_flag": {
+    "available": true,
+    "source": "outputs/task3/frame_quality_flags.json",
+    "overlapping_dark_stretches": [
+      {
+        "start": 236,
+        "end": 248,
+        "length": 13
+      },
+      {
+        "start": 254,
+        "end": 264,
+        "length": 11
+      },
+      {
+        "start": 268,
+        "end": 275,
+        "length": 8
+      }
+    ],
+    "note": "The exposure flag was built to find under-exposed road, not occluders. It fires here because the lorry panel is dark, which means one flag partially covers the other failure mode."
+  },
+  "finding": "Both mappings send Run A 327-356 into the occluded interval and neither abstains: 30 unified rows, all accepted_strong, and 30 posterior rows whose no-correspondence probability peaks at 0.00021. The posterior model has an explicit null state and still does not use it here, so its null state is demonstrated to be under-used on the one confirmed case available, independently of the held-out-stretch test it passes."
+}

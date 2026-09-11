@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "built_at_utc": "2026-09-02T02:30:32.501232+00:00",
+  "mapping": "v2_unified",
+  "signal_class": "label-free structural consistency; not an accuracy estimate",
+  "angle_closure": "Not implemented. Heading closure is a real constraint but could not be recovered without camera calibration; see the module docstring for the four attempts that failed.",
+  "cameras": {
+    "cam0": {
+      "endpoint_closure": {
+        "revisit_pairs_found": 5,
+        "pairs_with_both_ends_mapped": 4,
+        "consistent": 4,
+        "inconsistent": 0,
+        "worst": []
+      },
+      "path_length_closure": {
+        "mapped_frames_checked": 2401,
+        "median_progress_error": 0.00945,
+        "p90_progress_error": 0.02336,
+        "max_progress_error": 0.02807,
+        "fraction_over_five_percent": 0.0,
+        "worst_regions": [],
+        "caveat": "Image motion is not distance; it is a monotone proxy whose relation to arc length depends on scene depth. That relation is shared by both runs because it is a property of the road, which is what makes the comparison meaningful, but a large residual localises a problem rather than measuring one in metres."
+      }
+    },
+    "cam5": {
+      "endpoint_closure": {
+        "revisit_pairs_found": 5,
+        "pairs_with_both_ends_mapped": 3,
+        "consistent": 0,
+        "inconsistent": 3,
+        "worst": [
+          {
+            "runA_first": 592,
+            "runA_second": 1042,
+            "runA_similarity": 0.905,
+            "runB_first": 499,
+            "runB_second": 944,
+            "runB_frame_gap": 445,
+            "runB_similarity": 0.8701,
+            "runB_nonlocal_rank": 531,
+            "verdict": "INCONSISTENT"
+          },
+          {
+            "runA_first": 680,
+            "runA_second": 972,
+            "runA_similarity": 0.9506,
+            "runB_first": 579,
+            "runB_second": 868,
+            "runB_frame_gap": 289,
+            "runB_similarity": 0.9057,
+            "runB_nonlocal_rank": 38,
+            "verdict": "INCONSISTENT"
+          },
+          {
+            "runA_first": 751,
+            "runA_second": 952,
+            "runA_similarity": 0.9413,
+            "runB_first": 649,
+            "runB_second": 844,
+            "runB_frame_gap": 195,
+            "runB_similarity": 0.9059,
+            "runB_nonlocal_rank": 55,
+            "verdict": "INCONSISTENT"
+          }
+        ]
+      },
+      "path_length_closure": {
+        "mapped_frames_checked": 2183,
+        "median_progress_error": 0.01303,
+        "p90_progress_error": 0.01765,
+        "max_progress_error": 0.02418,
+        "fraction_over_five_percent": 0.0,
+        "worst_regions": [],
+        "caveat": "Image motion is not distance; it is a monotone proxy whose relation to arc length depends on scene depth. That relation is shared by both runs because it is a property of the road, which is what makes the comparison meaningful, but a large residual localises a problem rather than measuring one in metres."
+      }
+    }
+  },
+  "discrimination_controls": {
+    "measured_on": "cam0, cross-camera-confirmed revisits",
+    "real_mapping": "4/4",
+    "real_plus_random_jitter_150_frames": "0/4",
+    "fully_random_partners": "0/4",
+    "reading": "Controls score zero; the real mapping does not. The definition changed to cross-camera confirmation, so the denominator differs from the earlier run."
+  }
+}

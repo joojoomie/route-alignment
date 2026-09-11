@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "built_at_utc": "2026-09-02T06:50:17.627667+00:00",
+  "evidence_status": "DEVELOPMENT ONLY. The blind label set is spent. These labels selected nothing for this model, but they have been read, so nothing here is a held-out estimate. A fresh prediction-blind set is required before any accuracy claim.",
+  "tolerance_frames": 2,
+  "with_motion": {
+    "cam0": {
+      "camera_id": "cam0",
+      "motion_channel": true,
+      "determinable_labels": 32,
+      "accepted": 32,
+      "strict_correct": 26,
+      "within_tolerance": 29,
+      "strict_precision": 0.8125,
+      "within_tolerance_precision": 0.9062,
+      "median_error": 0.0,
+      "p90_error": 2.0,
+      "reliability": [
+        {
+          "bin": "0.40-0.55",
+          "n": 1,
+          "mean_stated_posterior": 0.4125,
+          "observed_within_tolerance": 1.0
+        },
+        {
+          "bin": "0.55-0.70",
+          "n": 1,
+          "mean_stated_posterior": 0.5971,
+          "observed_within_tolerance": 0.0
+        },
+        {
+          "bin": "0.80-0.90",
+          "n": 1,
+          "mean_stated_posterior": 0.812,
+          "observed_within_tolerance": 1.0
+        },
+        {
+          "bin": "0.95-1.00",
+          "n": 29,
+          "mean_stated_posterior": 0.9967,
+          "observed_within_tolerance": 0.931
+        }
+      ],
+      "expected_calibration_error": 0.1024
+    },
+    "cam5": {
+      "camera_id": "cam5",
+      "motion_channel": true,
+      "determinable_labels": 37,
+      "accepted": 36,
+      "strict_correct": 13,
+      "within_tolerance": 25,
+      "strict_precision": 0.3611,
+      "within_tolerance_precision": 0.6944,
+      "median_error": 2.0,
+      "p90_error": 4.5,
+      "reliability": [
+        {
+          "bin": "0.55-0.70",
+          "n": 1,
+          "mean_stated_posterior": 0.6178,
+          "observed_within_tolerance": 1.0
+        },
+        {
+          "bin": "0.70-0.80",
+          "n": 1,
+          "mean_stated_posterior": 0.7636,
+          "observed_within_tolerance": 0.0
+        },
+        {
+          "bin": "0.80-0.90",
+          "n": 4,
+          "mean_stated_posterior": 0.8887,
+          "observed_within_tolerance": 0.25
+        },
+        {
+          "bin": "0.90-0.95",
+          "n": 4,
+          "mean_stated_posterior": 0.9443,
+          "observed_within_tolerance": 1.0
+        },
+        {
+          "bin": "0.95-1.00",
+          "n": 26,
+          "mean_stated_posterior": 0.9879,
+          "observed_within_tolerance": 0.7308
+        }
+      ],
+      "expected_calibration_error": 0.2947
+    }
+  },
+  "without_motion": {
+    "cam0": {
+      "camera_id": "cam0",
+      "motion_channel": false,
+      "determinable_labels": 32,
+      "accepted": 32,
+      "strict_correct": 25,
+      "within_tolerance": 29,
+      "strict_precision": 0.7812,
+      "within_tolerance_precision": 0.9062,
+      "median_error": 0.0,
+      "p90_error": 2.0,
+      "reliability": [
+        {
+          "bin": "0.40-0.55",
+          "n": 1,
+          "mean_stated_posterior": 0.4125,
+          "observed_within_tolerance": 1.0
+        },
+        {
+          "bin": "0.55-0.70",
+          "n": 1,
+          "mean_stated_posterior": 0.5971,
+          "observed_within_tolerance": 0.0
+        },
+        {
+          "bin": "0.80-0.90",
+          "n": 1,
+          "mean_stated_posterior": 0.812,
+          "observed_within_tolerance": 1.0
+        },
+        {
+          "bin": "0.95-1.00",
+          "n": 29,
+          "mean_stated_posterior": 0.9967,
+          "observed_within_tolerance": 0.931
+        }
+      ],
+      "expected_calibration_error": 0.1024
+    },
+    "cam5": {
+      "camera_id": "cam5",
+      "motion_channel": false,
+      "determinable_labels": 37,
+      "accepted": 36,
+      "strict_correct": 12,
+      "within_tolerance": 25,
+      "strict_precision": 0.3333,
+      "within_tolerance_precision": 0.6944,
+      "median_error": 2.0,
+      "p90_error": 4.5,
+      "reliability": [
+        {
+          "bin": "0.55-0.70",
+          "n": 1,
+          "mean_stated_posterior": 0.6178,
+          "observed_within_tolerance": 1.0
+        },
+        {
+          "bin": "0.70-0.80",
+          "n": 1,
+          "mean_stated_posterior": 0.7997,
+          "observed_within_tolerance": 0.0
+        },
+        {
+          "bin": "0.80-0.90",
+          "n": 2,
+          "mean_stated_posterior": 0.8893,
+          "observed_within_tolerance": 0.5
+        },
+        {
+          "bin": "0.90-0.95",
+          "n": 6,
+          "mean_stated_posterior": 0.9366,
+          "observed_within_tolerance": 0.8333
+        },
+        {
+          "bin": "0.95-1.00",
+          "n": 26,
+          "mean_stated_posterior": 0.9879,
+          "observed_within_tolerance": 0.6923
+        }
+      ],
+      "expected_calibration_error": 0.2852
+    }
+  },
+  "cross_camera_agreement": {
+    "frames_mapped_by_both": 2399,
+    "median_disagreement": 1.0,
+    "p90_disagreement": 3.0,
+    "p95_disagreement": 4.0,
+    "fraction_over_ten_frames": 0.0133,
+    "caveat": "Consistency, not correctness. Both cameras can fail together where the vehicle's own trajectory is the cause, and the unproven camera synchronisation means only the variation is interpretable."
+  }
+}

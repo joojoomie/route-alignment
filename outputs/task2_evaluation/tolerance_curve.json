@@ -1,0 +1,520 @@
+{
+  "schema_version": 1,
+  "built_at_utc": "2026-09-02T13:16:43.013156+00:00",
+  "tolerances_frames": [
+    0,
+    1,
+    2,
+    5,
+    10
+  ],
+  "headline_tolerance_frames": 2,
+  "distance": "distance_to_interval: 0 inside [runB_min, runB_max], else the gap to the nearer end",
+  "frame_is_about": "0.1 s at 10 FPS; roughly one metre of travel at the route's median sweep",
+  "literature_context": "Published place-recognition protocols count a hit at 25 m (Pitts30k, Tokyo24/7, MSLS, RobotCar) or at +-10 frames at 1 FPS on Nordland; the tightest published Nordland readings use +-2 or +-1 frames at 1 FPS, i.e. +-10-40 m. The +-2-frame headline here is about 2 m. Not the same data; context for the scale of the tolerance only.",
+  "sets": {
+    "blind_v2": {
+      "status": "held-out for both methods (frozen before the labels were read)",
+      "cameras": {
+        "cam0": {
+          "submitted": {
+            "match_labels": 32,
+            "accepted": 32,
+            "coverage": 1.0,
+            "within": {
+              "0": {
+                "hits": 23,
+                "fraction": 0.7188,
+                "wilson_95": [
+                  0.5463,
+                  0.8444
+                ]
+              },
+              "1": {
+                "hits": 26,
+                "fraction": 0.8125,
+                "wilson_95": [
+                  0.6469,
+                  0.9111
+                ]
+              },
+              "2": {
+                "hits": 27,
+                "fraction": 0.8438,
+                "wilson_95": [
+                  0.6825,
+                  0.9314
+                ]
+              },
+              "5": {
+                "hits": 29,
+                "fraction": 0.9062,
+                "wilson_95": [
+                  0.7578,
+                  0.9676
+                ]
+              },
+              "10": {
+                "hits": 31,
+                "fraction": 0.9688,
+                "wilson_95": [
+                  0.8426,
+                  0.9945
+                ]
+              }
+            },
+            "median_distance": 0.0
+          },
+          "v1_sparse_anchor": {
+            "match_labels": 32,
+            "accepted": 17,
+            "coverage": 0.5312,
+            "within": {
+              "0": {
+                "hits": 11,
+                "fraction": 0.6471,
+                "wilson_95": [
+                  0.413,
+                  0.8269
+                ]
+              },
+              "1": {
+                "hits": 14,
+                "fraction": 0.8235,
+                "wilson_95": [
+                  0.5897,
+                  0.9381
+                ]
+              },
+              "2": {
+                "hits": 15,
+                "fraction": 0.8824,
+                "wilson_95": [
+                  0.6566,
+                  0.9671
+                ]
+              },
+              "5": {
+                "hits": 17,
+                "fraction": 1.0,
+                "wilson_95": [
+                  0.8157,
+                  1.0
+                ]
+              },
+              "10": {
+                "hits": 17,
+                "fraction": 1.0,
+                "wilson_95": [
+                  0.8157,
+                  1.0
+                ]
+              }
+            },
+            "median_distance": 0.0
+          }
+        },
+        "cam5": {
+          "submitted": {
+            "match_labels": 37,
+            "accepted": 32,
+            "coverage": 0.8649,
+            "within": {
+              "0": {
+                "hits": 12,
+                "fraction": 0.375,
+                "wilson_95": [
+                  0.2293,
+                  0.5475
+                ]
+              },
+              "1": {
+                "hits": 18,
+                "fraction": 0.5625,
+                "wilson_95": [
+                  0.3933,
+                  0.7183
+                ]
+              },
+              "2": {
+                "hits": 22,
+                "fraction": 0.6875,
+                "wilson_95": [
+                  0.5143,
+                  0.8205
+                ]
+              },
+              "5": {
+                "hits": 29,
+                "fraction": 0.9062,
+                "wilson_95": [
+                  0.7578,
+                  0.9676
+                ]
+              },
+              "10": {
+                "hits": 31,
+                "fraction": 0.9688,
+                "wilson_95": [
+                  0.8426,
+                  0.9945
+                ]
+              }
+            },
+            "median_distance": 1.0
+          },
+          "v1_sparse_anchor": {
+            "match_labels": 37,
+            "accepted": 4,
+            "coverage": 0.1081,
+            "within": {
+              "0": {
+                "hits": 1,
+                "fraction": 0.25,
+                "wilson_95": [
+                  0.0456,
+                  0.6994
+                ]
+              },
+              "1": {
+                "hits": 3,
+                "fraction": 0.75,
+                "wilson_95": [
+                  0.3006,
+                  0.9544
+                ]
+              },
+              "2": {
+                "hits": 3,
+                "fraction": 0.75,
+                "wilson_95": [
+                  0.3006,
+                  0.9544
+                ]
+              },
+              "5": {
+                "hits": 4,
+                "fraction": 1.0,
+                "wilson_95": [
+                  0.5101,
+                  1.0
+                ]
+              },
+              "10": {
+                "hits": 4,
+                "fraction": 1.0,
+                "wilson_95": [
+                  0.5101,
+                  1.0
+                ]
+              }
+            },
+            "median_distance": 1.0
+          }
+        }
+      }
+    },
+    "blind_v3": {
+      "status": "held-out (v3 freeze); CAM5 half withdrawn for a tool defect, see TOOL_DEFECT_cam5.md",
+      "cameras": {
+        "cam0": {
+          "submitted": {
+            "match_labels": 21,
+            "accepted": 21,
+            "coverage": 1.0,
+            "within": {
+              "0": {
+                "hits": 13,
+                "fraction": 0.619,
+                "wilson_95": [
+                  0.4088,
+                  0.7925
+                ]
+              },
+              "1": {
+                "hits": 15,
+                "fraction": 0.7143,
+                "wilson_95": [
+                  0.5004,
+                  0.8619
+                ]
+              },
+              "2": {
+                "hits": 17,
+                "fraction": 0.8095,
+                "wilson_95": [
+                  0.6,
+                  0.9233
+                ]
+              },
+              "5": {
+                "hits": 18,
+                "fraction": 0.8571,
+                "wilson_95": [
+                  0.6536,
+                  0.9502
+                ]
+              },
+              "10": {
+                "hits": 21,
+                "fraction": 1.0,
+                "wilson_95": [
+                  0.8454,
+                  1.0
+                ]
+              }
+            },
+            "median_distance": 0.0
+          },
+          "slope_variant": {
+            "match_labels": 21,
+            "accepted": 21,
+            "coverage": 1.0,
+            "within": {
+              "0": {
+                "hits": 16,
+                "fraction": 0.7619,
+                "wilson_95": [
+                  0.5491,
+                  0.8937
+                ]
+              },
+              "1": {
+                "hits": 17,
+                "fraction": 0.8095,
+                "wilson_95": [
+                  0.6,
+                  0.9233
+                ]
+              },
+              "2": {
+                "hits": 17,
+                "fraction": 0.8095,
+                "wilson_95": [
+                  0.6,
+                  0.9233
+                ]
+              },
+              "5": {
+                "hits": 19,
+                "fraction": 0.9048,
+                "wilson_95": [
+                  0.7109,
+                  0.9735
+                ]
+              },
+              "10": {
+                "hits": 21,
+                "fraction": 1.0,
+                "wilson_95": [
+                  0.8454,
+                  1.0
+                ]
+              }
+            },
+            "median_distance": 0.0
+          },
+          "posterior": {
+            "match_labels": 21,
+            "accepted": 21,
+            "coverage": 1.0,
+            "within": {
+              "0": {
+                "hits": 15,
+                "fraction": 0.7143,
+                "wilson_95": [
+                  0.5004,
+                  0.8619
+                ]
+              },
+              "1": {
+                "hits": 18,
+                "fraction": 0.8571,
+                "wilson_95": [
+                  0.6536,
+                  0.9502
+                ]
+              },
+              "2": {
+                "hits": 18,
+                "fraction": 0.8571,
+                "wilson_95": [
+                  0.6536,
+                  0.9502
+                ]
+              },
+              "5": {
+                "hits": 19,
+                "fraction": 0.9048,
+                "wilson_95": [
+                  0.7109,
+                  0.9735
+                ]
+              },
+              "10": {
+                "hits": 21,
+                "fraction": 1.0,
+                "wilson_95": [
+                  0.8454,
+                  1.0
+                ]
+              }
+            },
+            "median_distance": 0.0
+          }
+        }
+      }
+    },
+    "blind_v3b": {
+      "status": "held-out (v3b freeze); the CAM5 redo",
+      "cameras": {
+        "cam5": {
+          "submitted": {
+            "match_labels": 23,
+            "accepted": 21,
+            "coverage": 0.913,
+            "within": {
+              "0": {
+                "hits": 3,
+                "fraction": 0.1429,
+                "wilson_95": [
+                  0.0498,
+                  0.3464
+                ]
+              },
+              "1": {
+                "hits": 8,
+                "fraction": 0.381,
+                "wilson_95": [
+                  0.2075,
+                  0.5912
+                ]
+              },
+              "2": {
+                "hits": 15,
+                "fraction": 0.7143,
+                "wilson_95": [
+                  0.5004,
+                  0.8619
+                ]
+              },
+              "5": {
+                "hits": 18,
+                "fraction": 0.8571,
+                "wilson_95": [
+                  0.6536,
+                  0.9502
+                ]
+              },
+              "10": {
+                "hits": 21,
+                "fraction": 1.0,
+                "wilson_95": [
+                  0.8454,
+                  1.0
+                ]
+              }
+            },
+            "median_distance": 2.0
+          },
+          "slope_variant": {
+            "match_labels": 23,
+            "accepted": 21,
+            "coverage": 0.913,
+            "within": {
+              "0": {
+                "hits": 4,
+                "fraction": 0.1905,
+                "wilson_95": [
+                  0.0767,
+                  0.4
+                ]
+              },
+              "1": {
+                "hits": 11,
+                "fraction": 0.5238,
+                "wilson_95": [
+                  0.3237,
+                  0.7166
+                ]
+              },
+              "2": {
+                "hits": 17,
+                "fraction": 0.8095,
+                "wilson_95": [
+                  0.6,
+                  0.9233
+                ]
+              },
+              "5": {
+                "hits": 21,
+                "fraction": 1.0,
+                "wilson_95": [
+                  0.8454,
+                  1.0
+                ]
+              },
+              "10": {
+                "hits": 21,
+                "fraction": 1.0,
+                "wilson_95": [
+                  0.8454,
+                  1.0
+                ]
+              }
+            },
+            "median_distance": 1.0
+          },
+          "posterior": {
+            "match_labels": 23,
+            "accepted": 23,
+            "coverage": 1.0,
+            "within": {
+              "0": {
+                "hits": 4,
+                "fraction": 0.1739,
+                "wilson_95": [
+                  0.0698,
+                  0.3714
+                ]
+              },
+              "1": {
+                "hits": 11,
+                "fraction": 0.4783,
+                "wilson_95": [
+                  0.2924,
+                  0.6704
+                ]
+              },
+              "2": {
+                "hits": 19,
+                "fraction": 0.8261,
+                "wilson_95": [
+                  0.6286,
+                  0.9302
+                ]
+              },
+              "5": {
+                "hits": 22,
+                "fraction": 0.9565,
+                "wilson_95": [
+                  0.7901,
+                  0.9923
+                ]
+              },
+              "10": {
+                "hits": 22,
+                "fraction": 0.9565,
+                "wilson_95": [
+                  0.7901,
+                  0.9923
+                ]
+              }
+            },
+            "median_distance": 2.0
+          }
+        }
+      }
+    }
+  }
+}

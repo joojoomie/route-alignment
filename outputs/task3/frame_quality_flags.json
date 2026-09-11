@@ -1,0 +1,333 @@
+{
+  "schema_version": 1,
+  "built_at_utc": "2026-09-02T07:34:55.318888+00:00",
+  "analysis_raster": [
+    192,
+    144
+  ],
+  "luma": "Rec. 709 luma of the canonical pinned-colour RGB decode, 0-255",
+  "thresholds": {
+    "mean_luma_floor": 12.0,
+    "p99_luma_floor": 40.0,
+    "rule": "too_dark iff mean_luma < 12 or p99_luma < 40",
+    "min_reported_stretch": 5
+  },
+  "evidence_status": "Measured on every decoded frame. The mapping and label cross-references are reporting only: no mapping row was rewritten.",
+  "streams": {
+    "runA_cam0": {
+      "frames": 2674,
+      "too_dark": 48,
+      "too_dark_fraction": 0.018,
+      "mean_luma_median": 61.415,
+      "mean_luma_min": 13.058,
+      "dark_stretches": [
+        {
+          "start": 1574,
+          "end": 1594,
+          "length": 21
+        },
+        {
+          "start": 1599,
+          "end": 1607,
+          "length": 9
+        },
+        {
+          "start": 1615,
+          "end": 1627,
+          "length": 13
+        }
+      ],
+      "longest_dark_stretch": 21
+    },
+    "runA_cam5": {
+      "frames": 2674,
+      "too_dark": 0,
+      "too_dark_fraction": 0.0,
+      "mean_luma_median": 83.229,
+      "mean_luma_min": 13.387,
+      "dark_stretches": [],
+      "longest_dark_stretch": 0
+    },
+    "runB_cam0": {
+      "frames": 2622,
+      "too_dark": 304,
+      "too_dark_fraction": 0.1159,
+      "mean_luma_median": 26.921,
+      "mean_luma_min": 3.538,
+      "dark_stretches": [
+        {
+          "start": 236,
+          "end": 248,
+          "length": 13
+        },
+        {
+          "start": 254,
+          "end": 264,
+          "length": 11
+        },
+        {
+          "start": 268,
+          "end": 275,
+          "length": 8
+        },
+        {
+          "start": 523,
+          "end": 532,
+          "length": 10
+        },
+        {
+          "start": 1361,
+          "end": 1390,
+          "length": 30
+        },
+        {
+          "start": 1402,
+          "end": 1456,
+          "length": 55
+        },
+        {
+          "start": 1460,
+          "end": 1636,
+          "length": 177
+        }
+      ],
+      "longest_dark_stretch": 177
+    },
+    "runB_cam5": {
+      "frames": 2615,
+      "too_dark": 136,
+      "too_dark_fraction": 0.052,
+      "mean_luma_median": 34.749,
+      "mean_luma_min": 6.063,
+      "dark_stretches": [
+        {
+          "start": 350,
+          "end": 421,
+          "length": 72
+        },
+        {
+          "start": 424,
+          "end": 487,
+          "length": 64
+        }
+      ],
+      "longest_dark_stretch": 72
+    }
+  },
+  "submitted_mapping": {
+    "cam0": {
+      "accepted_rows": 2401,
+      "runA_frame_too_dark": 48,
+      "runB_partner_too_dark": 273,
+      "either_side_too_dark": 273,
+      "both_sides_too_dark": 48,
+      "fraction_of_accepted": 0.1137,
+      "runA_stretches_touched": [
+        {
+          "start": 323,
+          "end": 335,
+          "length": 13
+        },
+        {
+          "start": 340,
+          "end": 351,
+          "length": 12
+        },
+        {
+          "start": 354,
+          "end": 361,
+          "length": 8
+        },
+        {
+          "start": 621,
+          "end": 631,
+          "length": 11
+        },
+        {
+          "start": 1461,
+          "end": 1489,
+          "length": 29
+        },
+        {
+          "start": 1499,
+          "end": 1545,
+          "length": 47
+        },
+        {
+          "start": 1549,
+          "end": 1701,
+          "length": 153
+        }
+      ]
+    },
+    "cam5": {
+      "accepted_rows": 2183,
+      "runA_frame_too_dark": 0,
+      "runB_partner_too_dark": 147,
+      "either_side_too_dark": 147,
+      "both_sides_too_dark": 0,
+      "fraction_of_accepted": 0.0673,
+      "runA_stretches_touched": [
+        {
+          "start": 433,
+          "end": 579,
+          "length": 147
+        }
+      ]
+    }
+  },
+  "blind_labels": {
+    "available": true,
+    "cam0": {
+      "labels_in_dark_regions": 5,
+      "determinable": 3,
+      "undetermined": 2,
+      "correct": 2,
+      "miss_distances_frames": [
+        14
+      ],
+      "cases": [
+        {
+          "query_id": "cam0_v2_02",
+          "runA_frame": 355,
+          "label": "match",
+          "labelled_runB_frame": 268,
+          "predicted_runB_frame": 269,
+          "status": "accepted_strong",
+          "correct": true,
+          "distance_frames": 0
+        },
+        {
+          "query_id": "cam0_v2_21",
+          "runA_frame": 1503,
+          "label": "match",
+          "labelled_runB_frame": 1406,
+          "predicted_runB_frame": 1406,
+          "status": "accepted_strong",
+          "correct": true,
+          "distance_frames": 0
+        },
+        {
+          "query_id": "cam0_v2_22",
+          "runA_frame": 1578,
+          "label": "no_match",
+          "labelled_runB_frame": null,
+          "predicted_runB_frame": 1494,
+          "status": "accepted_strong"
+        },
+        {
+          "query_id": "cam0_v2_23",
+          "runA_frame": 1638,
+          "label": "no_match",
+          "labelled_runB_frame": null,
+          "predicted_runB_frame": 1554,
+          "status": "accepted_strong"
+        },
+        {
+          "query_id": "cam0_v2_24",
+          "runA_frame": 1687,
+          "label": "match",
+          "labelled_runB_frame": 1635,
+          "predicted_runB_frame": 1620,
+          "status": "accepted_strong",
+          "correct": false,
+          "distance_frames": 14
+        }
+      ]
+    },
+    "cam5": {
+      "labels_in_dark_regions": 3,
+      "determinable": 3,
+      "undetermined": 0,
+      "correct": 0,
+      "miss_distances_frames": [
+        3,
+        8,
+        16
+      ],
+      "cases": [
+        {
+          "query_id": "cam5_v2_04",
+          "runA_frame": 440,
+          "label": "match",
+          "labelled_runB_frame": 353,
+          "predicted_runB_frame": 356,
+          "status": "accepted_strong",
+          "correct": false,
+          "distance_frames": 3
+        },
+        {
+          "query_id": "cam5_v2_05",
+          "runA_frame": 491,
+          "label": "match",
+          "labelled_runB_frame": 397,
+          "predicted_runB_frame": 405,
+          "status": "accepted_strong",
+          "correct": false,
+          "distance_frames": 8
+        },
+        {
+          "query_id": "cam5_v2_06",
+          "runA_frame": 554,
+          "label": "match",
+          "labelled_runB_frame": 461,
+          "predicted_runB_frame": 445,
+          "status": "accepted_strong",
+          "correct": false,
+          "distance_frames": 16
+        }
+      ]
+    }
+  },
+  "slope_gate": {
+    "available": true,
+    "source": "outputs/task2_kinks/mapping_kinks.json",
+    "mapping": "submitted_unified",
+    "kink_threshold": 6,
+    "demote_radius_runA_frames": 10,
+    "rule": "near_kink iff the Run A ordinal is within the radius of a one-step Run B increment >= 6 in that camera's submitted mapping",
+    "evidence_status": "Label-free flag. The precision figures carried over from the kink audit are diagnostics on SPENT labels, not held-out estimates.",
+    "cameras": {
+      "cam0": {
+        "kinks": 27,
+        "runA_frames_flagged": 458,
+        "top_tier_rows_demoted": 454,
+        "top_tier_rows": 2366,
+        "spent_labels_before_gate": {
+          "labels": 40,
+          "accepted": 40,
+          "correct_accepted": 23,
+          "strict_accepted_precision": 0.575,
+          "coverage_all_labels": 1.0
+        },
+        "spent_labels_after_gate": {
+          "labels": 40,
+          "accepted": 32,
+          "correct_accepted": 20,
+          "strict_accepted_precision": 0.625,
+          "coverage_all_labels": 0.8
+        }
+      },
+      "cam5": {
+        "kinks": 25,
+        "runA_frames_flagged": 413,
+        "top_tier_rows_demoted": 320,
+        "top_tier_rows": 1881,
+        "spent_labels_before_gate": {
+          "labels": 40,
+          "accepted": 35,
+          "correct_accepted": 12,
+          "strict_accepted_precision": 0.3429,
+          "coverage_all_labels": 0.875
+        },
+        "spent_labels_after_gate": {
+          "labels": 40,
+          "accepted": 30,
+          "correct_accepted": 11,
+          "strict_accepted_precision": 0.3667,
+          "coverage_all_labels": 0.75
+        }
+      }
+    }
+  }
+}

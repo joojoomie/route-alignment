@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "purpose": "Integrity gates that fail on the supplied data and have been explicitly acknowledged. A gate listed here still reports as failing; the waiver records why the project proceeds anyway. A gate that is NOT listed here and fails will abort the build.",
+  "waivers": [
+    {
+      "gate": "cameras_do_not_share_a_sidecar",
+      "acknowledged_at_utc": "2026-09-01T00:00:00Z",
+      "severity": "blocking_for_per_frame_time",
+      "reason": "Within each run, the cam0 and cam5 timestamp sidecars are byte-identical (run A sha256 0b97ca6dbe46..., run B sha256 9e287f4b05ad...). This is confirmed against the provider's own SHA256SUMS.txt, so it is a property of the supplied export and not a download artifact. It cannot be correct for both cameras: in run B, cam0 decodes to 2,622 frames and cam5 to 2,615, a 7-frame difference, while both are described by one 2,663-row log. Either the exporter duplicated one camera's log, or one camera is the timing master and the other free-runs. This is a question for the recording team, not something further analysis of these four files can settle.",
+      "consequence_accepted": "No per-frame capture time is published. The sidecar is used only for run-level facts that survive the ambiguity: cadence statistics, run duration, and run date. No code may join a sidecar row to a decoded frame by position.",
+      "enforced_by": "frame_service.verify() reports this gate as waived rather than passing; downstream per-frame capture time stays null with an explicit unresolved-link reason."
+    }
+  ]
+}

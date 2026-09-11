@@ -1,0 +1,511 @@
+{
+  "schema_version": 1,
+  "block_name": "convention_shift_sensitivity",
+  "computed_at_utc": "2026-09-02T12:10:34.386604+00:00",
+  "label_set": "blind_v3b",
+  "version_tag": "v3b",
+  "cameras": [
+    "cam5"
+  ],
+  "question": "How much of the measured error is one constant that converts the matcher's 'same place' to the world position the labels name?",
+  "evidence_status": "A SENSITIVITY READING, NOT A HELD-OUT NUMBER. The set was scored once and those numbers stand unchanged in blind_v3b_results.json. This rescores the same rows under a constant frame shift whose value was measured on the v2 labels and written to the pose diagnostic before this set was drawn, so the constant is not fitted here - but the set has now been read, and no further claim may be built on it.",
+  "why_a_separate_file": "blind_v3b_results.json records a single scoring pass and is not rewritten. A reading taken after that pass belongs beside it, not inside it.",
+  "the_submission_is_not_shifted": "The submitted mapping files are unchanged. The evaluation contract froze them before the labels were sealed, and a constant chosen after reading a score is not a frozen method. The constant is attached as per-frame metadata instead (DATA_POLICY.md), so a consumer that wants world position can apply it and one that wants the matcher's convention can ignore it.",
+  "shift_semantics": "A shift of -2 means every accepted prediction names a Run B frame two earlier. Only accepted match rows move; coverage, the gates and the no-correspondence rows are untouched.",
+  "scored_pass": {
+    "file": "outputs/task2_evaluation/blind_v3b/blind_v3b_results.json",
+    "sha256": "4821a331ab66d91121d4a13c1aaba4abc9bbe134a7823437243eb3d724f426cb",
+    "evaluated_at_utc": "2026-09-02T11:02:24.880753+00:00",
+    "label_seal_sha256": "d82913b90c9238c8a46b584eae8dc45bdd54664f2d7e57af019913474822606b"
+  },
+  "convention_shift_sensitivity": {
+    "cam5": {
+      "constant": {
+        "camera": "cam5",
+        "source_file": "outputs/task2_pose_offset/pose_offset_diagnostic.json",
+        "source_built_at_utc": "2026-09-02T06:08:40.855952+00:00",
+        "source_field": "cameras.cam5.label_convention_conversion.gap_frames_at_median_sweep",
+        "gap_px": -18.5,
+        "gap_frames_at_median_sweep": -1.79,
+        "rounded_frames": -2,
+        "measured_on": "the v2 blind labels, before this label set was drawn; see the diagnostic's own degeneracy note",
+        "degeneracy_note": "For a side-facing camera a yaw offset and a few frames of travel produce the same horizontal scene shift. dx at matched pairs therefore reports the matcher's convention, not the pose; dy is unconfounded. Only an external reference (suspension events, GPS, or calibration) separates pose from position."
+      },
+      "shifts_frames": [
+        0,
+        -1,
+        -2,
+        -3
+      ],
+      "measured_shift_frames": -2,
+      "methods": {
+        "submitted_unified": {
+          "by_shift": {
+            "0": {
+              "shift_frames": 0,
+              "accepted": 21,
+              "correct": 3,
+              "precision": 0.1429,
+              "precision_wilson_95": [
+                0.0498,
+                0.3464
+              ],
+              "within_two": 15,
+              "within_two_rate": 0.7143,
+              "median_interval_distance": 2.0,
+              "signed_interval_error": {
+                "median": 2.0,
+                "mean": 2.5238,
+                "later_than_interval": 17,
+                "earlier_than_interval": 1,
+                "inside_interval": 3,
+                "min": -1,
+                "max": 9,
+                "median_of_the_ones_outside": 2.0
+              }
+            },
+            "-1": {
+              "shift_frames": -1,
+              "accepted": 21,
+              "correct": 7,
+              "precision": 0.3333,
+              "precision_wilson_95": [
+                0.1719,
+                0.5463
+              ],
+              "within_two": 16,
+              "within_two_rate": 0.7619,
+              "median_interval_distance": 1.0,
+              "signed_interval_error": {
+                "median": 1.0,
+                "mean": 1.6667,
+                "later_than_interval": 13,
+                "earlier_than_interval": 1,
+                "inside_interval": 7,
+                "min": -2,
+                "max": 8,
+                "median_of_the_ones_outside": 1.0
+              }
+            },
+            "-2": {
+              "shift_frames": -2,
+              "accepted": 21,
+              "correct": 14,
+              "precision": 0.6667,
+              "precision_wilson_95": [
+                0.4537,
+                0.8281
+              ],
+              "within_two": 15,
+              "within_two_rate": 0.7143,
+              "median_interval_distance": 0.0,
+              "signed_interval_error": {
+                "median": 0.0,
+                "mean": 1.0,
+                "later_than_interval": 6,
+                "earlier_than_interval": 1,
+                "inside_interval": 14,
+                "min": -3,
+                "max": 7,
+                "median_of_the_ones_outside": 3.0
+              }
+            },
+            "-3": {
+              "shift_frames": -3,
+              "accepted": 21,
+              "correct": 12,
+              "precision": 0.5714,
+              "precision_wilson_95": [
+                0.3655,
+                0.7553
+              ],
+              "within_two": 17,
+              "within_two_rate": 0.8095,
+              "median_interval_distance": 0.0,
+              "signed_interval_error": {
+                "median": 0.0,
+                "mean": 0.5238,
+                "later_than_interval": 5,
+                "earlier_than_interval": 4,
+                "inside_interval": 12,
+                "min": -4,
+                "max": 6,
+                "median_of_the_ones_outside": 2.0
+              }
+            }
+          },
+          "peak_shift_frames": -2,
+          "peak_is_the_measured_constant": true
+        },
+        "slope_refinement_variant": {
+          "by_shift": {
+            "0": {
+              "shift_frames": 0,
+              "accepted": 21,
+              "correct": 4,
+              "precision": 0.1905,
+              "precision_wilson_95": [
+                0.0767,
+                0.4
+              ],
+              "within_two": 17,
+              "within_two_rate": 0.8095,
+              "median_interval_distance": 1.0,
+              "signed_interval_error": {
+                "median": 1.0,
+                "mean": 1.619,
+                "later_than_interval": 16,
+                "earlier_than_interval": 1,
+                "inside_interval": 4,
+                "min": -1,
+                "max": 5,
+                "median_of_the_ones_outside": 2.0
+              }
+            },
+            "-1": {
+              "shift_frames": -1,
+              "accepted": 21,
+              "correct": 9,
+              "precision": 0.4286,
+              "precision_wilson_95": [
+                0.2447,
+                0.6345
+              ],
+              "within_two": 18,
+              "within_two_rate": 0.8571,
+              "median_interval_distance": 1.0,
+              "signed_interval_error": {
+                "median": 0.0,
+                "mean": 0.7619,
+                "later_than_interval": 10,
+                "earlier_than_interval": 2,
+                "inside_interval": 9,
+                "min": -2,
+                "max": 4,
+                "median_of_the_ones_outside": 1.0
+              }
+            },
+            "-2": {
+              "shift_frames": -2,
+              "accepted": 21,
+              "correct": 15,
+              "precision": 0.7143,
+              "precision_wilson_95": [
+                0.5004,
+                0.8619
+              ],
+              "within_two": 18,
+              "within_two_rate": 0.8571,
+              "median_interval_distance": 0.0,
+              "signed_interval_error": {
+                "median": 0.0,
+                "mean": 0.1905,
+                "later_than_interval": 4,
+                "earlier_than_interval": 2,
+                "inside_interval": 15,
+                "min": -3,
+                "max": 3,
+                "median_of_the_ones_outside": 1.5
+              }
+            },
+            "-3": {
+              "shift_frames": -3,
+              "accepted": 21,
+              "correct": 14,
+              "precision": 0.6667,
+              "precision_wilson_95": [
+                0.4537,
+                0.8281
+              ],
+              "within_two": 19,
+              "within_two_rate": 0.9048,
+              "median_interval_distance": 0.0,
+              "signed_interval_error": {
+                "median": 0.0,
+                "mean": -0.1905,
+                "later_than_interval": 3,
+                "earlier_than_interval": 4,
+                "inside_interval": 14,
+                "min": -4,
+                "max": 2,
+                "median_of_the_ones_outside": -1.0
+              }
+            }
+          },
+          "peak_shift_frames": -2,
+          "peak_is_the_measured_constant": true
+        },
+        "posterior_model": {
+          "by_shift": {
+            "0": {
+              "shift_frames": 0,
+              "accepted": 23,
+              "correct": 4,
+              "precision": 0.1739,
+              "precision_wilson_95": [
+                0.0698,
+                0.3714
+              ],
+              "within_two": 19,
+              "within_two_rate": 0.8261,
+              "median_interval_distance": 2.0,
+              "signed_interval_error": {
+                "median": 1.0,
+                "mean": 0.0435,
+                "later_than_interval": 17,
+                "earlier_than_interval": 2,
+                "inside_interval": 4,
+                "min": -33,
+                "max": 5,
+                "median_of_the_ones_outside": 2.0
+              }
+            },
+            "-1": {
+              "shift_frames": -1,
+              "accepted": 23,
+              "correct": 10,
+              "precision": 0.4348,
+              "precision_wilson_95": [
+                0.2563,
+                0.6319
+              ],
+              "within_two": 19,
+              "within_two_rate": 0.8261,
+              "median_interval_distance": 1.0,
+              "signed_interval_error": {
+                "median": 0.0,
+                "mean": -0.7826,
+                "later_than_interval": 11,
+                "earlier_than_interval": 2,
+                "inside_interval": 10,
+                "min": -34,
+                "max": 4,
+                "median_of_the_ones_outside": 1.0
+              }
+            },
+            "-2": {
+              "shift_frames": -2,
+              "accepted": 23,
+              "correct": 18,
+              "precision": 0.7826,
+              "precision_wilson_95": [
+                0.581,
+                0.9034
+              ],
+              "within_two": 20,
+              "within_two_rate": 0.8696,
+              "median_interval_distance": 0.0,
+              "signed_interval_error": {
+                "median": 0.0,
+                "mean": -1.3478,
+                "later_than_interval": 3,
+                "earlier_than_interval": 2,
+                "inside_interval": 18,
+                "min": -35,
+                "max": 3,
+                "median_of_the_ones_outside": 2.0
+              }
+            },
+            "-3": {
+              "shift_frames": -3,
+              "accepted": 23,
+              "correct": 15,
+              "precision": 0.6522,
+              "precision_wilson_95": [
+                0.4489,
+                0.8119
+              ],
+              "within_two": 21,
+              "within_two_rate": 0.913,
+              "median_interval_distance": 0.0,
+              "signed_interval_error": {
+                "median": 0.0,
+                "mean": -1.6957,
+                "later_than_interval": 3,
+                "earlier_than_interval": 5,
+                "inside_interval": 15,
+                "min": -36,
+                "max": 2,
+                "median_of_the_ones_outside": -1.0
+              }
+            }
+          },
+          "peak_shift_frames": -2,
+          "peak_is_the_measured_constant": true
+        }
+      }
+    }
+  },
+  "control_sweeps": {
+    "purpose": "The same constant frame shift, applied to two sets this reading was not derived from: the mixed-convention set the constant was measured on, and the zero-offset camera.",
+    "how_to_read": "A convention conversion should pay on a consistently-labelled non-zero-offset camera, be NEUTRAL on a set whose labels mix two conventions (the two halves move in opposite directions and cancel), and peak at 0 on a camera whose measured offset is 0.",
+    "sets": {
+      "blind_v2:cam5": {
+        "label_set": "blind_v2",
+        "camera": "cam5",
+        "method": "submitted_unified",
+        "cases_file": "outputs/task2_evaluation/blind_v2/blind_v2_cases.csv",
+        "cases_sha256": "e6ed4306f3176c5ec6647521e3f2466113ac1e641635f8eebe2161521c813a17",
+        "accepted_match_rows": 32,
+        "shifts_frames": [
+          0,
+          -1,
+          -2,
+          -3
+        ],
+        "by_shift": {
+          "0": {
+            "shift_frames": 0,
+            "accepted": 32,
+            "correct": 12,
+            "precision": 0.375,
+            "precision_wilson_95": [
+              0.2293,
+              0.5475
+            ],
+            "signed_interval_counts": {
+              "later_than_interval": 15,
+              "earlier_than_interval": 5,
+              "inside_interval": 12
+            },
+            "signed_late_early_inside": "15:5:12"
+          },
+          "-1": {
+            "shift_frames": -1,
+            "accepted": 32,
+            "correct": 11,
+            "precision": 0.3438,
+            "precision_wilson_95": [
+              0.2041,
+              0.5169
+            ],
+            "signed_interval_counts": {
+              "later_than_interval": 11,
+              "earlier_than_interval": 10,
+              "inside_interval": 11
+            },
+            "signed_late_early_inside": "11:10:11"
+          },
+          "-2": {
+            "shift_frames": -2,
+            "accepted": 32,
+            "correct": 12,
+            "precision": 0.375,
+            "precision_wilson_95": [
+              0.2293,
+              0.5475
+            ],
+            "signed_interval_counts": {
+              "later_than_interval": 7,
+              "earlier_than_interval": 13,
+              "inside_interval": 12
+            },
+            "signed_late_early_inside": "7:13:12"
+          },
+          "-3": {
+            "shift_frames": -3,
+            "accepted": 32,
+            "correct": 8,
+            "precision": 0.25,
+            "precision_wilson_95": [
+              0.1325,
+              0.4211
+            ],
+            "signed_interval_counts": {
+              "later_than_interval": 3,
+              "earlier_than_interval": 21,
+              "inside_interval": 8
+            },
+            "signed_late_early_inside": "3:21:8"
+          }
+        },
+        "peak_shift_frames": 0,
+        "role": "mixed_convention_set",
+        "why": "The v2 CAM5 labels are the set the constant was measured ON, and they are also the set whose labelling criterion was later found to be mixed: the annotator used the marker's own direction for some queries and the image layout for others (FAILURE_ANALYSIS.md; scripts/diagnose_label_criterion.py). If the deficit were one convention constant everywhere, the same shift would pay here too. A mixture predicts that it does not."
+      },
+      "blind_v3:cam0": {
+        "label_set": "blind_v3",
+        "camera": "cam0",
+        "method": "submitted_unified",
+        "cases_file": "outputs/task2_evaluation/blind_v3/blind_v3_cases.csv",
+        "cases_sha256": "ef208f3dde0e4a71f058765b20a3e958ada5fce127eee77b05b215316cf74fe6",
+        "accepted_match_rows": 21,
+        "shifts_frames": [
+          0,
+          -1,
+          -2,
+          -3
+        ],
+        "by_shift": {
+          "0": {
+            "shift_frames": 0,
+            "accepted": 21,
+            "correct": 13,
+            "precision": 0.619,
+            "precision_wilson_95": [
+              0.4088,
+              0.7925
+            ],
+            "signed_interval_counts": {
+              "later_than_interval": 4,
+              "earlier_than_interval": 4,
+              "inside_interval": 13
+            },
+            "signed_late_early_inside": "4:4:13"
+          },
+          "-1": {
+            "shift_frames": -1,
+            "accepted": 21,
+            "correct": 9,
+            "precision": 0.4286,
+            "precision_wilson_95": [
+              0.2447,
+              0.6345
+            ],
+            "signed_interval_counts": {
+              "later_than_interval": 3,
+              "earlier_than_interval": 9,
+              "inside_interval": 9
+            },
+            "signed_late_early_inside": "3:9:9"
+          },
+          "-2": {
+            "shift_frames": -2,
+            "accepted": 21,
+            "correct": 5,
+            "precision": 0.2381,
+            "precision_wilson_95": [
+              0.1063,
+              0.4509
+            ],
+            "signed_interval_counts": {
+              "later_than_interval": 1,
+              "earlier_than_interval": 15,
+              "inside_interval": 5
+            },
+            "signed_late_early_inside": "1:15:5"
+          },
+          "-3": {
+            "shift_frames": -3,
+            "accepted": 21,
+            "correct": 2,
+            "precision": 0.0952,
+            "precision_wilson_95": [
+              0.0265,
+              0.2891
+            ],
+            "signed_interval_counts": {
+              "later_than_interval": 1,
+              "earlier_than_interval": 18,
+              "inside_interval": 2
+            },
+            "signed_late_early_inside": "1:18:2"
+          }
+        },
+        "peak_shift_frames": 0,
+        "role": "zero_offset_control",
+        "why": "CAM0's measured pose offset is 0/0 px, so its convention gap is zero and its sweep must peak at shift 0. It is the negative control: a sweep that peaked away from 0 here would say the shift is buying something other than a convention conversion."
+      }
+    }
+  }
+}

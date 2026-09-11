@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "compared_at_utc": "2026-09-01T15:58:57.968909+00:00",
+  "label_set": "blind_v2",
+  "label_seal_sha256": "5a058323518b869e9e6d6af74ffacf2ea0657a4b23e3d109908ebcad70d6f9fa",
+  "labels_per_camera": 40,
+  "legitimacy": "Both mappings were frozen before this label set existed and neither was tuned with any knowledge of these frames. Reading the two against one label set is the only honest comparison; the previously quoted numbers came from different sets of different sizes.",
+  "methods": {
+    "v1_frozen_submitted": {
+      "cam0": {
+        "camera_id": "cam0",
+        "evaluable_labels": 40,
+        "ground_truth_matches": 32,
+        "ground_truth_no_matches": 8,
+        "accepted": 17,
+        "abstained": 23,
+        "correct_accepted": 11,
+        "strict_accepted_precision": 0.6471,
+        "strict_accepted_precision_wilson_95": [
+          0.413,
+          0.8269
+        ],
+        "selective_risk": 0.3529,
+        "coverage_all_labels": 0.425,
+        "no_match_false_accepts": 0,
+        "no_match_correctly_abstained": 8,
+        "preferred_frame_error": {
+          "n": 17,
+          "median": 1.0,
+          "p90": 3.4000000000000004,
+          "p95": 4.399999999999999,
+          "max": 6,
+          "within_one_frame": 14,
+          "within_two_frames": 14
+        },
+        "interval_distance": {
+          "n": 17,
+          "median": 0.0,
+          "p90": 2.4000000000000004,
+          "p95": 3.3999999999999986,
+          "max": 5,
+          "within_one_frame": 14,
+          "within_two_frames": 15
+        },
+        "abstention_statuses": {
+          "unsupported_between_supported_segments": 22,
+          "unsupported_after_last_supported_segment": 1
+        }
+      },
+      "cam5": {
+        "camera_id": "cam5",
+        "evaluable_labels": 40,
+        "ground_truth_matches": 37,
+        "ground_truth_no_matches": 3,
+        "accepted": 4,
+        "abstained": 36,
+        "correct_accepted": 1,
+        "strict_accepted_precision": 0.25,
+        "strict_accepted_precision_wilson_95": [
+          0.0456,
+          0.6994
+        ],
+        "selective_risk": 0.75,
+        "coverage_all_labels": 0.1,
+        "no_match_false_accepts": 0,
+        "no_match_correctly_abstained": 3,
+        "preferred_frame_error": {
+          "n": 4,
+          "median": 1.5,
+          "p90": 3.4000000000000004,
+          "p95": 3.6999999999999993,
+          "max": 4,
+          "within_one_frame": 2,
+          "within_two_frames": 3
+        },
+        "interval_distance": {
+          "n": 4,
+          "median": 1.0,
+          "p90": 2.4000000000000004,
+          "p95": 2.6999999999999993,
+          "max": 3,
+          "within_one_frame": 3,
+          "within_two_frames": 3
+        },
+        "abstention_statuses": {
+          "unsupported_between_supported_segments": 23,
+          "unsupported_after_last_supported_segment": 12,
+          "unsupported_before_first_supported_segment": 1
+        }
+      }
+    },
+    "v2_unified": {
+      "cam0": {
+        "camera_id": "cam0",
+        "evaluable_labels": 40,
+        "ground_truth_matches": 32,
+        "ground_truth_no_matches": 8,
+        "accepted": 40,
+        "abstained": 0,
+        "correct_accepted": 23,
+        "strict_accepted_precision": 0.575,
+        "strict_accepted_precision_wilson_95": [
+          0.422,
+          0.7149
+        ],
+        "selective_risk": 0.425,
+        "coverage_all_labels": 1.0,
+        "no_match_false_accepts": 8,
+        "no_match_correctly_abstained": 0,
+        "preferred_frame_error": {
+          "n": 32,
+          "median": 1.0,
+          "p90": 5.800000000000004,
+          "p95": 8.899999999999999,
+          "max": 15,
+          "within_one_frame": 26,
+          "within_two_frames": 26
+        },
+        "interval_distance": {
+          "n": 32,
+          "median": 0.0,
+          "p90": 4.800000000000004,
+          "p95": 8.45,
+          "max": 14,
+          "within_one_frame": 26,
+          "within_two_frames": 27
+        },
+        "abstention_statuses": {}
+      },
+      "cam5": {
+        "camera_id": "cam5",
+        "evaluable_labels": 40,
+        "ground_truth_matches": 37,
+        "ground_truth_no_matches": 3,
+        "accepted": 35,
+        "abstained": 5,
+        "correct_accepted": 12,
+        "strict_accepted_precision": 0.3429,
+        "strict_accepted_precision_wilson_95": [
+          0.2083,
+          0.5085
+        ],
+        "selective_risk": 0.6571,
+        "coverage_all_labels": 0.875,
+        "no_match_false_accepts": 3,
+        "no_match_correctly_abstained": 0,
+        "preferred_frame_error": {
+          "n": 32,
+          "median": 2.0,
+          "p90": 4.0,
+          "p95": 8.0,
+          "max": 16,
+          "within_one_frame": 15,
+          "within_two_frames": 21
+        },
+        "interval_distance": {
+          "n": 32,
+          "median": 1.0,
+          "p90": 4.0,
+          "p95": 7.449999999999999,
+          "max": 16,
+          "within_one_frame": 18,
+          "within_two_frames": 22
+        },
+        "abstention_statuses": {
+          "sequence_failed": 3,
+          "geometry_failed": 1,
+          "loop_ambiguous": 1
+        }
+      }
+    }
+  }
+}
