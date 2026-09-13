@@ -15,7 +15,7 @@ pipeline runs on any pair of side-camera traversals in the same format.
 | | |
 |---|---|
 | `report/route_alignment_report.pdf` | the 4-page report: findings, method, results, failure account, policy |
-| `report/slides/interview_slides.pdf` | the interview deck, with speaker notes in English and Chinese |
+| `report/slides/interview_slides.pdf` | the interview deck |
 | `assessment.ipynb` | the report's working, section by section: every number recomputed from the shipped artifacts by calling the scripts, with executed outputs |
 | `mappings/` | the submitted frame mappings, one CSV per camera: `runA_frame, runB_frame, confidence, tier, status` |
 | `scripts/` | the pipeline, evaluation, and unit tests (Python; stdlib `unittest`) |
