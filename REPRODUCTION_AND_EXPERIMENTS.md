@@ -18,10 +18,14 @@ line for your machine; nothing else in the repository names an interpreter path.
 External tools: `ffmpeg`/`ffprobe` 8.x on `PATH`; `latexmk` with `pdflatex`
 for the report.
 
-## Reproduction boundary: what runs from the bundle, and what does not
+## Reproduction boundary: what runs from this repository, and what does not
 
-The submission bundle excludes the raw HEVC recordings and their sidecars
-(confidential), the pretrained model weights (not ours to redistribute), the
+Some side studies described below (the lateral-offset test, the static-removal
+study, the parallax variant) are documented for completeness; their output
+directories are not included here and regenerating them needs the recordings.
+
+This repository excludes the raw HEVC recordings and their sidecars
+(the assessment provider's data), the pretrained model weights (not ours to redistribute), the
 descriptor caches and similarity matrices, the extracted frame sets and
 annotation filmstrips, and the rendered video. That is a deliberate policy, but
 it splits this guide in two, and the split is stated here rather than
@@ -601,7 +605,6 @@ for one degree of freedom; the re-measurement is the label-free evidence.
 ```bash
 $RA_PY scripts/build_report_tables.py
 latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build/pdf report/route_alignment_report.tex
-$RA_PY scripts/build_submission.py --force
 ```
 
 Report tables are generated from the JSON artifacts and pulled in with
@@ -625,8 +628,7 @@ the uniform dim frame that a mean-only floor would pass.
 # Part B — the legacy v1 pipeline
 
 The sparse-anchor method whose frozen result the report quotes as the
-comparison point. Its guide is preserved unchanged in
-`archive/REPRODUCTION_AND_EXPERIMENTS_v1_archive.md`. In this repository its scripts sit
-beside the current ones in `scripts/`; the bundle moves them to `scripts/legacy/`.
-They read 640×480 proxies and ordinal-keyed caches; do not
-mix their outputs with Part A's.
+comparison point. Its scripts and guide are not included in this repository;
+only its frozen mapping files are (`mappings_sparse_anchor_alternative/`).
+They were built from 640×480 proxies and ordinal-keyed caches; do not mix
+them with the current pipeline's outputs.

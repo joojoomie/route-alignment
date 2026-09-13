@@ -4,7 +4,7 @@ This register separates supplied facts, measured evidence, design choices,
 assumptions, and unresolved unknowns. It is part of the submitted reasoning,
 not a list of facts that the implementation silently treats as true.
 
-The concise method story is in [`archive/WORKFLOW.md`](archive/WORKFLOW.md). This file is the
+The concise method story is in [`README.md`](README.md) and the report. This file is the
 authoritative risk register: the main workflow mentions only assumptions that
 change the method, evaluation validity, or deliverable semantics.
 

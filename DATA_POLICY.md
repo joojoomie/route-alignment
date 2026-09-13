@@ -337,9 +337,9 @@ the range.
 The sparse-anchor alternative shipped in `mappings_sparse_anchor_alternative/`
 uses its own scale (1.00 geometry anchor, 0.50 bounded interpolation, 0.00
 abstain). Its repository CSV puts that *category* in the `confidence` column;
-`build_submission.py` writes the bundled copy with the number in `confidence`
-and the category in a new `tier` column, asserting that `runB_frame` and every
-other field stay byte-identical.
+The copy in `mappings_sparse_anchor_alternative/` carries the number in
+`confidence` and the category in a `tier` column; `runB_frame` and every other
+field are byte-identical to the repository CSV.
 
 ### Camera-to-world convention offset
 

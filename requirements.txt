@@ -1,15 +1,8 @@
 # Route alignment — Python dependencies
 #
-# The project needs TWO environments, and the split is not cosmetic: the
-# backbone stack and OpenCV were never installed together on this machine, and
-# the reproduction commands say which interpreter each stage wants.
-#
-#   $RA_PY  the backbone interpreter: torch, transformers, scikit-image
-#                -> DINOv2, RootSIFT (SegFormer only in archived v1 experiments); runs everything that is
-#                   submitted
-#
-# Both are set in env.sh; point them at whatever your machine calls those two
-# environments and nothing else in the repository names an interpreter path.
+# One interpreter runs everything: torch, transformers, scikit-image
+# (DINOv2, RootSIFT). It is named by $RA_PY in env.sh; nothing else in the
+# repository names an interpreter path.
 #
 # Everything added during the audit-driven rebuild — the bitstream scanner, the
 # canonical frame service, the reliability mask, the loop-consistency checks —
