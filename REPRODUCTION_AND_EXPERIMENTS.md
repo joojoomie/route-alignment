@@ -47,8 +47,7 @@ discovered:
 * `scripts/evaluate_task2_blind_v3.py --set-name blind_v3b
   --convention-sensitivity --force` — it re-reads scored cases, not frames;
 * `scripts/analyze_mapping_kinks.py`, `scripts/evaluate_loop_consistency.py`,
-  `scripts/rescore_blind_v2_undetermined.py`,
-  `scripts/compare_motion_variant_mappings.py` — all read shipped CSV/JSON.
+  `scripts/rescore_blind_v2_undetermined.py` — all read shipped CSV/JSON.
 
 **Needs the raw video** (`cam0_20_yuv420p_output.hevc` and the three siblings,
 plus their timestamp sidecars) **under `runA/` and `runB/`** (the flat root
@@ -56,20 +55,16 @@ layout with ` (1)` suffixes for Run B is also accepted by `source_path()`):
 `frame_service.py --verify-all`, `hevc_bitstream.py`,
 `build_reliability_masks.py`, `detect_route_phases.py`,
 `build_frame_quality_flags.py`, `build_confirmed_occlusion.py`,
-`estimate_pose_offset.py`, `build_sweep_rate.py`,
-`measure_lateral_offset.py`, `render_aligned_video.py`,
+`estimate_pose_offset.py`, `build_sweep_rate.py`, `render_aligned_video.py`,
 `build_blind_label_set_v3.py`, and any `build_task2_unified.py` run other than
 `--validate-only`.
 
-**Needs the model weights** (DINOv2-S and SegFormer, downloaded into
-`outputs/task2_models/`): the descriptor stage of `build_task2_unified.py`,
-`build_task2_bayes.py`, `run_dino_backbone_benchmark.py` and the SegFormer
-ablation. `verify_dinov3_meta_checkpoint.py` checks the checkpoint identity.
+**Needs the model weights** (DINOv2-S, downloaded into `outputs/task2_models/`):
+the descriptor stage of `build_task2_unified.py` and `build_task2_bayes.py`.
 
 **Needs the descriptor caches** (regenerable from video + weights, several GB):
 `analyze_route_topology.py`, `evaluate_task2_consistency.py`,
-`run_geometry_resolution_study.py`, `build_parallax_variant.py`, and the
-variant sweeps in A6b. Their *outputs* are shipped, so the numbers they produce
+`run_geometry_resolution_study.py`, and the variant sweeps in A6b. Their *outputs* are shipped, so the numbers they produce
 can be read without rerunning them.
 
 
@@ -357,10 +352,7 @@ scale of near-band content much more than far-band content, and the two
 opposite-facing cameras must disagree in sign at the same place if the vehicle
 sat in a different lane.
 
-```bash
-$RA_PY scripts/measure_lateral_offset.py
-$RA_PY -m pytest scripts/test_measure_lateral_offset.py -q
-```
+*(The script and its outputs for this study are not included in this repository; the report quotes its result.)*
 
 Outputs: `outputs/task1_lateral/lateral_offset.json` (per-camera stretches,
 per-window detection limits, the cross-camera sign test), `lateral_offset_pairs.csv`
@@ -427,7 +419,6 @@ $RA_PY scripts/build_motion_events.py             # shake channel, measured LR
 $RA_PY scripts/build_task2_bayes.py --camera cam0
 $RA_PY scripts/build_task2_bayes.py --camera cam5
 $RA_PY scripts/evaluate_task2_bayes.py            # calibration, ablations
-$RA_PY scripts/sweep_null_priors.py               # priors on the synthetic harness
 $RA_PY scripts/evaluate_loop_consistency.py --mapping bayes
 ```
 
@@ -452,10 +443,8 @@ of predictions are identical).
 ```bash
 $RA_PY scripts/build_motion_events.py --static-removal none --force
 $RA_PY scripts/build_motion_events.py --static-removal median-subtract --force
-$RA_PY scripts/run_static_removal_study.py --force --check-pinning-premise
 $RA_PY scripts/build_task2_bayes.py --camera cam0 --motion-variant none --force
 $RA_PY scripts/build_task2_bayes.py --camera cam5 --motion-variant none --force
-$RA_PY scripts/compare_motion_variant_mappings.py --variant mean-divide --force
 ```
 
 `--check-pinning-premise` costs a second decode pass per stream and re-measures
@@ -490,7 +479,7 @@ residuals (`scripts/vlad_aggregation.py`). It is the one descriptor-side
 variant that moved the label-free signals (cross-camera p95 11 → 8, CAM5
 coverage 0.816 → 0.898); see README.
 
-`build_parallax_variant.py` re-chooses each sampled Run B partner by a
+The parallax variant re-chooses each sampled Run B partner by a
 depth-uniformity criterion instead of by appearance alone. Both cameras face
 sideways, so a camera rotation between the runs shifts near and far scene
 content by the same number of pixels while driving further along the road
@@ -501,8 +490,9 @@ against image row (the depth proxy: bottom third near, top third far, at least
 `|median dx(near) - median dx(far)|`, interpolates the chosen per-sample offset
 along Run A and re-imposes a non-decreasing Run B.
 
+*(The parallax variant's script and manifest are not included in this repository.)*
+
 ```bash
-$RA_PY scripts/build_parallax_variant.py --workers 6   # ~20 min for both cameras
 $RA_PY scripts/evaluate_variants.py --force
 ```
 

@@ -317,7 +317,7 @@ than Run A, so several Run A frames correctly name the same Run B partner:
 
 This is the expected shape of the answer where Run B is slower, not a defect,
 and the counts are recorded in each `unified_manifest.json` under
-`many_to_one_structure` (added by `scripts/amend_mapping_manifests.py`). But a
+`many_to_one_structure`. But a
 consumer that de-duplicates on `runB_frame`, joins on it as a key, or samples
 training pairs uniformly will over-weight the slow stretches by up to 15x.
 Weight by 1/multiplicity, or de-duplicate on the Run B side deliberately.

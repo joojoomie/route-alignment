@@ -18,7 +18,7 @@ pipeline runs on any pair of side-camera traversals in the same format.
 | `report/slides/interview_slides.pdf` | the interview deck |
 | `assessment.ipynb` | the report's working, section by section: every number recomputed from the shipped artifacts by calling the scripts, with executed outputs |
 | `mappings/` | the submitted frame mappings, one CSV per camera: `runA_frame, runB_frame, confidence, tier, status` |
-| `scripts/` | the pipeline, evaluation, and unit tests (Python; stdlib `unittest`) |
+| `scripts/` | the pipeline, evaluation, and unit tests (Python; stdlib `unittest`); `scripts/README.md` indexes them by role and explains the `v2`/`v3`/`v3b` suffixes (blind label rounds, not code versions) |
 | `outputs/` | evidence: bitstream inventory, integrity gates, masks, three sealed blind label sets with freezes and seals, tolerance curves, kink audit, quality flags |
 | `DATA_POLICY.md` | what a downstream consumer may do with the mapping, and what is attached to every frame |
 
